@@ -30,7 +30,7 @@
   #cholesterol
   Cholesterol.create(client_id: "1", ldl: "2,5", hdl: "1,0" , triglyceriden: "1,8", activity_date: "2015-01-01 10:30:00")
   Cholesterol.create(client_id: "1", ldl: "2,6", hdl: "0,9" , triglyceriden: "2,0", activity_date: "2015-07-01 10:30:00")
-  CholesterolTarget.create(client_id: "1", ldl: "2,5", hdl: "1,0" , triglyceriden: "2,0")
+  CholesterolTarget.create(client_id: "1", ldl: "2,3", hdl: "1,0" , triglyceriden: "2,0")
 
   #allergies
   Allergy.create(name: "Noten allergie")
