@@ -15,15 +15,26 @@
 
   #client 
   Client.create(name: "Chris", surname: "Lient", 
-  photo_url: "http://www.google.nl/photos/betty_de_graaf.jpg", 
+  photo_url: "http://www.google.nl/photos/chris_lient.jpg", 
   date_of_birth: "1947-01-02", 
   blood_type: "0", room: "D18", institution: "1")
 
+  #heartrate
+  HeartRate.create(client_id: "1", activity_date: "2015-01-01 10:30:00", pulse: "76")
+  HeartRate.create(client_id: "1", activity_date: "2015-04-01 10:30:00", pulse: "68")
+  HeartRate.create(client_id: "1", activity_date: "2015-07-01 10:30:00", pulse: "69")
+  HeartRate.create(client_id: "1", activity_date: "2015-10-01 10:30:00", pulse: "63")
+  HeartRate.create(client_id: "1", activity_date: "2016-01-01 10:30:00", pulse: "66")
+  HeartRateTarget.create(client_id: "1" pulse: "68")
+
+
   #allergies
   Allergy.create(name: "Noten allergie")
+	Allergy.create(name: "Lactose intolerantie")
+
 
   #weight
-  Weight.create(client_id: "1", activity_date: "2015-01-02 ", weight: "82kg")
+  Weight.create(client_id: "1", activity_date: "2015-01-02 10:21:00", weight: "82kg")
   Weight.create(client_id: "1", activity_date: "2015-06-02 10:40:00", weight: "81kg")
   Weight.create(client_id: "1", activity_date: "2015-09-02 10:32:00", weight: "86kg")
 
