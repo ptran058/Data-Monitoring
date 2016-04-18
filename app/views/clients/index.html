@@ -1,0 +1,76 @@
+<script src="Chart.js"></script>
+
+
+
+<canvas id="myChart" width="1000" height="400"></canvas>
+<script>
+var data = {
+
+    labels: [<% @glucose.each do |f| %><% if f == @glucose.last %><%= f.activity_date.strftime("%d") %><%else %><%= f.activity_date.strftime("%d") %>,<% end %><% end %>],
+    datasets: [
+        {
+            label: "My First dataset",
+            fillColor: "rgba(225,27,27,0.2)",
+            strokeColor: "rgba(225,27,27,1)",
+            pointColor: "rgba(225,27,27,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(0,226,38,1)",
+            data: [<% @glucose.each do |f| %><% if f == @glucose.last %><%= f.mmol %><%else %><%= f.mmol %>,<% end %><% end %>]
+        },
+        {
+            label: "My second dataset",
+            fillColor: "rgba(110,110,110,0.2)",
+            strokeColor: "rgba(110,110,110,1)",
+            pointColor: "rgba(110,110,110,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(0,226,38,1)",
+            data: [4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0]
+        },
+        {
+            label: "My second dataset",
+            fillColor: "rgba(110,110,110,0.2)",
+            strokeColor: "rgba(110,110,110,1)",
+            pointColor: "rgba(110,110,110,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(0,226,38,1)",
+            data: [10.0, 10.0, 10.0, 10.0,10.0, 10.0, 10.0, 10.0,10.0, 10.0, 10.0, 10.0,10.0, 10.0, 10.0, 10.0,10.0, 10.0, 10.0, 10.0,10.0, 10.0, 10.0, 10.0,10.0, 10.0, 10.0, 10.0,10.0, 10.0, 10.0, 10.0,]
+          },
+        {
+            label: "My second dataset",
+            fillColor: "rgba(110,110,110,0.2)",
+            strokeColor: "rgba(110,110,110,1)",
+            pointColor: "rgba(110,110,110,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(0,226,38,1)",
+            data: [0]
+          }
+    ]
+};
+  var canvas = document.getElementById("myChart");
+  var ctx = canvas.getContext("2d");
+  new Chart(ctx).Line(data);
+</script>
+<table>
+  <tr>
+    <td> id</td>
+    <td> description</td>
+    <td> activity_type_id</td>
+    <td> start_time</td>
+    <td> end_time</td>
+    <td> created_at</td>
+  </tr>
+  <% @log.each do |l| %>
+    <tr>
+      <td><%= l.id %></td>
+      <td><%= l.description %></td>
+      <td><%= l.activity_type_id %></td>
+      <td><%= l.start_time %></td>
+      <td><%= l.end_time %></td>
+      <td><%= l.created_at %></td>
+    </tr>
+  <% end %>
+</table>
