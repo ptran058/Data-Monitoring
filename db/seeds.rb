@@ -5,6 +5,7 @@
   #
   #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
   #   Mayor.create(name: 'Emanuel', city: cities.first)
+  
   #zicht 
   Sight.create(client_id: "1", activity_date: "2015-01-02 10:30:00", sight_left: "-2", sight_right: "-3", cilinder_left: "0.25", cilinder_right: "0.50", 
     comments: "Nieuwe glazen voor haar bril aangemeten", reason: "Mevrouw heeft last van haar ogen en klaagt over een verminderd zicht", )
@@ -27,6 +28,13 @@
   HeartRate.create(client_id: "1", activity_date: "2016-01-01 10:30:00", pulse: "66")
   HeartRateTarget.create(client_id: "1" pulse: "68")
 
+  #bloodpressure
+  Bloodpressure.create(client_id: "1", sys: "132", dia: "89", activity_date: "2015-01-01")
+  Bloodpressure.create(client_id: "1", sys: "135", dia: "88", activity_date: "2015-04-01")
+  Bloodpressure.create(client_id: "1", sys: "131", dia: "85", activity_date: "2015-07-01")
+  Bloodpressure.create(client_id: "1", sys: "139", dia: "92", activity_date: "2015-10-01")
+  Bloodpressure.create(client_id: "1", sys: "141", dia: "94", activity_date: "2016-01-01")
+  BloodpressureTarget.create(sys: "139", dia: "89")
 
   #allergies
   Allergy.create(name: "Noten allergie")
