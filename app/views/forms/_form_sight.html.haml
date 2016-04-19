@@ -1,0 +1,11 @@
+= form_for @sight do |s|
+
+	= s.text_field :activity_date
+	= s.text_field :sight_left
+	= s.text_field :sight_right
+	= s.text_field :cilinder_left
+	= s.text_field :cilinder_right
+	= s.text_area :reason
+	= s.text_area :comments
+
+	= s.submit "Submit"
