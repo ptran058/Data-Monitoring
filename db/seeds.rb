@@ -1,6 +1,12 @@
   # This file should contain all the record creation needed to seed the database with its default values.
   # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
   
+  #client 
+  Client.create(name: 'Chris', surname: 'Lient', 
+  photo_url: 'http://www.google.nl/photos/chris_lient.jpg', 
+  date_of_birth: '1947-01-02', 
+  blood_type: '0', room: 'D18', institution: '1')
+
   #sight 
   Sight.create(client_id: '1', activity_date: '2015-01-02 10:30:00', sight_left: '-3', sight_right: '-2,75', cilinder_left: '0,25', cilinder_right: '0.50', 
     comments: 'Nieuwe glazen voor haar bril aangemeten', reason: 'Mevrouw heeft last van haar ogen en klaagt over een verminderd zicht', )
@@ -9,19 +15,13 @@
   Sight.create(client_id: '1', activity_date: '2015-09-02 10:30:00', sight_left: '-4,50', sight_right: '-3,75', cilinder_left: '1,0', cilinder_right: '0.50', 
     comments: 'Nieuwe glazen voor haar bril aangemeten', reason: 'Mevrouw heeft last van haar ogen en klaagt over een verminderd zicht', )
 
-  #client 
-  Client.create(name: 'Chris', surname: 'Lient', 
-  photo_url: 'http://www.google.nl/photos/chris_lient.jpg', 
-  date_of_birth: '1947-01-02', 
-  blood_type: '0', room: 'D18', institution: '1')
-
   #heartrate
-  HeartRate.create(client_id: '1', activity_date: '2015-01-01 10:30:00', pulse: '76')
-  HeartRate.create(client_id: '1', activity_date: '2015-04-01 10:30:00', pulse: '68')
-  HeartRate.create(client_id: '1', activity_date: '2015-07-01 10:30:00', pulse: '69')
-  HeartRate.create(client_id: '1', activity_date: '2015-10-01 10:30:00', pulse: '63')
-  HeartRate.create(client_id: '1', activity_date: '2016-01-01 10:30:00', pulse: '66')
-  HeartRateTarget.create(client_id: '1' pulse: '68')
+  Heartrate.create(client_id: '1', activity_date: '2015-01-01 10:30:00', pulse: '76')
+  Heartrate.create(client_id: '1', activity_date: '2015-04-01 10:30:00', pulse: '68')
+  Heartrate.create(client_id: '1', activity_date: '2015-07-01 10:30:00', pulse: '69')
+  Heartrate.create(client_id: '1', activity_date: '2015-10-01 10:30:00', pulse: '63')
+  Heartrate.create(client_id: '1', activity_date: '2016-01-01 10:30:00', pulse: '66')
+  HeartrateTarget.create(client_id: '1' pulse: '68')
 
   #bloodpressure
   Bloodpressure.create(client_id: '1', sys: '160', dia: '90', activity_date: '2015-01-01')
@@ -107,7 +107,7 @@
   Log.create(client_id: '1', description: 'Appeltaart', activity_type_id: '3', start_time: '2016-01-06 09:10:00', end_time: '2016-01-06 10:00:00')
   Log.create(client_id: '1', description: 'Insuline ingespoten', activity_type_id: '1', start_time: '2016-01-06 12:10:00', end_time: '2016-01-06 12:20:00')
   Log.create(client_id: '1', description: 'Appeltaart', activity_type_id: '3', start_time: '2016-01-08 10:10:00', end_time: '2016-01-08 10:30:00')
-  Log.create(client_id: '1', description: 'Insuline gehad', activity_type_id: '1', start_time: '2016-01-08 12:10:00', end_time: '2016-01-08 12:20:00')
+  Log.create(client_id: '1', description: 'Insuline ingespoten', activity_type_id: '1', start_time: '2016-01-08 12:10:00', end_time: '2016-01-08 12:20:00')
 
   #week2 
   Log.create(client_id: '1', description: 'Insuline ingespoten', activity_type_id: '1', start_time: '2016-01-08 19:10:00', end_time: '2016-01-08 19:30:00')
@@ -120,4 +120,4 @@
   Log.create(client_id: '1', description: 'Appeltaart', activity_type_id: '3', start_time: '2016-01-15 09:10:00', end_time: '2016-01-15 10:00:00')
   Log.create(client_id: '1', description: 'Insuline ingespoten', activity_type_id: '1', start_time: '2016-01-16 12:10:00', end_time: '2016-01-16 12:20:00')
   Log.create(client_id: '1', description: 'Appeltaart', activity_type_id: '3', start_time: '2016-01-17 10:10:00', end_time: '2016-01-17 10:30:00')
-  Log.create(client_id: '1', description: 'Insuline gehad', activity_type_id: '1', start_time: '2016-01-18 12:10:00', end_time: '2016-01-18 12:20:00')
+  Log.create(client_id: '1', description: 'Insuline ingespoten', activity_type_id: '1', start_time: '2016-01-18 12:10:00', end_time: '2016-01-18 12:20:00')
