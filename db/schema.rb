@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160408122325) do
+ActiveRecord::Schema.define(version: 20160419095412) do
 
   create_table "activity_types", force: :cascade do |t|
     t.string   "name"
@@ -23,6 +23,26 @@ ActiveRecord::Schema.define(version: 20160408122325) do
     t.integer  "client_id"
     t.string   "name"
     t.date     "since"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "blood_pressure_targets", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "blood_pressures", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cholesterol_targets", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cholesterols", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -87,6 +107,16 @@ ActiveRecord::Schema.define(version: 20160408122325) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "heartrate_targets", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "heartrates", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "institutions", force: :cascade do |t|
     t.string   "name"
     t.string   "adress"
@@ -139,6 +169,11 @@ ActiveRecord::Schema.define(version: 20160408122325) do
     t.text     "reason"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "weight_targets", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "weights", force: :cascade do |t|
