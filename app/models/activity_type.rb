@@ -1,2 +1,2 @@
 class ActivityType < ActiveRecord::Base
-end
+end 
