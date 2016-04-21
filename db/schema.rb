@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160408122325) do
+
+ActiveRecord::Schema.define(version: 20160420130957) do
 
   create_table "activity_types", force: :cascade do |t|
     t.string   "name"
@@ -25,6 +26,41 @@ ActiveRecord::Schema.define(version: 20160408122325) do
     t.date     "since"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "blood_pressure_targets", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "client_id"
+    t.integer  "sys"
+    t.integer  "dia"
+  end
+
+  create_table "blood_pressures", force: :cascade do |t|
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "client_id"
+    t.integer  "sys"
+    t.integer  "dia"
+    t.datetime "activity_date"
+  end
+
+  create_table "cholesterol_targets", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "client_id"
+    t.integer  "ldl"
+    t.integer  "hdl"
+  end
+
+  create_table "cholesterols", force: :cascade do |t|
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "client_id"
+    t.integer  "ldl"
+    t.integer  "hdl"
+    t.integer  "triglycerides"
+    t.datetime "activity_date"
   end
 
   create_table "client_medications", force: :cascade do |t|
@@ -87,6 +123,21 @@ ActiveRecord::Schema.define(version: 20160408122325) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "heartrate_targets", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "client_id"
+    t.integer  "pulse"
+  end
+
+  create_table "heartrates", force: :cascade do |t|
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "client_id"
+    t.integer  "pulse"
+    t.datetime "activity_date"
+  end
+
   create_table "institutions", force: :cascade do |t|
     t.string   "name"
     t.string   "adress"
@@ -139,6 +190,16 @@ ActiveRecord::Schema.define(version: 20160408122325) do
     t.text     "reason"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "weight_targets", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "client_id"
+    t.integer  "weight"
+    t.integer  "max_weight"
+    t.integer  "min_weight"
+    t.datetime "date"
   end
 
   create_table "weights", force: :cascade do |t|
