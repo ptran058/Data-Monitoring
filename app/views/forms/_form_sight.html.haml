@@ -1,0 +1,23 @@
+= form_for @sight do |s|
+  %h1 Zicht
+  %p Datum:
+  = s.text_field :activity_date
+  %br
+  %p Linkeroog:
+  = s.text_field :sight_left
+  %br
+  %p Rechteroog:
+  = s.text_field :sight_right
+  %br
+  %p Cilinder links:
+  = s.text_field :cilinder_left
+  %br
+  %p Cilinder rechts:
+  = s.text_field :cilinder_right
+  %br
+  %p Reden van bezoek:
+  = s.text_area :reason
+  %br
+  %p Opmerkingen:
+  = s.text_area :comments
+  %br
