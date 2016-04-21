@@ -1,6 +1,6 @@
 class HeartratesController < ApplicationController
 	  def index
-    @heartrates = Heartrate.each
+    @heartrate = Heartrate.all
   end
 
   def new
@@ -8,7 +8,7 @@ class HeartratesController < ApplicationController
   end
 
   def create
-    @heartrate = Heartrate.new(params[:heartrate])
+    @heartrate = Heartrate.new (heartrate_params)
     @heartrate.save 
     redirect_to heartrates_path
   end
@@ -18,7 +18,7 @@ class HeartratesController < ApplicationController
   end
 
   def update
-    heartrate = heartrate.find(params[:id])
+    heartrate = Heartrate.find(params[:id])
     heartrate.update(heartrate_params)
     redirect_to heartrates_path
   end

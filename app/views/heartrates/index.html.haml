@@ -1,0 +1,10 @@
+= link_to "Hartslag", new_heartrate_path
+
+- @heartrate.each do |h|
+  %br 
+  = h.pulse
+  = h.activity_date
+
+  = link_to "Edit", edit_heartrate_path(h)
+  = link_to "Delete", heartrate_path(h), method: :delete, data:{confirm: "Weet u het zeker?"}
+  %hr
