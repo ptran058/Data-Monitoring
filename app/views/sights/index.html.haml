@@ -1,0 +1,15 @@
+= link_to "Zicht", new_sight_path
+
+- @sight.each do |s|
+  %br 
+  = s.activity_date
+  = s.sight_left
+  = s.sight_right
+  = s.cilinder_left
+  = s.cilinder_right
+  = s.reason
+  = s.comments
+
+  = link_to "Edit", edit_sight_path(s)
+  = link_to "Delete", sight_path(s), method: :delete, data:{confirm: "Weet u het zeker?"}
+  %hr

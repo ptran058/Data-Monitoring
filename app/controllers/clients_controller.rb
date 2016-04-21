@@ -10,7 +10,4 @@ class ClientsController < ApplicationController
     @sight = Sight.all
 
   end
-  def new
-
-  end
 end
