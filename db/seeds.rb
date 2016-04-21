@@ -95,7 +95,7 @@
   ActivityType.create(name: 'beweging')
   ActivityType.create(name: 'voeding')
 
-  #Log activity type start_time end_time comments client_id
+  #log activity
   #week 1
   Log.create(client_id: '1', description: 'Insuline ingespoten', activity_type_id: '1', start_time: '2016-01-01 19:10:00', end_time: '2016-01-01 19:30:00')
   Log.create(client_id: '1', description: 'Zwemmen', activity_type_id: '2', start_time: '2016-01-01 20:00:00', end_time: '2016-01-01 21:00:00')
