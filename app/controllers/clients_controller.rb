@@ -10,4 +10,7 @@ class ClientsController < ApplicationController
     @sight = Sight.all
 
   end
+  def new
+    @log = Log.new
+  end
 end
