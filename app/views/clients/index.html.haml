@@ -1,0 +1,30 @@
+.row
+  .col-md-12
+    = link_to "Client toevoegen", new_client_path, class: "btn btn-primary pull-right"
+.row
+  .col-md-12
+    %h1 Clienten
+.row
+  .col-md-12
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title clienten
+      .panel-body
+        %table.table.table-striped
+          %tr
+            %td Voornaam
+            %td Achternaam
+            %td Leeftijd
+            %td Geboortedatum
+            %td Kamer nr.
+            %td Instelling
+            %td Bekijk
+          - @client.each do |c|
+            %tr
+              %td= c.name
+              %td= c.surname
+              %td= c.date_of_birth
+              %td= c.blood_type
+              %td= c.room
+              %td= c.institution
+              %td= link_to "Bekijk", client_path(c), class: "btn btn-info"
