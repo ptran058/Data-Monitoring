@@ -1,0 +1,32 @@
+= form_for @log do |f|
+
+  .modal-body
+    .row
+      .col-md-12
+        .form-group
+          = f.label :client_id, "Client2"
+          = f.text_field :client_id, class: "form-control"
+    .row
+      .col-md-12
+        .form-group
+          = f.label :activity_type_id, "Activiteit"
+          = f.text_field :activity_type_id, class: "form-control"
+    .row
+      .col-md-6
+        .form-group
+          = f.label :start_time, "Begin tijd"
+          = f.text_field :start_time, class: "form-control"
+      .col-md-6
+        .form-group
+          = f.label :end_time, "eind tijd"
+          = f.text_field :end_time, class: "form-control"
+
+    .row
+      .col-md-12
+        = f.label :description, "Activiteit"
+        = f.text_area :description, class: "form-control"
+    %br
+    .row
+      .col-md-12
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+        = f.submit "Submit", class: "btn btn-primary pull-right"

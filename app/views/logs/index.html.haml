@@ -1,0 +1,17 @@
+= link_to "New", new_log_path, class: "btn btn-primary"
+.row
+  .col-md-12
+    %table.table.table-striped
+      %tr
+        %td client
+        %td activiteit
+        %td begin tijd
+        %td eind tijd
+        %td beschrijving
+      - @log.each do |l|
+        %tr
+          %td= l.client_id
+          %td= l.activity_type_id
+          %td= l.start_time
+          %td= l.end_time
+          %td= l.description
