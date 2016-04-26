@@ -1,0 +1,12 @@
+= link_to "Cholesterol toevoegen", new_cholesterol_path
+
+- @cholesterol.each do |c|
+  %br 
+  = c.ldl
+  = c.hdl
+  = c.triglycerides
+  = c.activity_date
+
+  = link_to "Edit", edit_cholesterol_path(c)
+  = link_to "Delete", cholesterol_path(c), method: :delete, data:{confirm: "Weet u het zeker?"}
+  %hr
