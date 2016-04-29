@@ -14,6 +14,9 @@
 //= require bootstrap-sprockets
 //= require moment
 //= require bootstrap-datetimepicker
+//= require amcharts/amcharts
+//= require amcharts/serial
+//= require amcharts/themes/dark
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
