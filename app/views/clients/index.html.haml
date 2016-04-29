@@ -15,16 +15,16 @@
             %td Voornaam
             %td Achternaam
             %td Leeftijd
-            %td Bloedgroep
             %td Geboortedatum
             %td Kamer nr.
             %td Instelling
-            - @client.each do |c|
-              %tr
-                %td = c.name
-                %td= c.surname
-                %td= c.photo_url
-                %td= c.date_of_birth
-                %td= c.blood_type
-                %td= c.room
-                %td= c.institution
+            %td Bekijk
+          - @client.each do |c|
+            %tr
+              %td= c.name
+              %td= c.surname
+              %td= c.date_of_birth
+              %td= c.blood_type
+              %td= c.room
+              %td= c.institution
+              %td= link_to "Bekijk", client_path(c), class: "btn btn-info" 

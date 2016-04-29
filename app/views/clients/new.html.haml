@@ -1,0 +1,38 @@
+= form_for @client do |f|
+  .row
+    .col-md-12
+      .form-group
+        = f.label :photo_url, "photo_url"
+        = f.text_field :photo_url, class: "form-control" 
+  .row
+    .col-md-6
+      .form-group
+        = f.label :name, "Voornaam"
+        = f.text_field :name, class: "form-control"
+    .col-md-6
+      .form-group
+        = f.label :surname, "Achternaam"
+        = f.text_field :surname, class: "form-control"
+  .row 
+    .col-md-12
+      .form-group
+        = f.label :date_of_birth, "Geboortedatum"
+        = f.text_field :date_of_birth, class: "form-control"
+  .row 
+    .col-md-12
+      .form-group
+        = f.label :room, "Kamer"
+        = f.text_field :room, class: "form-control"
+  .row 
+    .col-md-12
+      .form-group
+        = f.label :institution, "Instelling"
+        = f.text_field :institution, class: "form-control"
+  .row 
+    .col-md-12
+      .form-group
+        = f.label :blood_type, "Bloedgroep"
+        = f.text_field :blood_type, class: "form-control"
+
+
+  =f.submit "Submit", class: "btn btn-primary"
