@@ -1,0 +1,50 @@
+.row
+  .col-md-2
+    %a.thumbnail{:href => "#"}
+      %img{:alt => "#{@client.name} #{@client.surname}", :src => "#{@client.photo_url}"}
+  .col-md-5
+    %h4
+      = @client.name
+      = @client.surname
+    = @client.date_of_birth
+    %br
+    bloedgroep
+    = @client.blood_type 
+    %br
+    Kamer 
+    = @client.room
+    %br
+    Instelling 
+    = @client.institution
+.row
+  .col-md-2
+    %button.btn.btn-primary.btn-lg{"data-target" => "#glucose", "data-toggle" => "modal", :type => "button"}
+      Glucose
+  .col-md-2
+    %button.btn.btn-primary.btn-lg{"data-target" => "#Sight", "data-toggle" => "modal", :type => "button"}
+      Sight
+#glucose.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  = render 'forms/form_glucose.html.haml', glucose: @glucose
+
+#Sight.modal.fade{"aria-labelledby" => "SightLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} &times;
+        %h4#myModalLabel.modal-title Zicht
+      .modal-body
+%br 
+.row
+  .col-md-6
+    %table.table.table-striped
+      %tr
+        %td client id
+        %td mmol
+        %td datum
+      - @glucoses.each do |g|
+        %tr
+          %td= g.client_id
+          %td= g.mmol
+          %td= g.activity_date
+
