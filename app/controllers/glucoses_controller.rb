@@ -15,3 +15,4 @@ class GlucosesController < ApplicationController
       params.require(:glucose).permit(:mmol, :activity_date, :client_id)
     end
 end
+ 
