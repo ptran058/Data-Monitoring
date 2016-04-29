@@ -21,6 +21,8 @@ class ClientsController < ApplicationController
   end
   def show
     @client = Client.find(params[:id])
+    @glucose = Glucose.new
+    @glucoses = Glucose.where(client_id: params[:id])
   end
   private
     def client_params
