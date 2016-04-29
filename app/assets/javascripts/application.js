@@ -16,7 +16,7 @@
 //= require bootstrap-datetimepicker
 //= require amcharts/amcharts
 //= require amcharts/serial
-//= require amcharts/themes/dark
+//= require amcharts/fullcalendar
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .

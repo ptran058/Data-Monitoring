@@ -47,3 +47,29 @@
           %td= g.client_id
           %td= g.mmol
           %td= g.activity_date
+- @myArray = []
+- @log.each do |l| 
+
+  - @myArray << "{title: '#{l.description}', start: '#{l.start_time.strftime('%Y-%m-%dT%H:%M')}', end: '#{l.end_time.strftime('%Y-%m-%dT%H:%M')}'   }"
+  -if !@log.last
+    - @myArray << ","
+:javascript
+  $(document).ready(function() {
+    
+    $('#calendar').fullCalendar({
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,agendaWeek,agendaDay'
+      },
+      defaultDate: '2016-01-12',
+      editable: true,
+      eventLimit: true, // allow "more" link when too many events
+      events: 
+      #{@myArray.to_s.gsub('"', '')}
+      
+    });
+    
+  });
+
+#calendar
