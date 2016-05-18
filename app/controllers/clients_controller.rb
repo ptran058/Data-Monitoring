@@ -22,7 +22,7 @@ class ClientsController < ApplicationController
   def show
     @client = Client.find(params[:id])
     @glucose = Glucose.new
-    @glucoses = Glucose.where(client_id: params[:id])
+    @glucoses = Glucose.where(client_id: params[:id]).order('activity_date ASC')
     @log = Log.where(client_id: params[:id])
   end
   private

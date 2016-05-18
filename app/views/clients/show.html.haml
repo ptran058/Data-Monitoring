@@ -1,3 +1,7 @@
+%script{:src => "https://www.amcharts.com/lib/3/amcharts.js"}
+%script{:src => "https://www.amcharts.com/lib/3/serial.js"}
+%script{:src => "https://www.amcharts.com/lib/3/themes/light.js"}
+%script{:src => "https://www.amcharts.com/lib/3/amstock.js"}
 .row
   .col-md-2
     %a.thumbnail{:href => "#"}
@@ -39,23 +43,43 @@
   .col-md-6
     %table.table.table-striped
       %tr
+        %td id
         %td client id
         %td mmol
         %td datum
       - @glucoses.each do |g|
         %tr
+          %td= g.id
           %td= g.client_id
           %td= g.mmol
           %td= g.activity_date
-- @myArray = []
+//calender
+- @calender = []
 - @log.each do |l| 
 
-  - @myArray << "{title: '#{l.description}', start: '#{l.start_time.strftime('%Y-%m-%dT%H:%M')}', end: '#{l.end_time.strftime('%Y-%m-%dT%H:%M')}'   }"
+  - @calender << "{title: '#{l.description}', start: '#{l.start_time.strftime('%Y-%m-%dT%H:%M')}', end: '#{l.end_time.strftime('%Y-%m-%dT%H:%M')}'   }"
   -if !@log.last
-    - @myArray << ","
+    - @calender << ","
+//calender end
+//glucose
+
+- @measures = []
+- @glucoses.each do |g| 
+
+  - @measures << "{/date/: /#{g.activity_date.strftime('%Y-%m-%d %H:%M')}/, /value/: #{g.mmol} }"
+  -if !@log.last
+    - @measures << ","
+%hr
+// Creating right format for Chart
+- @measures = @measures.to_s.gsub('"', '')
+- @measures = @measures.to_s.gsub('/', '"')
+//glucose end
 :javascript
+
+
   $(document).ready(function() {
-    
+
+    /*Calendar */
     $('#calendar').fullCalendar({
       header: {
         left: 'prev,next today',
@@ -66,10 +90,78 @@
       editable: true,
       eventLimit: true, // allow "more" link when too many events
       events: 
-      #{@myArray.to_s.gsub('"', '')}
+      #{@calender.to_s.gsub('"', '')}
       
     });
+    /*Calendar  END*/
+
+    /* Glucose */
+    var chart = AmCharts.makeChart("chartdiv", {
+      "type": "serial",
+      "theme": "light",
+      "fontFamily": "Arial",
+      "marginRight":80,
+      "autoMarginOffset":20,
+      "dataDateFormat": "YYYY-MM-DD HH:NN",
+      "dataProvider": 
+      #{@measures.to_s.gsub('/', '"')},
+
+      "valueAxes": [{
+          "axisAlpha": 0,
+          "guides": [{
+              "fillAlpha": 0.1,
+              "fillColor": "#888888",
+              "lineAlpha": 0,
+              "toValue": 9,
+              "value": 6
+          }],
+          "position": "left",
+          "tickLength": 0
+      }],
+      "graphs": [{
+          "balloonText": "[[category]]<br><b><span style='font-size:14px;'>value:[[value]]</span></b>",
+          "bullet": "round",
+          "dashLength": 3,
+          "colorField":"color",
+          "valueField": "value"
+      }],
+      "chartScrollbar": {
+          "scrollbarHeight":2,
+          "offset":-1,
+          "backgroundAlpha":0.1,
+          "backgroundColor":"#888888",
+          "selectedBackgroundColor":"#67b7dc",
+          "selectedBackgroundAlpha":1
+      },
+      "chartCursor": {
+          "fullWidth":true,
+          "valueLineEabled":true,
+          "valueLineBalloonEnabled":true,
+          "valueLineAlpha":0.5,
+          "cursorAlpha":0,
+      },
+      "categoryField": "date",
+      "categoryAxis": {
+          "parseDates": true,
+          "axisAlpha": 0,
+          "gridAlpha": 0.1,
+          "minorGridAlpha": 0.1,
+          "minorGridEnabled": true
+      }
+    });
+
+    chart.addListener("dataUpdated", zoomChart);
+
+    function zoomChart(){
+        chart.zoomToDates(new Date(2016, 0, 1), new Date(2016, 0, 11));
+    }
+
+    /* Glucose END */
+
+
     
   });
 
 #calendar
+%hr
+#chartdiv
