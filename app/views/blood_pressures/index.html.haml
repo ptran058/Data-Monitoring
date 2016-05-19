@@ -1,10 +1,11 @@
 = link_to "Bloeddruk toevoegen", new_blood_pressure_path
 
-  - @blood_pressure.each do |bp|
-  %br 
-  = bp.sys
-  = bp.dia
-  = bp.activity_date
- 
-  = link_to "Edit", edit_blood_pressure_path(bp)
-  = link_to "Delete", blood_pressure_path(bp), method: :delete, data:{confirm: "Weet u het zeker?"}
+- @blood_pressure.each do |bp|
+	%br 	
+	= bp.sys
+	= bp.dia
+	= bp.activity_date
+
+	= link_to "Edit", edit_blood_pressure_path(bp), class: "btn btn-primary"
+	= link_to "Delete", blood_pressure_path(bp), method: :delete, data:{confirm: "Weet u het zeker?"}, class: "btn btn-primary"
+	= link_to "show", blood_pressure_path(bp), class: "btn btn-info"
