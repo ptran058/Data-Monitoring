@@ -25,22 +25,17 @@
     %button.btn.btn-primary.btn-lg{"data-target" => "#glucose", "data-toggle" => "modal", :type => "button"}
       Glucose
   .col-md-2
-    %button.btn.btn-primary.btn-lg{"data-target" => "#Sight", "data-toggle" => "modal", :type => "button"}
-      Sight
+    %button.btn.btn-primary.btn-lg{"data-target" => "#hba1c_target", "data-toggle" => "modal", :type => "button"}
+      Hba1c
 #glucose.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
   = render 'forms/form_glucose.html.haml', glucose: @glucose
 
-#Sight.modal.fade{"aria-labelledby" => "SightLabel", :role => "dialog", :tabindex => "-1"}
-  .modal-dialog{:role => "document"}
-    .modal-content
-      .modal-header
-        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-          %span{"aria-hidden" => "true"} &times;
-        %h4#myModalLabel.modal-title Zicht
-      .modal-body
+#hba1c_target.modal.fade{"aria-labelledby" => "hba1c_target", :role => "dialog", :tabindex => "-1"}
+  = render 'forms/hba1c_target.html.haml', hba1c_target: @hba1c_target
 %br 
 .row
   .col-md-6
+    Bloedsuikers
     %table.table.table-striped
       %tr
         %td id
@@ -53,6 +48,22 @@
           %td= g.client_id
           %td= g.mmol
           %td= g.activity_date
+  .col-md-6
+    .row
+      .col-md-12
+        HBA1C Streefwaarden
+        %table.table.table-striped
+          %tr
+            %td id
+            %td client id
+            %td mmol
+            %td datum
+          - @hba1c.each do |h|
+            %tr
+              %td= h.id
+              %td= h.client_id
+              %td= h.mmol
+              %td= h.created_at
 //calender
 - @calender = []
 - @log.each do |l| 
