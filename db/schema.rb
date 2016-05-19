@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420130957) do
+ActiveRecord::Schema.define(version: 20160519101010) do
 
   create_table "activity_types", force: :cascade do |t|
     t.string   "name"
@@ -203,7 +203,7 @@ ActiveRecord::Schema.define(version: 20160420130957) do
 
   create_table "weights", force: :cascade do |t|
     t.integer  "client_id"
-    t.date     "activity_date"
+    t.datetime "activity_date"
     t.decimal  "weight"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false

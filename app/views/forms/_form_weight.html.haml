@@ -1,0 +1,30 @@
+.modal-dialog{:role => "document"}
+  .modal-content
+    .modal-header
+      %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+        %span{"aria-hidden" => "true"} &times;
+      %h4#myModalLabel.modal-title Weight
+    .modal-body
+      = form_for @weight do |we|
+        = we.hidden_field :client_id, value: params[:id]
+        .form-group
+          = we.label :weight, "Weight"
+          = we.text_field :weight, class: "form-control"
+        .form-group
+          = we.label :activity_date, "Tijd"
+          %div{:style => "overflow:hidden;"}
+            .form-group
+              .row
+                .col-md-8
+                = we.hidden_field :activity_date, class: "form_control", id: "date_time"
+            :javascript
+              $(function () {
+                  $('#date_time').datetimepicker({
+                      inline: true,
+                      sideBySide: true,
+                      format:'YYYY-MM-DD HH:mm'
+                  });
+              }); 
+        .row
+          .col-md-12
+            = we.submit "Submit", class: "btn btn-primary pull-right"
