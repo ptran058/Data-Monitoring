@@ -1,0 +1,71 @@
+:javascript
+
+  $(document).ready(function() {
+
+
+    /* Glucose */
+    var chart = AmCharts.makeChart("chartdiv", {
+      "type": "serial",
+      "theme": "light",
+      "fontFamily": "Arial",
+      "marginRight":80,
+      "autoMarginOffset":20,
+      "dataDateFormat": "YYYY-MM-DD HH:NN",
+      "dataProvider": 
+      #{@measures},
+
+      "valueAxes": [{
+          "axisAlpha": 0,
+          "guides": [{
+              "fillAlpha": 0.1,
+              "fillColor": "#888888",
+              "lineAlpha": 0,
+              "toValue": 9,
+              "value": 6
+          }],
+          "position": "left",
+          "tickLength": 0
+      }],
+      "graphs": [{
+          "balloonText": "[[category]]<br><b><span style='font-size:14px;'>value:[[value]]</span></b>",
+          "bullet": "round",
+          "dashLength": 3,
+          "colorField":"color",
+          "valueField": "value"
+      }],
+      "chartScrollbar": {
+          "scrollbarHeight":2,
+          "offset":-1,
+          "backgroundAlpha":0.1,
+          "backgroundColor":"#888888",
+          "selectedBackgroundColor":"#67b7dc",
+          "selectedBackgroundAlpha":1
+      },
+      "chartCursor": {
+          "fullWidth":true,
+          "valueLineEabled":true,
+          "valueLineBalloonEnabled":true,
+          "valueLineAlpha":0.5,
+          "cursorAlpha":0,
+      },
+      "categoryField": "date",
+      "categoryAxis": {
+          "parseDates": true,
+          "axisAlpha": 0,
+          "gridAlpha": 0.1,
+          "minorGridAlpha": 0.1,
+          "minorGridEnabled": true
+      }
+    });
+
+    chart.addListener("dataUpdated", zoomChart);
+
+    function zoomChart(){
+        chart.zoomToDates(new Date(2016, 0, 1), new Date(2016, 0, 11));
+    }
+
+    /* Glucose END */
+
+
+    
+  });

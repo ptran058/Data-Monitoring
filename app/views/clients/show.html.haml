@@ -2,24 +2,7 @@
 %script{:src => "https://www.amcharts.com/lib/3/serial.js"}
 %script{:src => "https://www.amcharts.com/lib/3/themes/light.js"}
 %script{:src => "https://www.amcharts.com/lib/3/amstock.js"}
-.row
-  .col-md-2
-    %a.thumbnail{:href => "#"}
-      %img{:alt => "#{@client.name} #{@client.surname}", :src => "#{@client.photo_url}"}
-  .col-md-5
-    %h4
-      = @client.name
-      = @client.surname
-    = @client.date_of_birth
-    %br
-    bloedgroep
-    = @client.blood_type 
-    %br
-    Kamer 
-    = @client.room
-    %br
-    Instelling 
-    = @client.institution
+
 .row
   .col-md-3
     %button.btn.btn-primary.btn-lg{"data-target" => "#glucose", "data-toggle" => "modal", :type => "button"}
@@ -52,7 +35,48 @@
 
 #cholesterol_target.modal.fade{"aria-labelledby" => "cholesterol_target", :role => "dialog", :tabindex => "-1"}
   = render 'forms/cholesterol_target.html.haml', cholesterol_target: @cholesterol_target
-%br 
+
+.row
+  .col-md-2
+    %a.thumbnail{:href => "#"}
+      %img{:alt => "#{@client.name} #{@client.surname}", :src => "#{@client.photo_url}"}
+  .col-md-5
+    %h4
+      = @client.name
+      = @client.surname
+    = @client.date_of_birth
+    %br
+    bloedgroep
+    = @client.blood_type 
+    %br
+    Kamer 
+    = @client.room
+    %br
+    Instelling 
+    = @client.institution
+
+.row
+  .col-md-6
+    - @measures = []
+    - @glucoses.each do |g| 
+      - @measures << "{/date/: /#{g.activity_date.strftime('%Y-%m-%d %H:%M')}/, /value/: #{g.mmol} }"
+      -if !@log.last
+        - @measures << ","
+    // Creating right format for Chart
+    - @measures = @measures.to_s.gsub('"', '')
+    - @measures = @measures.to_s.gsub('/', '"')
+    = render 'diabetes/glucose_chart.html.haml'
+    #chartdiv
+  .col-md-6
+
+    - @calender = []
+    - @log.each do |l| 
+
+      - @calender << "{title: '#{l.description}', start: '#{l.start_time.strftime('%Y-%m-%dT%H:%M')}', end: '#{l.end_time.strftime('%Y-%m-%dT%H:%M')}'   }"
+      -if !@log.last
+        - @calender << ","
+    = render 'diabetes/log_calendar.html.haml'
+    #calendar
 .row
   .col-md-6
     Bloedsuikers
@@ -133,115 +157,4 @@
               %td= c.ldl
               %td= c.hdl
               %td= c.created_at
-//calender
-- @calender = []
-- @log.each do |l| 
-
-  - @calender << "{title: '#{l.description}', start: '#{l.start_time.strftime('%Y-%m-%dT%H:%M')}', end: '#{l.end_time.strftime('%Y-%m-%dT%H:%M')}'   }"
-  -if !@log.last
-    - @calender << ","
-//calender end
-//glucose
-
-- @measures = []
-- @glucoses.each do |g| 
-
-  - @measures << "{/date/: /#{g.activity_date.strftime('%Y-%m-%d %H:%M')}/, /value/: #{g.mmol} }"
-  -if !@log.last
-    - @measures << ","
 %hr
-// Creating right format for Chart
-- @measures = @measures.to_s.gsub('"', '')
-- @measures = @measures.to_s.gsub('/', '"')
-//glucose end
-:javascript
-
-
-  $(document).ready(function() {
-
-    /*Calendar */
-    $('#calendar').fullCalendar({
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'month,agendaWeek,agendaDay'
-      },
-      defaultDate: '2016-01-12',
-      editable: true,
-      eventLimit: true, // allow "more" link when too many events
-      events: 
-      #{@calender.to_s.gsub('"', '')}
-      
-    });
-    /*Calendar  END*/
-
-    /* Glucose */
-    var chart = AmCharts.makeChart("chartdiv", {
-      "type": "serial",
-      "theme": "light",
-      "fontFamily": "Arial",
-      "marginRight":80,
-      "autoMarginOffset":20,
-      "dataDateFormat": "YYYY-MM-DD HH:NN",
-      "dataProvider": 
-      #{@measures.to_s.gsub('/', '"')},
-
-      "valueAxes": [{
-          "axisAlpha": 0,
-          "guides": [{
-              "fillAlpha": 0.1,
-              "fillColor": "#888888",
-              "lineAlpha": 0,
-              "toValue": 9,
-              "value": 6
-          }],
-          "position": "left",
-          "tickLength": 0
-      }],
-      "graphs": [{
-          "balloonText": "[[category]]<br><b><span style='font-size:14px;'>value:[[value]]</span></b>",
-          "bullet": "round",
-          "dashLength": 3,
-          "colorField":"color",
-          "valueField": "value"
-      }],
-      "chartScrollbar": {
-          "scrollbarHeight":2,
-          "offset":-1,
-          "backgroundAlpha":0.1,
-          "backgroundColor":"#888888",
-          "selectedBackgroundColor":"#67b7dc",
-          "selectedBackgroundAlpha":1
-      },
-      "chartCursor": {
-          "fullWidth":true,
-          "valueLineEabled":true,
-          "valueLineBalloonEnabled":true,
-          "valueLineAlpha":0.5,
-          "cursorAlpha":0,
-      },
-      "categoryField": "date",
-      "categoryAxis": {
-          "parseDates": true,
-          "axisAlpha": 0,
-          "gridAlpha": 0.1,
-          "minorGridAlpha": 0.1,
-          "minorGridEnabled": true
-      }
-    });
-
-    chart.addListener("dataUpdated", zoomChart);
-
-    function zoomChart(){
-        chart.zoomToDates(new Date(2016, 0, 1), new Date(2016, 0, 11));
-    }
-
-    /* Glucose END */
-
-
-    
-  });
-
-#calendar
-%hr
-#chartdiv
