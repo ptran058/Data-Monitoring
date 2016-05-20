@@ -21,18 +21,22 @@
     Instelling 
     = @client.institution
 .row
-  .col-md-2
+  .col-md-3
     %button.btn.btn-primary.btn-lg{"data-target" => "#glucose", "data-toggle" => "modal", :type => "button"}
       Glucose
-  .col-md-2
+  .col-md-3
     %button.btn.btn-primary.btn-lg{"data-target" => "#hba1c_target", "data-toggle" => "modal", :type => "button"}
       Hba1c streefwaarde
-  .col-md-2
+  .col-md-3
     %button.btn.btn-primary.btn-lg{"data-target" => "#blood_pressure_target", "data-toggle" => "modal", :type => "button"}
-      bloeddruk streefwaarde
-  .col-md-2
+      Bloeddruk streefwaarde
+  .col-md-3
     %button.btn.btn-primary.btn-lg{"data-target" => "#heartrate_target", "data-toggle" => "modal", :type => "button"}
       Hartslag streefwaarde
+.row
+  .col-md-2
+    %button.btn.btn-primary.btn-lg{"data-target" => "#cholesterol_target", "data-toggle" => "modal", :type => "button"}
+      Cholesterol streefwaarde
 
 #glucose.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
   = render 'forms/form_glucose.html.haml', glucose: @glucose
@@ -43,8 +47,11 @@
 #blood_pressure_target.modal.fade{"aria-labelledby" => "blood_pressure_target", :role => "dialog", :tabindex => "-1"}
   = render 'forms/blood_pressure_target.html.haml', blood_pressure_target: @blood_pressure_target
 
-#heartrate_target.modal.fade{"aria-labelledby" => "hba1c_target", :role => "dialog", :tabindex => "-1"}
+#heartrate_target.modal.fade{"aria-labelledby" => "heartrate_target", :role => "dialog", :tabindex => "-1"}
   = render 'forms/heartrate_target.html.haml', heartrate_target: @heartrate_target
+
+#cholesterol_target.modal.fade{"aria-labelledby" => "cholesterol_target", :role => "dialog", :tabindex => "-1"}
+  = render 'forms/cholesterol_target.html.haml', cholesterol_target: @cholesterol_target
 %br 
 .row
   .col-md-6
@@ -109,6 +116,23 @@
               %td= h.client_id
               %td= h.pulse
               %td= h.created_at
+    .row
+      .col-md-12
+        Cholesterol Streefwaarden
+        %table.table.table-striped
+          %tr
+            %td id
+            %td client id
+            %td ldl
+            %td hdl
+            %td gemaakt op
+          - @cholesterol_targets.each do |c|
+            %tr
+              %td= c.id
+              %td= c.client_id
+              %td= c.ldl
+              %td= c.hdl
+              %td= c.created_at
 //calender
 - @calender = []
 - @log.each do |l| 
