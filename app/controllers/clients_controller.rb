@@ -26,9 +26,11 @@ class ClientsController < ApplicationController
     @log = Log.where(client_id: params[:id])
     @hba1c_targets = Hba1cTarget.where(client_id: params[:id])
     @blood_pressure_targets = BloodPressureTarget.where(client_id: params[:id])
+    @heartrate_targets = HeartrateTarget.where(client_id: params[:id])
 
     @hba1c_target = Hba1cTarget.new
     @blood_pressure_target = BloodPressureTarget.new
+    @heartrate_target = HeartrateTarget.new
 
   end
   private
