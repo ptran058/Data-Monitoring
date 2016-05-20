@@ -1,0 +1,18 @@
+.modal-dialog{:role => "document"}
+  .modal-content
+    .modal-header
+      %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+        %span{"aria-hidden" => "true"} &times;
+      %h4#myModalLabel.modal-title Cholesterol Streefwaarde
+    .modal-body
+      = form_for @cholesterol_target do |f|
+        = f.hidden_field :client_id, value: params[:id]
+        .form-group
+          = f.label :ldl, "ldl"
+          = f.text_field :ldl, class: "form-control"
+        .form-group
+          = f.label :hdl, "hdl"
+          = f.text_field :hdl, class: "form-control"
+        .row
+          .col-md-12
+            = f.submit "Submit", class: "btn btn-primary pull-right"

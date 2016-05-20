@@ -1,0 +1,2 @@
+module CholesterolTargetsHelper
+end
