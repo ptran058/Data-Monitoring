@@ -76,16 +76,16 @@
       -if !@log.last
         - @calender << ","
     = render 'diabetes/log_calendar.html.haml'
-    #calendar
+    #calendar{ :style => "height: 200px"}
 .row
   .col-md-6
     test
     = render 'diabetes/weight_chart.html.haml'
-    #weight_chart
+    #weight_chart{ :style => "height: 300px"}
   .col-md-6
     test
     = render 'diabetes/cholesterol_chart.html.haml'
-    #seh
+    #cholesterol_chart{ :style => "height: 300px"}
 .row
   .col-md-6
     Bloedsuikers
