@@ -1,0 +1,11 @@
+= link_to "Medicatie toevoegen", new_medication_path
+
+- @medication.each do |m|
+  %br 
+  = m.name
+  = m.quantity
+  = m.type
+
+  = link_to "Edit", edit_medication_path(m)
+  = link_to "Delete", medication_path(m), method: :delete, data:{confirm: "Weet u het zeker?"}
+  %hr
