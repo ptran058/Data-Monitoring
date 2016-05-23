@@ -4,27 +4,27 @@
     .row
       .col-md-12
         .form-group
-          = f.label :client_id, "Client2"
-          = f.text_field :client_id, class: "form-control"
+          = f.label :client_id, "Naam Client"
+          = f.text_field :client_id, placeholder: 'Voor en Achternaam Client' ,class: "form-control"
     .row
       .col-md-12
         .form-group
           = f.label :activity_type_id, "Activiteit"
-          = f.text_field :activity_type_id, class: "form-control"
+          = f.text_field :activity_type_id, placeholder: 'Soort activiteit' ,class: "form-control"
     .row
       .col-md-6
         .form-group
           = f.label :start_time, "Begin tijd"
-          = f.text_field :start_time, class: "form-control"
+          = f.text_field :start_time, placeholder: 'Begin tijd in uren en minuten', class: "form-control"
       .col-md-6
         .form-group
-          = f.label :end_time, "eind tijd"
-          = f.text_field :end_time, class: "form-control"
+          = f.label :end_time, "Eind tijd"
+          = f.text_field :end_time, placeholder: 'Eind tijd in uren en minuten', class: "form-control"
 
     .row
       .col-md-12
         = f.label :description, "Activiteit"
-        = f.text_area :description, class: "form-control"
+        = f.text_area :description, placeholder: 'Korte beschrijving van de activiteit',class: "form-control"
     %br
     .row
       .col-md-12

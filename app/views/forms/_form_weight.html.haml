@@ -3,13 +3,13 @@
     .modal-header
       %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
         %span{"aria-hidden" => "true"} &times;
-      %h4#myModalLabel.modal-title Weight
+      %h4#myModalLabel.modal-title Gewicht
     .modal-body
       = form_for @weight do |we|
         = we.hidden_field :client_id, value: params[:id]
         .form-group
-          = we.label :weight, "Weight"
-          = we.text_field :weight, class: "form-control"
+          = we.label :weight, "Gewicht in kg"
+          = we.text_field :weight, placeholder: 'Gewicht in kilogram', class: "form-control"
         .form-group
           = we.label :activity_date, "Tijd"
           %div{:style => "overflow:hidden;"}
