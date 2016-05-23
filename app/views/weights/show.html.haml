@@ -1,0 +1,169 @@
+.row
+  .col-md-12
+    .col-md-9
+      #chartdiv
+    .col-md-3
+      .weights-legenda
+        .col-md-12
+          .col-md-4
+            .Meetpunten
+          .col-md-8
+            %p.legenda Meetpunten
+        .col-md-12
+          .col-md-4
+            .Streefgewicht
+          .col-md-8
+            %p.legenda Streefgewicht
+
+
+
+
+
+:javascript
+  var chart;
+  var chartData = [
+      {
+          "date": "2012-03-01",
+          "price": 110
+      },
+      {
+          "date": "2012-03-02",
+          "price": 108
+      },
+      {
+          "date": "2012-03-03",
+          "price": 108
+      },
+      {
+          "date": "2012-03-04",
+          "price": 105
+      },
+      {
+          "date": "2012-03-05",
+          "price": 103
+      },
+      {
+          "date": "2012-03-06",
+          "price": 100
+      },
+      {
+          "date": "2012-03-07",
+          "price": 95
+      },
+      {
+          "date": "2012-03-08",
+          "price": 90
+      },
+      {
+          "date": "2012-03-09",
+          "price": 87
+      },
+      {
+          "date": "2012-03-10",
+          "price": 85
+      },
+      {
+          "date": "2012-03-11",
+          "price": 86
+      },
+      {
+          "date": "2012-03-12",
+          "price": 84
+      },
+      {
+          "date": "2012-03-13",
+          "price": 88
+      },
+      {
+          "date": "2012-03-14",
+          "price": 90
+      },
+      {
+          "date": "2012-03-15",
+          "price": 85
+      }
+  ];
+
+  var average = 90.4;
+
+  AmCharts.ready(function () {
+
+
+      // SERIAL CHART
+      chart = new AmCharts.AmSerialChart();
+
+      chart.dataProvider = chartData;
+      chart.categoryField = "date";
+      chart.dataDateFormat = "YYYY-MM-DD"
+
+      // AXES
+      // category
+      var categoryAxis = chart.categoryAxis;
+      categoryAxis.parseDates = true; // as our data is date-based, we set parseDates to true
+      categoryAxis.minPeriod = "DD"; // our data is daily, so we set minPeriod to DD
+
+      // color changed
+      categoryAxis.gridAlpha = 0.15;
+      categoryAxis.axisColor = "#ffffff";
+      categoryAxis.lineColor = "#ffffff";
+      categoryAxis.fillColor = "#ffffff";
+      // color end
+
+      // value
+      var valueAxis = new AmCharts.ValueAxis();
+      // color changed
+      valueAxis.axisColor = "#DADADA";
+      // color end
+      valueAxis.dashLength = 0;
+      valueAxis.logarithmic = true; // this line makes axis logarithmic
+      chart.addValueAxis(valueAxis);
+
+      // GUIDE for average
+      var guide = new AmCharts.Guide();
+      guide.value = average;
+      // color/txt changed
+      guide.lineColor = "#A5DAEF";
+      guide.label = "Gemiddelde";
+      // color/txt end
+      guide.inside = true;
+      guide.lineAlpha = 10;
+      guide.lineThickness = 5;
+      valueAxis.addGuide(guide);
+
+
+      // GRAPH
+      var graph = new AmCharts.AmGraph();
+      graph.type = "smoothedLine";
+      graph.bullet = "round";
+      // color/txt changed
+      graph.bulletColor = "#FFAE2A";
+      // color/txt end
+      graph.useLineColorForBulletBorder = true;
+      graph.bulletBorderAlpha = 1;
+      graph.bulletBorderThickness = 2;
+      graph.bulletSize = 7;
+      graph.title = "Price";
+      graph.valueField = "price";
+      graph.lineThickness = 2;
+      // color/txt changed
+      graph.lineColor = "#FFAE2A";
+      // color/txt end
+      chart.addGraph(graph);
+
+      // CURSOR
+      var chartCursor = new AmCharts.ChartCursor();
+      chartCursor.cursorPosition = "mouse";
+      chart.addChartCursor(chartCursor);
+
+      // SCROLLBAR
+      var chartScrollbar = new AmCharts.ChartScrollbar();
+      chartScrollbar.graph = graph;
+      chartScrollbar.scrollbarHeight = 30;
+      chart.addChartScrollbar(chartScrollbar);
+
+      chart.creditsPosition = "bottom-right";
+
+      // WRITE
+      chart.write("chartdiv");
+  });
+#chartdiv{:style => "width: 100%; height: 400px;"}
