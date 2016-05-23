@@ -1,3 +1,26 @@
+%html
+  %body
+    .row
+      .col-md-12
+        .col-md-9
+          #chartdiv
+        .col-md-3
+          .weights-legenda
+            .col-md-12
+              .col-md-4
+                .Meetpunten
+              .col-md-8
+                %p.legenda Meetpunten
+            .col-md-12
+              .col-md-4
+                .Streefgewicht
+              .col-md-8
+                %p.legenda Streefgewicht
+
+
+
+
+
 :javascript
   var chart;
   var chartData = [
@@ -67,12 +90,13 @@
 
   AmCharts.ready(function () {
 
+
       // SERIAL CHART
       chart = new AmCharts.AmSerialChart();
 
       chart.dataProvider = chartData;
       chart.categoryField = "date";
-      chart.dataDateFormat = "YYYY-MM-DD";
+      chart.dataDateFormat = "YYYY-MM-DD"
 
       // AXES
       // category
@@ -92,7 +116,7 @@
       // color changed
       valueAxis.axisColor = "#DADADA";
       // color end
-      valueAxis.dashLength = 1;
+      valueAxis.dashLength = 0;
       valueAxis.logarithmic = true; // this line makes axis logarithmic
       chart.addValueAxis(valueAxis);
 
