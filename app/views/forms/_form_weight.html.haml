@@ -3,26 +3,20 @@
     .modal-header
       %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
         %span{"aria-hidden" => "true"} &times;
-      %h4#myModalLabel.modal-title Cholesterol
+      %h4#myModalLabel.modal-title Weight
     .modal-body
-      = form_for @cholesterol do |c|
-        = c.hidden_field :client_id, value: params[:id]
+      = form_for @weight do |we|
+        = we.hidden_field :client_id, value: params[:id]
         .form-group
-          = c.label :ldl, "LDL"
-          = c.text_field :ldl, class: "form-control"
+          = we.label :weight, "Weight"
+          = we.text_field :weight, class: "form-control"
         .form-group
-          = c.label :hdl, "HDL"
-          = c.text_field :hdl, class: "form-control"
-        .form-group
-          = c.label :triglycerides, "Triglycerides"
-          = c.text_field :triglycerides, class: "form-control"
-        .form-group
-          = c.label :activity_date, "Tijd"
+          = we.label :activity_date, "Tijd"
           %div{:style => "overflow:hidden;"}
             .form-group
               .row
                 .col-md-8
-                = c.hidden_field :activity_date, class: "form_control", id: "date_time"
+                = we.hidden_field :activity_date, class: "form_control", id: "date_time"
             :javascript
               $(function () {
                   $('#date_time').datetimepicker({
@@ -33,4 +27,4 @@
               }); 
         .row
           .col-md-12
-            = c.submit "Submit", class: "btn btn-primary pull-right"
+            = we.submit "Submit", class: "btn btn-primary pull-right"
