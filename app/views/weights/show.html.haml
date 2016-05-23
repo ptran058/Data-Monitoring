@@ -1,21 +1,19 @@
-%html
-  %body
-    .row
-      .col-md-12
-        .col-md-9
-          #chartdiv
-        .col-md-3
-          .weights-legenda
-            .col-md-12
-              .col-md-4
-                .Meetpunten
-              .col-md-8
-                %p.legenda Meetpunten
-            .col-md-12
-              .col-md-4
-                .Streefgewicht
-              .col-md-8
-                %p.legenda Streefgewicht
+.row
+  .col-md-12
+    .col-md-9
+      #chartdiv
+    .col-md-3
+      .weights-legenda
+        .col-md-12
+          .col-md-4
+            .Meetpunten
+          .col-md-8
+            %p.legenda Meetpunten
+        .col-md-12
+          .col-md-4
+            .Streefgewicht
+          .col-md-8
+            %p.legenda Streefgewicht
 
 
 
@@ -168,5 +166,4 @@
       // WRITE
       chart.write("chartdiv");
   });
-%body
-  #chartdiv{:style => "width: 100%; height: 400px;"}
+#chartdiv{:style => "width: 100%; height: 400px;"}
