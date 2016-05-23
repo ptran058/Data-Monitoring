@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :glucoses
   resources :medications
   resources :weights
+  resources :weight_targets
   resources :hba1c_targets
   resources :blood_pressure_targets
   resources :heartrate_targets
