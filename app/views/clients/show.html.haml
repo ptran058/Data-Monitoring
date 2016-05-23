@@ -4,22 +4,20 @@
 %script{:src => "https://www.amcharts.com/lib/3/amstock.js"}
 
 .row
-  .col-md-3
-    %button.btn.btn-primary.btn-lg{"data-target" => "#glucose", "data-toggle" => "modal", :type => "button"}
+  .col-md-12
+    %hr
+    %button.btn.btn-primary.btn-sm{"data-target" => "#glucose", "data-toggle" => "modal", :type => "button"}
       Glucose
-  .col-md-3
-    %button.btn.btn-primary.btn-lg{"data-target" => "#hba1c_target", "data-toggle" => "modal", :type => "button"}
+    %button.btn.btn-primary.btn-sm{"data-target" => "#hba1c_target", "data-toggle" => "modal", :type => "button"}
       Hba1c streefwaarde
-  .col-md-3
-    %button.btn.btn-primary.btn-lg{"data-target" => "#blood_pressure_target", "data-toggle" => "modal", :type => "button"}
+    %button.btn.btn-primary.btn-sm{"data-target" => "#blood_pressure_target", "data-toggle" => "modal", :type => "button"}
       Bloeddruk streefwaarde
-  .col-md-3
-    %button.btn.btn-primary.btn-lg{"data-target" => "#heartrate_target", "data-toggle" => "modal", :type => "button"}
+    %button.btn.btn-primary.btn-sm{"data-target" => "#heartrate_target", "data-toggle" => "modal", :type => "button"}
       Hartslag streefwaarde
-.row
-  .col-md-2
-    %button.btn.btn-primary.btn-lg{"data-target" => "#cholesterol_target", "data-toggle" => "modal", :type => "button"}
+    %button.btn.btn-primary.btn-sm{"data-target" => "#cholesterol_target", "data-toggle" => "modal", :type => "button"}
       Cholesterol streefwaarde
+
+    %hr
 
 #glucose.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
   = render 'forms/form_glucose.html.haml', glucose: @glucose
@@ -37,55 +35,63 @@
   = render 'forms/cholesterol_target.html.haml', cholesterol_target: @cholesterol_target
 
 .row
-  .col-md-2
-    %a.thumbnail{:href => "#"}
-      %img{:alt => "#{@client.name} #{@client.surname}", :src => "#{@client.photo_url}"}
-  .col-md-5
-    %h4
-      = @client.name
-      = @client.surname
-    = @client.date_of_birth
-    %br
-    bloedgroep
-    = @client.blood_type 
-    %br
-    Kamer 
-    = @client.room
-    %br
-    Instelling 
-    = @client.institution
-
+  .col-md-6
+    .panel.panel-default
+      .panel-body
+        .row
+          .col-md-2
+            %a.thumbnail{:href => "#"}
+              %img{:alt => "#{@client.name} #{@client.surname}", :src => "#{@client.photo_url}"}
+          .col-md-5
+            %h4
+              = @client.name
+              = @client.surname
+            = @client.date_of_birth
+            %br
+            bloedgroep
+            = @client.blood_type 
+            %br
+            Kamer 
+            = @client.room
+            %br
+            Instelling 
+            = @client.institution
 .row
   .col-md-6
-    - @measures = []
-    - @glucoses.each do |g| 
-      - @measures << "{/date/: /#{g.activity_date.strftime('%Y-%m-%d %H:%M')}/, /value/: #{g.mmol} }"
-      -if !@log.last
-        - @measures << ","
-    // Creating right format for Chart
-    - @measures = @measures.to_s.gsub('"', '')
-    - @measures = @measures.to_s.gsub('/', '"')
-    = render 'diabetes/glucose_chart.html.haml'
-    #chartdiv
+    .panel.panel-default
+      .panel-body
+        - @measures = []
+        - @glucoses.each do |g| 
+          - @measures << "{/date/: /#{g.activity_date.strftime('%Y-%m-%d %H:%M')}/, /value/: #{g.mmol} }"
+          -if !@log.last
+            - @measures << ","
+        // Creating right format for Chart
+        - @measures = @measures.to_s.gsub('"', '')
+        - @measures = @measures.to_s.gsub('/', '"')
+        = render 'diabetes/glucose_chart.html.haml'
+        #chartdiv{ :style => "height: 500px"}
   .col-md-6
+    .panel.panel-default
+      .panel-body
+        - @calender = []
+        - @log.each do |l| 
 
-    - @calender = []
-    - @log.each do |l| 
-
-      - @calender << "{title: '#{l.description}', start: '#{l.start_time.strftime('%Y-%m-%dT%H:%M')}', end: '#{l.end_time.strftime('%Y-%m-%dT%H:%M')}'   }"
-      -if !@log.last
-        - @calender << ","
-    = render 'diabetes/log_calendar.html.haml'
-    #calendar{ :style => "height: 200px"}
+          - @calender << "{title: '#{l.description}', start: '#{l.start_time.strftime('%Y-%m-%dT%H:%M')}', end: '#{l.end_time.strftime('%Y-%m-%dT%H:%M')}'   }"
+          -if !@log.last
+            - @calender << ","
+        = render 'diabetes/log_calendar.html.haml'
+        #calendar{ :style => "height: 500px"}
 .row
   .col-md-6
-    test
-    = render 'diabetes/weight_chart.html.haml'
-    #weight_chart{ :style => "height: 300px"}
+    .panel.panel-default
+      .panel-body
+        = render 'diabetes/weight_chart.html.haml'
+        #weight_chart{ :style => "height: 300px"}
   .col-md-6
-    test
-    = render 'diabetes/cholesterol_chart.html.haml'
-    #cholesterol_chart{ :style => "height: 300px"}
+    .panel.panel-default
+      .panel-body
+        = render 'diabetes/cholesterol_chart.html.haml'
+        #cholesterol_chart{ :style => "height: 300px"}
 .row
   .col-md-6
     Bloedsuikers
@@ -166,4 +172,3 @@
               %td= c.ldl
               %td= c.hdl
               %td= c.created_at
-%hr
