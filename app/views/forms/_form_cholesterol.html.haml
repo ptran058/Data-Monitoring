@@ -9,13 +9,13 @@
         = c.hidden_field :client_id, value: params[:id]
         .form-group
           = c.label :ldl, "LDL"
-          = c.text_field :ldl, class: "form-control"
+          = c.text_field :ldl, placeholder: 'LDL niveau', class: "form-control"
         .form-group
           = c.label :hdl, "HDL"
-          = c.text_field :hdl, class: "form-control"
+          = c.text_field :hdl, placeholder: 'HDL niveau', class: "form-control"
         .form-group
           = c.label :triglycerides, "Triglycerides"
-          = c.text_field :triglycerides, class: "form-control"
+          = c.text_field :triglycerides, placeholder: 'Triglycerides niveau', class: "form-control"
         .form-group
           = c.label :activity_date, "Tijd"
           %div{:style => "overflow:hidden;"}
@@ -33,4 +33,4 @@
               }); 
         .row
           .col-md-12
-            = c.submit "Submit", class: "btn btn-primary pull-right"
+            = c.submit "Bevestig", class: "btn btn-primary pull-right"
