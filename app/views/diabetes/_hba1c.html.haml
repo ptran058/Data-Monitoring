@@ -1,0 +1,27 @@
+.panel.panel-default
+  .panel-body
+    .row
+      .col-md-9
+        .title
+          Hba1c
+      .col-md-3
+        .check
+    .row
+      .col-md-12
+        .row
+          .col-md-4
+            .pastvalue 
+              = @hba1c.first.mmol
+          .col-md-4
+            .newvalue 
+              =  @hba1c.last.mmol
+          .col-md-4      
+            .unit
+              MMO/L
+    .row
+      .col-md-12
+        .lastdate
+          -  if @hba1c.last.activity_date.present?
+            = @hba1c.last.activity_date.strftime("Hba1c laatst gemeten op: %d-%m-%Y") if @hba1c.last.activity_date.present?
+          - else
+            Laatste meetmoment is onbekend
