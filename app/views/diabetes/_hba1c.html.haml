@@ -11,10 +11,16 @@
         .row
           .col-md-4
             .pastvalue 
-              = @hba1c.first.mmol
+              - if @hba1c.first.present? 
+                = @hba1c.first.mmol 
+              - else 
+                N/A
           .col-md-4
             .newvalue 
-              =  @hba1c.last.mmol
+              - if @hba1c.last.present? 
+                = @hba1c.last.mmol 
+              - else 
+                N/A
           .col-md-4      
             .unit
               MMO/L
@@ -24,7 +30,7 @@
     .row
       .col-md-12
         .lastdate
-          -  if @hba1c.last.activity_date.present?
-            = @hba1c.last.activity_date.strftime("Hba1c laatst gemeten op: %d-%m-%Y") if @hba1c.last.activity_date.present?
+          -  if @hba1c.last.present?
+            = @hba1c.last.activity_date.strftime("Hba1c laatst gemeten op: %d-%m-%Y")
           - else
             Laatste meetmoment is onbekend
