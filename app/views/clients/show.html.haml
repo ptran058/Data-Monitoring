@@ -39,7 +39,7 @@
     .panel.panel-default
       .panel-body
         .row
-          .col-md-2
+          .col-md-4
             %a.thumbnail{:href => "#"}
               %img{:alt => "#{@client.name} #{@client.surname}", :src => "#{@client.photo_url}"}
           .col-md-5
@@ -93,7 +93,13 @@
         = render 'diabetes/cholesterol_chart.html.haml'
         #cholesterol_chart{ :style => "height: 300px"}
 .row
-  .col-md-6
+  .col-md-3
+    = render 'diabetes/heartrate.html.haml'
+  .col-md-3
+    = render 'diabetes/hba1c.html.haml'
+
+.row
+  .col-md-3
     Bloedsuikers
     %table.table.table-striped
       %tr

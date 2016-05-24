@@ -1,0 +1,27 @@
+.panel.panel-default
+  .panel-body
+    .row
+      .col-md-9
+        .title
+          Hba1c
+      .col-md-3
+        .check
+    .row
+      .col-md-12
+        .row
+          .col-md-4
+            .pastvalue 
+              = @heartrate.first.pulse
+          .col-md-4
+            .newvalue 
+              =  @heartrate.last.pulse
+          .col-md-4      
+            .unit
+              BPM
+    .row
+      .col-md-12
+        .lastdate
+          -  if @heartrate.last.activity_date.present?
+            = @heartrate.last.activity_date.strftime("Laatst gemeten op: %d-%m-%Y")
+          - else
+            Laatste meetmoment is onbekend
