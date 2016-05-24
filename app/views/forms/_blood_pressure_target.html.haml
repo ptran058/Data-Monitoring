@@ -3,15 +3,16 @@
     .modal-header
       %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
         %span{"aria-hidden" => "true"} &times;
-      %h4#myModalLabel.modal-title Hba1c Streefwaarde
+      %h4#myModalLabel.modal-title Bloeddruk streefwaarden
     .modal-body
       = form_for @blood_pressure_target do |f|
         = f.hidden_field :client_id, value: params[:id]
         .form-group
-          = f.label :sys, "sys" 
-          
+          = f.label :sys, "SYS" 
+          = f.text_field :sys, placeholder: 'SYS niveau' , class: "form-control"
+
         .form-group
-          = f.label :dia, "dia"
+          = f.label :dia, "DIA"
           = f.text_field :dia, placeholder: 'DIA niveau' , class: "form-control"
         .row
           .col-md-12

@@ -8,8 +8,8 @@
       = form_for @glucose do |f|
         = f.hidden_field :client_id, value: params[:id]
         .form-group
-          = f.label :mmol, "mmol/l"
-          = f.text_field :mmol, placeholder: 'MMO/L niveau',class: "form-control"
+          = f.label :mmol, "MMOL/l"
+          = f.text_field :mmol, placeholder: 'MMOL/l niveau',class: "form-control"
         .form-group
           = f.label :activity_date, "Tijd"
           %div{:style => "overflow:hidden;"}

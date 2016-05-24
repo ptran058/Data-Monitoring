@@ -3,9 +3,9 @@
     %hr
     %button.btn.btn-primary.btn-sm{"data-target" => "#glucose", "data-toggle" => "modal", :type => "button"}
       Glucose
-    %button.btn.btn-primary.btn-sm{"data-target" => "#glucose", "data-toggle" => "modal", :type => "button"}
+    %button.btn.btn-primary.btn-sm{"data-target" => "#glucose_target", "data-toggle" => "modal", :type => "button"}
       Glucose steefwaarde
-    %button.btn.btn-primary.btn-sm{"data-target" => "#glucose", "data-toggle" => "modal", :type => "button"}
+    %button.btn.btn-primary.btn-sm{"data-target" => "#hba1c", "data-toggle" => "modal", :type => "button"}
       Hba1c
     %button.btn.btn-primary.btn-sm{"data-target" => "#hba1c_target", "data-toggle" => "modal", :type => "button"}
       Hba1c streefwaarde
@@ -32,15 +32,15 @@
 #glucose.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
   = render 'forms/glucose.html.haml', glucose: @glucose
 #glucose_target.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-  = render 'forms/glucose.html.haml', glucose_target: @glucose_target
+  = render 'forms/glucose_target.html.haml', glucose_target: @glucose_target
 #hba1c.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
   = render 'forms/hba1c.html.haml', hba1c: @hba1c
 #hba1c_target.modal.fade{"aria-labelledby" => "hba1c_target", :role => "dialog", :tabindex => "-1"}
   = render 'forms/hba1c_target.html.haml', hba1c_target: @hba1c_target
 #weight.modal.fade{"aria-labelledby" => "weight", :role => "dialog", :tabindex => "-1"}
   = render 'forms/weight.html.haml', weight: @weight
-/ #weight_target.modal.fade{"aria-labelledby" => "weight_target", :role => "dialog", :tabindex => "-1"}
-/ = render 'forms/weight_target.html.haml', weight_target: @weight_target
+#weight_target.modal.fade{"aria-labelledby" => "weight_target", :role => "dialog", :tabindex => "-1"}
+  = render 'forms/weight_target.html.haml', weight_target: @weight_target
 #medication.modal.fade{"aria-labelledby" => "medication", :role => "dialog", :tabindex => "-1"}
   = render 'forms/medication.html.haml', medication: @medication
 #blood_pressure.modal.fade{"aria-labelledby" => "blood_pressure", :role => "dialog", :tabindex => "-1"}

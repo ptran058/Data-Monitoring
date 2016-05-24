@@ -5,3 +5,23 @@
   = bp.text_field :activity_date
 
   = bp.submit "Submit"
+
+
+  .modal-dialog{:role => "document"}
+  .modal-content
+    .modal-header
+      %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+        %span{"aria-hidden" => "true"} &times;
+      %h4#myModalLabel.modal-title Bloeddruk
+    .modal-body
+      = form_for @blood_pressure do |bp|
+        = bp.hidden_field :client_id, value: params[:id]
+        .form-group
+          = bp.label :sys, "SYS" 
+          = bp.text_field :sys, placeholder: 'SYS niveau' , class: "form-control"
+        .form-group
+          = bp.label :dia, "DIA"
+          = bp.text_field :dia, placeholder: 'DIA niveau' , class: "form-control"
+        .row
+          .col-md-12
+            = bp.submit "Submit", class: "btn btn-primary pull-right"
