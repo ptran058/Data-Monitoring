@@ -1,6 +1,15 @@
-= form_for @heartrate do |h|
-
-  = h.text_field :pulse
-  = h.text_field :activity_date
-
-  = h.submit "Submit"
+.modal-dialog{:role => "document"}
+  .modal-content
+    .modal-header
+      %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+        %span{"aria-hidden" => "true"} &times;
+      %h4#myModalLabel.modal-title Hartslag
+    .modal-body
+      = form_for @heartrate do |f|
+        = f.hidden_field :client_id, value: params[:id]
+        .form-group
+          = f.label :pulse, "Hartslag"
+          = f.text_field :pulse, placeholder: 'Hartslag in slagen per minuut' , class: "form-control"
+        .row
+          .col-md-12
+            = f.submit "Submit", class: "btn btn-primary pull-right"

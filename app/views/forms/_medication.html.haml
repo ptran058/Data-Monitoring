@@ -1,7 +1,26 @@
-= form_for @medication do |m|
+.modal-dialog{:role => "document"}
+  .modal-content
+    .modal-header
+      %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+        %span{"aria-hidden" => "true"} &times;
+      %h4#myModalLabel.modal-title Medicatie
+    .modal-body
+      = form_for @medication do |m|
+        = m.hidden_field :client_id, value: params[:id]
+        .form-group
+          = m.label :name, "Naam medicatie"
+          = m.text_field :name, placeholder: 'Naam van de medicatie',class: "form-control"
+        .form-group
+          = m.label :quantity, "Hoeveelheid"
+          = m.text_field :quantity, placeholder: 'Hoeveelheid in ml of aantal',class: "form-control"
 
-  = m.text_field :name
-  = m.text_field :quantity
-  = m.text_field :type
+        .form-group
+          = m.label :type, "Type medicatie"
+          = m.text_field :type, placeholder: 'Type medicatie',class: "form-control"
 
-  = m.submit "Submit"
+        .form-group
+          = m.label :activity_date, "Tijd"
+          %div{:style => "overflow:hidden;"}
+        .row
+          .col-md-12
+            = m.submit "Submit", class: "btn btn-primary pull-right"

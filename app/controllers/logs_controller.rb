@@ -1,13 +1,14 @@
 class LogsController < ApplicationController
   def index
-    @glucose = Glucose.all
     @blood_pressure = BloodPressure.all
     @cholesterol = Cholesterol.all
     @client = Client.all
     @length = Length.all
     @medication = Medication.all
     @weight = Weight.all
+    @weight_target = Weight.all
     @log = Log.all
+    @glucose = Glucose.all
     @glucose_target = GlucoseTarget.all
     @sight = Sight.all
   end
@@ -27,6 +28,7 @@ class LogsController < ApplicationController
     @heartrate_targets = HeartrateTarget.where(client_id: params[:id])
     @cholesterol_targets = CholesterolTarget.where(client_id: params[:id])
     @weight = Weight.new
+    @weight_target = WeightTarget.new
     @medication = Medication.new
     @glucose = Glucose.new
     @glucose_target = GlucoseTarget.new

@@ -3,13 +3,17 @@
     .modal-header
       %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
         %span{"aria-hidden" => "true"} &times;
-      %h4#myModalLabel.modal-title Hba1c
+      %h4#myModalLabel.modal-title Glucose steefwaarde
     .modal-body
-      = form_for @hba1c do |f|
+      = form_for @glucose_target do |f|
         = f.hidden_field :client_id, value: params[:id]
         .form-group
-          = f.label :mmol, "mmol/l"
-          = f.text_field :mmol, placeholder: 'MMO/L niveau', class: "form-control"
+          = f.label :low, "MMOL/l laag"
+          = f.text_field :low, placeholder: 'MMOL/L niveau laag',class: "form-control"
+        .form-group
+          = f.label :high, "MMOL/l hoog"
+          = f.text_field :low, placeholder: 'MMOL/L niveau hoog',class: "form-control"
+
         .form-group
           = f.label :activity_date, "Tijd"
           %div{:style => "overflow:hidden;"}

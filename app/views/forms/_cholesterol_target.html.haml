@@ -8,11 +8,11 @@
       = form_for @cholesterol_target do |f|
         = f.hidden_field :client_id, value: params[:id]
         .form-group
-          = f.label :ldl, "ldl"
-          = f.text_field :ldl, class: "form-control"
+          = f.label :ldl, "LDL"
+          = f.text_field :ldl, placeholder: 'LDL niveau', class: "form-control"
         .form-group
-          = f.label :hdl, "hdl"
-          = f.text_field :hdl, class: "form-control"
+          = f.label :hdl, "HDL"
+          = f.text_field :hdl, placeholder: 'HDL niveau', class: "form-control"
         .row
           .col-md-12
             = f.submit "Submit", class: "btn btn-primary pull-right"
