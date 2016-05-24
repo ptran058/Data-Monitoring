@@ -3,25 +3,31 @@
     .row
       .col-md-9
         .title
-          Hba1c
+          Hartslag
       .col-md-3
         .check
     .row
       .col-md-12
         .row
           .col-md-4
-            .pastvalue 
-              = @heartrate.first.pulse
+            .pastvalue
+              - if @heartrate.first.present?
+                = @heartrate.first.pulse 
+              - else
+                N/A
           .col-md-4
             .newvalue 
-              =  @heartrate.last.pulse
+              - if @heartrate.last.present?
+                = @heartrate.last.pulse 
+              - else
+                N/A
           .col-md-4      
             .unit
               BPM
     .row
       .col-md-12
         .lastdate
-          -  if @heartrate.last.activity_date.present?
+          -  if @heartrate.last.present?
             = @heartrate.last.activity_date.strftime("Laatst gemeten op: %d-%m-%Y")
           - else
             Laatste meetmoment is onbekend
