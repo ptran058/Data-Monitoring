@@ -1,0 +1,7 @@
+= form_for @weight_target do |wt|
+
+  = wt.hidden_field :client_id, value: params[:id]
+  = wt.text_field :min_weight
+  = wt.text_field :max_weight
+
+  = wt.submit "Submit"
