@@ -1,13 +1,4 @@
-= form_for @blood_pressure do |bp|
-
-  = bp.text_field :sys
-  = bp.text_field :dia
-  = bp.text_field :activity_date
-
-  = bp.submit "Submit"
-
-
-  .modal-dialog{:role => "document"}
+.modal-dialog{:role => "document"}
   .modal-content
     .modal-header
       %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
@@ -22,6 +13,22 @@
         .form-group
           = bp.label :dia, "DIA"
           = bp.text_field :dia, placeholder: 'DIA niveau' , class: "form-control"
-        .row
+        .form-group
+          = bp.label :activity_date, "Tijd"
+          %div{:style => "overflow:hidden;"}
+            .form-group
+              .row
+                .col-md-8
+                = bp.hidden_field :activity_date, class: "form_control", id: "bloodpressure_time"
+            :javascript
+              $(function () {
+                  $('#bloodpressure_time').datetimepicker({
+                      inline: true,
+                      sideBySide: true,
+                      format:'YYYY-MM-DD HH:mm'
+                  });
+              });
+              
+        .row 
           .col-md-12
             = bp.submit "Submit", class: "btn btn-primary pull-right"

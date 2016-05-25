@@ -9,10 +9,22 @@
         = f.hidden_field :client_id, value: params[:id]
         .form-group
           = f.label :mmol, "mmol/l"
-          = f.text_field :mmol, placeholder: 'MMO/L niveau', class: "form-control"
+          = f.text_field :mmol, placeholder: 'MMOL/L niveau', class: "form-control"
         .form-group
           = f.label :activity_date, "Tijd"
           %div{:style => "overflow:hidden;"}
+            .form-group
+              .row
+                .col-md-8
+                = f.hidden_field :activity_date, class: "form_control", id: "hba1c_time"
+            :javascript
+              $(function () {
+                  $('#hba1c_time').datetimepicker({
+                      inline: true,
+                      sideBySide: true,
+                      format:'YYYY-MM-DD HH:mm'
+                  });
+              });
         .row
           .col-md-12
             = f.submit "Submit", class: "btn btn-primary pull-right"
