@@ -7,7 +7,7 @@
       "plotAreaFillAlphas": 1,
       "plotAreaFillColors": "#EEEEEE",
       "startDuration": 1,
-      "fontSize": 16,
+      "fontSize": 10,
       "handDrawScatter": 0,
       "theme": "default",
       "categoryAxis": {
@@ -31,6 +31,7 @@
           "fillColors": "#FF6851",
           "gapPeriod": 3,
           "id": "AmGraph-HDL",
+          "labelText": "[[value]]",
           "lineThickness": 0,
           "title": "HDL",
           "type": "column",
@@ -42,6 +43,7 @@
           "fillAlphas": 1,
           "fillColors": "#FF8B78",
           "id": "AmGraph-LDL",
+          "labelText": "[[value]]",
           "lineAlpha": 0,
           "lineColor": "#C43D3D",
           "title": "LDL",
@@ -55,6 +57,7 @@
           "fillAlphas": 1,
           "fillColors": "#FFAE2A",
           "id": "AmGraph-Remnant",
+          "labelText": "[[value]]",
           "lineColor": "#008000",
           "lineThickness": 0,
           "negativeFillColors": "#008000",
@@ -74,7 +77,7 @@
           "axisAlpha": 0,
           "gridCount": 0,
           "gridThickness": 0,
-          "title": "Lipoprotein cholesterol mmol/L",
+          "title": "mmol/L",
           "titleBold": false,
           "titleFontSize": 13,
           "titleRotation": -90
@@ -86,23 +89,6 @@
         "horizontalPadding": 9,
         "pointerWidth": 7
       },
-      "legend": {
-        "enabled": true,
-        "align": "right",
-        "bottom": 0,
-        "gradientRotation": 0,
-        "markerBorderAlpha": 0,
-        "position": "right",
-        "useGraphSettings": true
-      },
-      "titles": [
-        {
-          "color": "#000000",
-          "id": "Chart-title",
-          "size": 16,
-          "text": "Cholesterol"
-        }
-      ],
       "dataProvider": [
         {
           "category": "Jan-2014",
@@ -139,20 +125,7 @@
           "HDL": "2",
           "LDL": "2",
           "Remnant": "2"
-        },
-        {
-          "category": "Jan-2017",
-          "HDL": "5",
-          "LDL": "4",
-          "Remnant": "9"
-        },
-        {
-          "category": "Jun-2017",
-          "HDL": "4",
-          "LDL": "8",
-          "Remnant": "3"
         }
       ]
     }
   );
- 
