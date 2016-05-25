@@ -26,14 +26,14 @@
               BPM
     %hr
     Streefwaarde
-    - if @client_heartrate_target.present?
+    - if @client_heartrate_target.pulse.present?
       = @client_heartrate_target.pulse
     - else
       N/A
     .row
       .col-md-12
         .lastdate
-          -  if @heartrate.last.present?
+          -  if @heartrate.last.activity_date.present?
             = @heartrate.last.activity_date.strftime("Laatst gemeten op: %d-%m-%Y")
           - else
             Laatste meetmoment is onbekend

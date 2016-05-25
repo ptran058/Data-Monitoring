@@ -26,14 +26,14 @@
               MMO/L
     %hr
     Streefwaarde
-    - if @client_hba1c_target.present?
+    - if @client_hba1c_target.mmol.present?
       = @client_hba1c_target.mmol
     - else 
       N/A
     .row
       .col-md-12
         .lastdate
-          -  if @hba1c.last.present?
+          -  if @hba1c.last.activity_date.present?
             = @hba1c.last.activity_date.strftime("Hba1c laatst gemeten op: %d-%m-%Y")
           - else
             Laatste meetmoment is onbekend
