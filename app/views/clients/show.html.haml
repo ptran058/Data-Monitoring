@@ -56,8 +56,12 @@
             %br
             Instelling 
             = @client.institution
-.row
   .col-md-6
+    .panel.panel-default
+      .panel-body
+        medicatie
+.row
+  .col-md-9
     .panel.panel-default
       .panel-body
         - @measures = []
@@ -69,8 +73,12 @@
         - @measures = @measures.to_s.gsub('"', '')
         - @measures = @measures.to_s.gsub('/', '"')
         = render 'diabetes/glucose_chart.html.haml'
-        #chartdiv{ :style => "height: 500px"}
-  .col-md-6
+        #chartdiv{ :style => "height: 300px"}
+
+  .col-md-3
+    = render 'diabetes/hba1c.html.haml'
+.row
+  .col-md-9
     .panel.panel-default
       .panel-body
         - @calender = []
@@ -81,100 +89,26 @@
             - @calender << ","
         = render 'diabetes/log_calendar.html.haml'
         #calendar{ :style => "height: 500px"}
+
+  .col-md-3
+    .panel.panel-default
+      .panel-body
+        KlachtenBoek
 .row
-  .col-md-6
+  .col-md-3
+    = render 'diabetes/heartrate.html.haml'
+  .col-md-9
     .panel.panel-default
       .panel-body
         = render 'diabetes/weight_chart.html.haml'
-        #weight_chart{ :style => "height: 300px"}
+        #weight_chart{ :style => "height: 220px"}
+.row
   .col-md-6
     .panel.panel-default
       .panel-body
         = render 'diabetes/cholesterol_chart.html.haml'
         #cholesterol_chart{ :style => "height: 300px"}
-.row
-  .col-md-3
-    = render 'diabetes/heartrate.html.haml'
-  .col-md-3
-    = render 'diabetes/hba1c.html.haml'
-
-.row
-  .col-md-3
-    Bloedsuikers
-    %table.table.table-striped
-      %tr
-        %td id
-        %td client id
-        %td mmol
-        %td datum
-      - @glucoses.each do |g|
-        %tr
-          %td= g.id
-          %td= g.client_id
-          %td= g.mmol
-          %td= g.activity_date
   .col-md-6
-    .row
-      .col-md-12
-        HBA1C Streefwaarden
-        %table.table.table-striped
-          %tr
-            %td id
-            %td client id
-            %td mmol
-            %td datum
-          - @hba1c_targets.each do |h|
-            %tr
-              %td= h.id
-              %td= h.client_id
-              %td= h.mmol
-              %td= h.created_at
-    .row
-      .col-md-12
-        Bloedddruk Streefwaarden
-        %table.table.table-striped
-          %tr
-            %td id
-            %td client id
-            %td sys
-            %td dia
-            %td gemaakt op
-          - @blood_pressure_targets.each do |b|
-            %tr
-              %td= b.id
-              %td= b.client_id
-              %td= b.sys
-              %td= b.dia
-              %td= b.created_at
-    .row
-      .col-md-12
-        Hartslag Streefwaarden
-        %table.table.table-striped
-          %tr
-            %td id
-            %td client id
-            %td hartslag
-            %td gemaakt op
-          - @heartrate_targets.each do |h|
-            %tr
-              %td= h.id
-              %td= h.client_id
-              %td= h.pulse
-              %td= h.created_at
-    .row
-      .col-md-12
-        Cholesterol Streefwaarden
-        %table.table.table-striped
-          %tr
-            %td id
-            %td client id
-            %td ldl
-            %td hdl
-            %td gemaakt op
-          - @cholesterol_targets.each do |c|
-            %tr
-              %td= c.id
-              %td= c.client_id
-              %td= c.ldl
-              %td= c.hdl
-              %td= c.created_at
+    .panel.panel-default
+      .panel-body
+        Gewicht
