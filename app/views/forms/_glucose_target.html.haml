@@ -13,10 +13,6 @@
         .form-group
           = f.label :high, "MMOL/l hoog"
           = f.text_field :low, placeholder: 'MMOL/L niveau hoog',class: "form-control"
-
-        .form-group
-          = f.label :activity_date, "Tijd"
-          %div{:style => "overflow:hidden;"}
-        .row
+        .row    
           .col-md-12
             = f.submit "Submit", class: "btn btn-primary pull-right"

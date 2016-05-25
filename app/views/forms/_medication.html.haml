@@ -17,10 +17,6 @@
         .form-group
           = m.label :type, "Type medicatie"
           = m.text_field :type, placeholder: 'Type medicatie',class: "form-control"
-
-        .form-group
-          = m.label :activity_date, "Tijd"
-          %div{:style => "overflow:hidden;"}
         .row
           .col-md-12
             = m.submit "Submit", class: "btn btn-primary pull-right"

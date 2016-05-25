@@ -16,10 +16,10 @@
             .form-group
               .row
                 .col-md-8
-                = f.hidden_field :activity_date, class: "form_control", id: "date_time"
+                = f.hidden_field :activity_date, class: "form_control", id: "glucose_time"
             :javascript
               $(function () {
-                  $('#date_time').datetimepicker({
+                  $('#glucose_time').datetimepicker({
                       inline: true,
                       sideBySide: true,
                       format:'YYYY-MM-DD HH:mm'

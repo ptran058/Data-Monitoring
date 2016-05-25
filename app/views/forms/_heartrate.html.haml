@@ -10,6 +10,21 @@
         .form-group
           = f.label :pulse, "Hartslag"
           = f.text_field :pulse, placeholder: 'Hartslag in slagen per minuut' , class: "form-control"
+        .form-group
+          = f.label :activity_date, "Tijd"
+          %div{:style => "overflow:hidden;"}
+            .form-group
+              .row
+                .col-md-8
+                = f.hidden_field :activity_date, class: "form_control", id: "heartrate_time"
+            :javascript
+              $(function () {
+                  $('#heartrate_time').datetimepicker({
+                      inline: true,
+                      sideBySide: true,
+                      format:'YYYY-MM-DD HH:mm'
+                  });
+              });           
         .row
           .col-md-12
             = f.submit "Submit", class: "btn btn-primary pull-right"
