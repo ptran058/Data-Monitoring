@@ -31,6 +31,6 @@ class CholesterolsController < ApplicationController
 
   private 
     def cholesterol_params
-      params.require(:cholesterol).permit(:activity_date, :ldl, :hdl, :triglycerides)
+      params.require(:cholesterol).permit(:client_id, :activity_date, :ldl, :hdl, :triglycerides)
     end
 end
