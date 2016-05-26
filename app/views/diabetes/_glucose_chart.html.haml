@@ -1,108 +1,100 @@
 :javascript
   AmCharts.makeChart("chartdiv",
-    {
-      "type": "serial",
-      "categoryField": "date",
-      "columnWidth": 0,
-      "dataDateFormat": "YYYY-MM-DD HH:NN",
-      "plotAreaFillAlphas": 1,
-      "plotAreaFillColors": "#0E71AC",
-      "categoryAxis": {
-        "autoRotateAngle": 90,
-        "autoRotateCount": 0,
-        "minPeriod": "mm",
-        "parseDates": true,
-        "axisAlpha": 0,
-        "axisColor": "#FFFFFF",
-        "axisThickness": 0,
-        "fontSize": 10,
-        "gridAlpha": 0,
-        "gridColor": "#FFFFFF",
-        "labelOffset": 5,
-        "minorGridAlpha": 0,
-        "tickLength": 0
-      },
-      "chartCursor": {
-        "enabled": true,
-        "categoryBalloonDateFormat": "JJ:NN"
-      },
-      "chartScrollbar": {
-        "enabled": true
-      },
-      "graphs": [
-        {
-          "bullet": "round",
-          "columnWidth": 0,
-          "fillColors": "#FFF",
-          "id": "AmGraph-3",
-          "lineColor": "#FFF",
-          "negativeFillAlphas": 0,
-          "title": "graph 3",
-          "valueField": "column-2"
-        },
-        {
-          "id": "AmGraph-2",
-          "title": "graph 2"
-        }
-      ],
-      "guides": [
-        {
-          "dashLength": 0,
-          "fillAlpha": 1,
-          "fillColor": "#FFFFFF",
-          "id": "hypo ",
-          "lineAlpha": 0.18,
-          "lineThickness": 1,
-          "toValue": 4,
-          "value": 4
-        },
-        {
-          "dashLength": 0,
-          "fillAlpha": 1,
-          "fillColor": "#FFFFFF",
-          "id": "hyper",
-          "lineAlpha": 0.18,
-          "lineThickness": 1,
-          "toValue": 10,
-          "value": 10
-        },
-        {
-          "fillAlpha": 0.14,
-          "fontSize": 0,
-          "id": "Streefwaarde",
-          "toValue": #{@client_glucose_target.high},
-          "value": #{@client_glucose_target.low}
-        },
-        {
-          "angle": 0,
-          "date": "2016-11-29 24:00",
-          "fillAlpha": 1,
-          "fillColor": "#FFAE2A",
-          "id": "Voeding",
-          "label": "Taart",
-          "labelRotation": -90,
-          "lineAlpha": 0,
-          "position": "left",
-          "toAngle": 0,
-          "toDate": "2016-11-28 24:00",
-          "toValue": 0
-        }
-      ],
-      "valueAxes": [
-        {
-          "axisTitleOffset": 13,
-          "id": "ValueAxis-1",
+      {
+        "type": "serial",
+        "categoryField": "date",
+        "columnWidth": 0,
+        "dataDateFormat": "YYYY-MM-DD HH:NN",
+        "plotAreaFillAlphas": 1,
+        "handDrawThickness": 2,
+        "categoryAxis": {
+          "autoRotateAngle": 90,
+          "autoRotateCount": 0,
+          "minPeriod": "mm",
+          "parseDates": true,
           "axisAlpha": 0,
+          "axisColor": "#FFFFFF",
           "axisThickness": 0,
-          "firstDayOfWeek": 0,
+          "fontSize": 10,
           "gridAlpha": 0,
+          "gridColor": "#FFFFFF",
+          "labelOffset": 5,
           "minorGridAlpha": 0,
-          "title": "mmol/L"
-        }
-      ],
-      "allLabels": [],
-      "balloon": {},
-      "dataProvider":
-        #{@measures}
-    }
-  );
+          "tickLength": 0
+        },
+        "chartCursor": {
+          "enabled": true,
+          "categoryBalloonDateFormat": "JJ:NN"
+        },
+        "chartScrollbar": {
+          "enabled": true
+        },
+        "trendLines": [
+          {
+            "balloonText": "Streefwaarde",
+            "finalDate": "2014-03-01",
+            "finalValue": 10,
+            "finalXValue": 10,
+            "id": "HYPER",
+            "initialDate": "2014-03-06 24:00",
+            "initialValue": 10,
+            "initialXValue": 10,
+            "lineAlpha": 0.56,
+            "lineColor": "#51BDE9"
+          }
+        ],
+        "graphs": [
+          {
+            "bullet": "round",
+            "columnWidth": 0,
+            "fillColors": "#FFF",
+            "id": "AmGraph-3",
+            "lineColor": "#0E71AC",
+            "negativeFillAlphas": 0,
+            "title": "graph 3",
+            "valueField": "column-2"
+          }
+        ],
+        "guides": [
+          {
+            "dashLength": 0,
+            "fillAlpha": 1,
+            "fillColor": "#FFFFFF",
+            "id": "hyper",
+            "lineAlpha": 1,
+            "lineColor": "#51BDE9",
+            "lineThickness": 1,
+            "toValue": 4,
+            "value": 4
+          },
+          {
+            "fillAlpha": 0.14,
+            "fillColor": "#51BDE9",
+            "fontSize": 0,
+            "id": "Streefwaarde",
+            "toValue": 6.6,
+            "value": 5
+          },
+          {
+            "date": "1899-11-29 24:00",
+            "id": "Voeding"
+          }
+        ],
+        "valueAxes": [
+          {
+            "axisTitleOffset": 13,
+            "id": "ValueAxis-1",
+            "axisAlpha": 0,
+            "axisThickness": 0,
+            "firstDayOfWeek": 0,
+            "gridAlpha": 0,
+            "minorGridAlpha": 0,
+            "title": "mmol/L"
+          }
+        ],
+        "allLabels": [],
+        "balloon": {},
+        "dataProvider":
+          #{@measures}
+      }
+    );
