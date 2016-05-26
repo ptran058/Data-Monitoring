@@ -48,6 +48,7 @@ class ClientsController < ApplicationController
     @client_hba1c_target = Hba1cTarget.where(client_id: params[:id]).last
     @client_heartrate_target = HeartrateTarget.where(client_id: params[:id]).last
     @client_glucose_target = GlucoseTarget.where(client_id: params[:id]).last
+    @cholesterols = Cholesterol.where(client_id: params[:id])
 
   end
   private

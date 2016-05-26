@@ -1,3 +1,13 @@
+
+- @cholesterols_values = []
+- @cholesterols.each do |c| 
+  - @cholesterols_values << "{/category/: '#{c.activity_date.strftime("%b %Y")}', /HDL/: '#{c.hdl}', /LDL/: '#{c.hdl}', /Triglyceriden/: '#{c.triglycerides}',  }"
+  -if !@cholesterols.last
+    - @cholesterols_values << ","
+
+- @cholesterols_values = @cholesterols_values.to_s.gsub('"', '')
+- @cholesterols_values = @cholesterols_values.to_s.gsub('/', '"')
+
 :javascript
   AmCharts.makeChart("cholesterol_chart",
     {
@@ -56,15 +66,15 @@
           "bulletOffset": 3,
           "fillAlphas": 1,
           "fillColors": "#FFAE2A",
-          "id": "AmGraph-Remnant",
+          "id": "AmGraph-Triglyceriden",
           "labelText": "[[value]]",
           "lineColor": "#008000",
           "lineThickness": 0,
           "negativeFillColors": "#008000",
           "negativeLineAlpha": 0,
-          "title": "Remnant",
+          "title": "Triglyceriden",
           "type": "column",
-          "valueField": "Remnant"
+          "valueField": "Triglyceriden"
         }
       ],
       "guides": [],
@@ -89,43 +99,7 @@
         "horizontalPadding": 9,
         "pointerWidth": 7
       },
-      "dataProvider": [
-        {
-          "category": "Jan-2014",
-          "HDL": 8,
-          "LDL": 5,
-          "Remnant": "3"
-        },
-        {
-          "category": "Jan-2014",
-          "HDL": 6,
-          "LDL": 7,
-          "Remnant": "10"
-        },
-        {
-          "category": "Jan-2015",
-          "HDL": 2,
-          "LDL": 3,
-          "Remnant": "1"
-        },
-        {
-          "category": "Jun-2015",
-          "HDL": "4",
-          "LDL": "5",
-          "Remnant": "8"
-        },
-        {
-          "category": "Jan-2016",
-          "HDL": "1",
-          "LDL": "1",
-          "Remnant": "1"
-        },
-        {
-          "category": "Jun-2016",
-          "HDL": "2",
-          "LDL": "2",
-          "Remnant": "2"
-        }
-      ]
+      "dataProvider":
+        #{@cholesterols_values}
     }
   );
