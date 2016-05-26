@@ -10,7 +10,7 @@ class GlucoseTargetsController < ApplicationController
   def create
     @glucose_target = GlucoseTarget.new (glucose_target_params)
     @glucose_target.save
-    redirect_to glucose_targets_path
+    redirect_to client_path(glucose_target_params[:client_id])
   end
 
   def edit
@@ -20,13 +20,13 @@ class GlucoseTargetsController < ApplicationController
   def update
     @glucose_target = GlucoseTarget.find(params[:id])
     @glucose_target.update(glucose_target_params)
-    redirect_to glucose_targets_path 
+    redirect_to client_path(glucose_target_params[:client_id]) 
   end
 
   def destroy
     @glucose_target = GlucoseTarget.find(params[:id])
     @glucose_target.destroy
-    redirect_to glucose_targets_path
+    redirect_to client_path(glucose_target_params[:client_id])
   end
   
   private   
