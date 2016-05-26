@@ -50,6 +50,7 @@ class ClientsController < ApplicationController
     @client_glucose_target = GlucoseTarget.where(client_id: params[:id]).last
     @client_cholesterol = Cholesterol.where(client_id: params[:id]).order('activity_date ASC').limit(4)
     @client_blood_pressure = BloodPressure.where(client_id: params[:id]).order('activity_date ASC').limit(10)
+    @client_weight = Weight.where(client_id: params[:id]).order('activity_date ASC').limit(10)
 
   end
   private
