@@ -6,7 +6,7 @@
       "columnWidth": 0,
       "dataDateFormat": "YYYY-MM-DD HH:NN",
       "plotAreaFillAlphas": 1,
-      "plotAreaFillColors": "#0E71AC",
+      "handDrawThickness": 2,
       "categoryAxis": {
         "autoRotateAngle": 90,
         "autoRotateCount": 0,
@@ -29,20 +29,30 @@
       "chartScrollbar": {
         "enabled": true
       },
+      "trendLines": [
+        {
+          "balloonText": "Streefwaarde",
+          "finalDate": "2014-03-01",
+          "finalValue": 10,
+          "finalXValue": 10,
+          "id": "HYPER",
+          "initialDate": "2014-03-06 24:00",
+          "initialValue": 10,
+          "initialXValue": 10,
+          "lineAlpha": 0.56,
+          "lineColor": "#51BDE9"
+        }
+      ],
       "graphs": [
         {
           "bullet": "round",
           "columnWidth": 0,
           "fillColors": "#FFF",
           "id": "AmGraph-3",
-          "lineColor": "#FFF",
+          "lineColor": "#0E71AC",
           "negativeFillAlphas": 0,
           "title": "graph 3",
           "valueField": "column-2"
-        },
-        {
-          "id": "AmGraph-2",
-          "title": "graph 2"
         }
       ],
       "guides": [
@@ -50,42 +60,24 @@
           "dashLength": 0,
           "fillAlpha": 1,
           "fillColor": "#FFFFFF",
-          "id": "hypo ",
-          "lineAlpha": 0.18,
+          "id": "hyper",
+          "lineAlpha": 1,
+          "lineColor": "#51BDE9",
           "lineThickness": 1,
           "toValue": 4,
           "value": 4
         },
         {
-          "dashLength": 0,
-          "fillAlpha": 1,
-          "fillColor": "#FFFFFF",
-          "id": "hyper",
-          "lineAlpha": 0.18,
-          "lineThickness": 1,
-          "toValue": 10,
-          "value": 10
-        },
-        {
           "fillAlpha": 0.14,
+          "fillColor": "#51BDE9",
           "fontSize": 0,
           "id": "Streefwaarde",
-          "toValue": #{@client_glucose_target.high},
-          "value": #{@client_glucose_target.low}
+          "toValue": 6.6,
+          "value": 5
         },
         {
-          "angle": 0,
-          "date": "2016-11-29 24:00",
-          "fillAlpha": 1,
-          "fillColor": "#FFAE2A",
-          "id": "Voeding",
-          "label": "Taart",
-          "labelRotation": -90,
-          "lineAlpha": 0,
-          "position": "left",
-          "toAngle": 0,
-          "toDate": "2016-11-28 24:00",
-          "toValue": 0
+          "date": "1899-11-29 24:00",
+          "id": "Voeding"
         }
       ],
       "valueAxes": [
