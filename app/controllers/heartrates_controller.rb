@@ -10,7 +10,7 @@ class HeartratesController < ApplicationController
   def create
     @heartrate = Heartrate.new (heartrate_params)
     @heartrate.save 
-    redirect_to client_path(1)
+    redirect_to client_path(heartrate_params[:client_id])
   end
 
   def edit
@@ -20,13 +20,13 @@ class HeartratesController < ApplicationController
   def update
     heartrate = Heartrate.find(params[:id])
     heartrate.update(heartrate_params)
-    redirect_to client_path(1)
+    redirect_to client_path(heartrate_params[:client_id])
   end
 
   def destroy
     heartrate = Heartrate.find(params[:id])
     heartrate.destroy
-    redirect_to client_path(1)
+    redirect_to client_path(heartrate_params[:client_id])
   end
 
   private 

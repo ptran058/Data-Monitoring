@@ -10,7 +10,7 @@ class CholesterolsController < ApplicationController
   def create
     @cholesterol = Cholesterol.new(cholesterol_params)
     @cholesterol.save 
-    redirect_to client_path(1)
+    redirect_to client_path(cholesterol_params[:client_id])
   end
 
   def edit
@@ -20,13 +20,13 @@ class CholesterolsController < ApplicationController
   def update
     cholesterol = Cholesterol.find(params[:id])
     cholesterol.update(cholesterol_params)
-    redirect_to client_path(1)
+    redirect_to client_path(cholesterol_params[:client_id])
   end
 
   def destroy
     cholesterol = Cholesterol.find(params[:id])
     cholesterol.destroy
-    redirect_to client_path(1)
+    redirect_to client_path(cholesterol_params[:client_id])
   end
 
   private 

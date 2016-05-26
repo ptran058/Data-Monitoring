@@ -10,7 +10,7 @@ class BloodPressuresController < ApplicationController
   def create
     @blood_pressure = BloodPressure.new(blood_pressure_params)
     @blood_pressure.save 
-    redirect_to client_path(1)
+    redirect_to client_path(blood_pressure_params[:client_id])
   end
 
   def edit
@@ -20,13 +20,14 @@ class BloodPressuresController < ApplicationController
   def update
     blood_pressure = BloodPressure.find(params[:id])
     blood_pressure.update(blood_pressure_params)
-    redirect_to client_path(1)
+    redirect_to client_path(blood_pressure_params[:client_id])
   end
 
   def destroy
     blood_pressure = BloodPressure.find(params[:id])
     blood_pressure.destroy
-    redirect_to client_path(1)
+    redirect_to client_path(blood_pressure_params[:client_id])
+
   end
 
   private 
