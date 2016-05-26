@@ -11,14 +11,14 @@
         .row
           .col-md-4
             .pastvalue
-              - if @heartrate.first.present?
-                = @heartrate.first.pulse 
+              - if @heartrates.first.present?
+                = @heartrates.first.pulse 
               - else
                 N/A
           .col-md-4
             .newvalue 
-              - if @heartrate.last.present?
-                = @heartrate.last.pulse 
+              - if @heartrates.last.present?
+                = @heartrates.last.pulse 
               - else
                 N/A
           .col-md-4      
@@ -31,7 +31,7 @@
     .row
       .col-md-12
         .lastdate
-          -  if @heartrate.last.present?
-            = @heartrate.last.activity_date.strftime("Laatst gemeten op: %d-%m-%Y")
+          -  if @heartrates.last.present?
+            = @heartrates.last.activity_date.strftime("Laatst gemeten op: %d-%m-%Y")
           - else
             Laatste meetmoment is onbekend

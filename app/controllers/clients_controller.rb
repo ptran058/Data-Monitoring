@@ -20,8 +20,22 @@ class ClientsController < ApplicationController
     redirect_to clients_path
   end
   def show
-    @client = Client.find(params[:id])
+
+    @weight = Weight.new
+    @weight_target = WeightTarget.new
+    @medication = Medication.new
     @glucose = Glucose.new
+    @glucose_target = GlucoseTarget.new
+    @hba1c = Hba1c.new
+    @hba1c_target = Hba1cTarget.new
+    @blood_pressure = BloodPressure.new
+    @blood_pressure_target = BloodPressureTarget.new
+    @heartrate = Heartrate.new
+    @heartrate_target = HeartrateTarget.new
+    @cholesterol = Cholesterol.new
+    @cholesterol_target = CholesterolTarget.new
+
+    @client = Client.find(params[:id])
     @glucoses = Glucose.where(client_id: params[:id]).order('activity_date ASC')
     @log = Log.where(client_id: params[:id])
     @hba1c_targets = Hba1cTarget.where(client_id: params[:id])
@@ -29,16 +43,11 @@ class ClientsController < ApplicationController
     @heartrate_targets = HeartrateTarget.where(client_id: params[:id])
     @cholesterol_targets = CholesterolTarget.where(client_id: params[:id])
 
-    @hba1c = Hba1c.where(client_id: params[:id]).order('activity_date DESC').limit(2)
-    @heartrate = Heartrate.where(client_id: params[:id]).order('activity_date DESC').limit(2)
+    @hba1cs = Hba1c.where(client_id: params[:id]).order('activity_date DESC').limit(2)
+    @heartrates = Heartrate.where(client_id: params[:id]).order('activity_date DESC').limit(2)
     @client_hba1c_target = Hba1cTarget.where(client_id: params[:id]).last
     @client_heartrate_target = HeartrateTarget.where(client_id: params[:id]).last
     @client_glucose_target = GlucoseTarget.where(client_id: params[:id]).last
-
-    @hba1c_target = Hba1cTarget.new
-    @blood_pressure_target = BloodPressureTarget.new
-    @heartrate_target = HeartrateTarget.new
-    @cholesterol_target = CholesterolTarget.new
 
   end
   private
