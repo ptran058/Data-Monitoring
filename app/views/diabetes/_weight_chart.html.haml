@@ -1,91 +1,111 @@
 :javascript
-
-  $(document).ready(function() {
-    var weightChart = AmCharts.makeChart("weight_chart", {
-      "type": "serial",
-      "theme": "light",
-      "dataProvider": [{
-        "date": "2012-03-01",
-        "price": 20
-      }, {
-        "date": "2012-03-02",
-        "price": 75
-      }, {
-        "date": "2012-03-03",
-        "price": 15
-      }, {
-        "date": "2012-03-04",
-        "price": 75
-      }, {
-        "date": "2012-03-05",
-        "price": 158
-      }, {
-        "date": "2012-03-06",
-        "price": 57
-      }, {
-        "date": "2012-03-07",
-        "price": 107
-      }, {
-        "date": "2012-03-08",
-        "price": 89
-      }, {
-        "date": "2012-03-09",
-        "price": 75
-      }, {
-        "date": "2012-03-10",
-        "price": 132
-      }, {
-        "date": "2012-03-11",
-        "price": 158
-      }, {
-        "date": "2012-03-12",
-        "price": 56
-      }, {
-        "date": "2012-03-13",
-        "price": 169
-      }, {
-        "date": "2012-03-14",
-        "price": 24
-      }, {
-        "date": "2012-03-15",
-        "price": 147
-      }],
-      "valueAxes": [{
-        "logarithmic": true,
-        "dashLength": 1,
-        "guides": [{
-          "dashLength": 6,
-          "inside": true,
-          "label": "average",
-          "lineAlpha": 1,
-          "value": 90.4
-        }],
-        "position": "left"
-      }],
-      "graphs": [{
-        "bullet": "round",
-        "id": "g1",
-        "bulletBorderAlpha": 1,
-        "bulletColor": "#FFFFFF",
-        "bulletSize": 7,
-        "lineThickness": 2,
-        "title": "Price",
-        "type": "smoothedLine",
-        "useLineColorForBulletBorder": true,
-        "valueField": "price"
-      }],
-      "chartScrollbar": {},
-      "chartCursor": {
-        "valueLineEnabled": true,
-        "valueLineBalloonEnabled": true,
-        "valueLineAlpha": 0.5,
-        "fullWidth": true,
-        "cursorAlpha": 0.05
-      },
-      "dataDateFormat": "YYYY-MM-DD",
-      "categoryField": "date",
-      "categoryAxis": {
-        "parseDates": true
-      }
-    });
-  });
+    AmCharts.makeChart("weight_chart",
+        {
+            "type": "serial",
+            "categoryField": "date",
+            "columnWidth": 0,
+            "dataDateFormat": "YYYY-MM-DD HH:NN",
+            "plotAreaFillAlphas": 1,
+            "categoryAxis": {
+                "autoRotateAngle": 90,
+                "autoRotateCount": 0,
+                "minPeriod": "mm",
+                "parseDates": true,
+                "axisAlpha": 0,
+                "axisColor": "#FFFFFF",
+                "axisThickness": 0,
+                "fontSize": 10,
+                "gridAlpha": 0,
+                "gridColor": "#FFFFFF",
+                "labelOffset": 5,
+                "minorGridAlpha": 0,
+                "tickLength": 0
+            },
+            "chartCursor": {
+                "enabled": true,
+                "categoryBalloonDateFormat": "JJ:NN"
+            },
+            "chartScrollbar": {
+                "enabled": true
+            },
+            "trendLines": [],
+            "graphs": [
+                {
+                    "bullet": "round",
+                    "columnWidth": 0,
+                    "fillColors": "#FFF",
+                    "id": "AmGraph-3",
+                    "lineColor": "#0E71AC",
+                    "negativeFillAlphas": 0,
+                    "title": "graph 3",
+                    "type": "smoothedLine",
+                    "valueField": "column-2"
+                }
+            ],
+            "guides": [
+                {
+                    "balloonText": "Streefwaarde",
+                    "color": "#FFF",
+                    "dashLength": 0,
+                    "fillAlpha": 1,
+                    "fillColor": "#E8E8E8",
+                    "fontSize": 0,
+                    "id": "Streefwaarde",
+                    "inside": true,
+                    "label": "Streefwaarde",
+                    "lineAlpha": 0.49,
+                    "lineColor": "#51BDE9",
+                    "lineThickness": 4,
+                    "toAngle": 0,
+                    "toValue": 73.5,
+                    "value": 80.3
+                }
+            ],
+            "valueAxes": [
+                {
+                    "axisTitleOffset": 13,
+                    "id": "ValueAxis-1",
+                    "axisAlpha": 0,
+                    "axisThickness": 0,
+                    "firstDayOfWeek": 0,
+                    "gridAlpha": 0,
+                    "minorGridAlpha": 0,
+                    "title": "Gewicht"
+                }
+            ],
+            "allLabels": [],
+            "balloon": {
+                "borderColor": "#0E71AC"
+            },
+            "dataProvider": [
+                {
+                    "column-2": "95",
+                    "date": "2014-03-01"
+                },
+                {
+                    "column-2": "92",
+                    "date": "2014-05-02"
+                },
+                {
+                    "column-2": "91",
+                    "date": "2014-07-03"
+                },
+                {
+                    "column-2": "86",
+                    "date": "2014-08-04"
+                },
+                {
+                    "column-2": "81",
+                    "date": "2014-10-05"
+                },
+                {
+                    "column-2": "79",
+                    "date": "2014-12-06"
+                },
+                {
+                    "column-2": "75",
+                    "date": "2015-03-06"
+                }
+            ]
+        }
+    );
