@@ -6,7 +6,7 @@ class GlucosesController < ApplicationController
   def create
     @glucose = Glucose.new (glucose_params)
     @glucose.save 
-    redirect_to clients_path
+    redirect_to client_path(glucose_params[:client_id])
   end
   private 
     def glucose_params

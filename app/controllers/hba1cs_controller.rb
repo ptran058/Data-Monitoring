@@ -10,7 +10,7 @@ class Hba1csController < ApplicationController
   def create
     @hba1c = Hba1c.new(hba1c_params)
     @hba1c.save 
-    redirect_to hba1cs_path
+    redirect_to client_path(hba1cs_params[:client_id])
   end
 
   def edit
@@ -20,17 +20,17 @@ class Hba1csController < ApplicationController
   def update
     hba1c = Hba1c.find(params[:id])
     hba1c.update(hba1c_params)
-    redirect_to hba1cs_path
+    redirect_to client_path(hba1cs_params[:client_id])
   end
 
   def destroy
     hba1c = Hba1c.find(params[:id])
     hba1c.destroy
-    redirect_to hba1cs_path
+    redirect_to client_path(hba1cs_params[:client_id])
   end
 
   private 
     def hba1c_params
-      params.require(:hba1c).permit(:activity_date, :mmol)
+      params.require(:hba1c).permit(:client_id, :activity_date, :mmol)
     end
 end
