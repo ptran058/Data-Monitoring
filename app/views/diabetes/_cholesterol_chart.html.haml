@@ -1,12 +1,11 @@
+- @cholesterol_values = []
+- @client_cholesterol.each do |c| 
+  - @cholesterol_values << "{/category/: '#{c.activity_date.strftime("%b %Y")}', /HDL/: '#{c.hdl}', /LDL/: '#{c.hdl}', /Triglyceriden/: '#{c.triglycerides}',  }"
+  -if !@client_cholesterol.last
+    - @cholesterol_values << ","
 
-- @cholesterols_values = []
-- @cholesterols.each do |c| 
-  - @cholesterols_values << "{/category/: '#{c.activity_date.strftime("%b %Y")}', /HDL/: '#{c.hdl}', /LDL/: '#{c.hdl}', /Triglyceriden/: '#{c.triglycerides}',  }"
-  -if !@cholesterols.last
-    - @cholesterols_values << ","
-
-- @cholesterols_values = @cholesterols_values.to_s.gsub('"', '')
-- @cholesterols_values = @cholesterols_values.to_s.gsub('/', '"')
+- @cholesterol_values = @cholesterol_values.to_s.gsub('"', '')
+- @cholesterol_values = @cholesterol_values.to_s.gsub('/', '"')
 
 :javascript
   AmCharts.makeChart("cholesterol_chart",
@@ -100,6 +99,6 @@
         "pointerWidth": 7
       },
       "dataProvider":
-        #{@cholesterols_values}
+        #{@cholesterol_values}
     }
   );

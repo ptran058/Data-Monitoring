@@ -1,3 +1,11 @@
+- @blood_pressure_values = []
+- @client_blood_pressure.each do |c| 
+  - @blood_pressure_values << "{/date/: '#{c.activity_date.strftime("%Y-%m-%d")}', /Onderdruk/: '#{c.sys}', /Bovendruk/: '#{c.dia}',  }"
+  -if !@client_blood_pressure.last
+    - @blood_pressure_values << ","
+
+- @blood_pressure_values = @blood_pressure_values.to_s.gsub('"', '')
+- @blood_pressure_values = @blood_pressure_values.to_s.gsub('/', '"')
 :javascript
   AmCharts.makeChart("bloodpressure",
     {
@@ -57,42 +65,7 @@
       "allLabels": [],
       "balloon": {},
       "titles": [],
-      "dataProvider": [
-        {
-          "date": "2014-03-01",
-          "Bovendruk": 8,
-          "Onderdruk": 5
-        },
-        {
-          "date": "2014-03-02",
-          "Bovendruk": 6,
-          "Onderdruk": 7
-        },
-        {
-          "date": "2014-03-03",
-          "Bovendruk": 2,
-          "Onderdruk": 3
-        },
-        {
-          "date": "2014-03-04",
-          "Bovendruk": 1,
-          "Onderdruk": 3
-        },
-        {
-          "date": "2014-03-05",
-          "Bovendruk": 2,
-          "Onderdruk": 1
-        },
-        {
-          "date": "2014-03-06",
-          "Bovendruk": 3,
-          "Onderdruk": 2
-        },
-        {
-          "date": "2014-03-07",
-          "Bovendruk": "5",
-          "Onderdruk": "6"
-        }
-      ]
+      "dataProvider": 
+        #{@blood_pressure_values}
     }
   );
