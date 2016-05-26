@@ -29,20 +29,6 @@
       "chartScrollbar": {
         "enabled": true
       },
-      "trendLines": [
-        {
-          "balloonText": "Streefwaarde",
-          "finalDate": "2014-03-01",
-          "finalValue": 10,
-          "finalXValue": 10,
-          "id": "HYPER",
-          "initialDate": "2014-03-06 24:00",
-          "initialValue": 10,
-          "initialXValue": 10,
-          "lineAlpha": 0.56,
-          "lineColor": "#FFFFFF"
-        }
-      ],
       "graphs": [
         {
           "bullet": "round",
@@ -64,18 +50,28 @@
           "dashLength": 0,
           "fillAlpha": 1,
           "fillColor": "#FFFFFF",
-          "id": "hyper",
+          "id": "hypo ",
           "lineAlpha": 0.18,
           "lineThickness": 1,
           "toValue": 4,
           "value": 4
         },
         {
+          "dashLength": 0,
+          "fillAlpha": 1,
+          "fillColor": "#FFFFFF",
+          "id": "hyper",
+          "lineAlpha": 0.18,
+          "lineThickness": 1,
+          "toValue": 10,
+          "value": 10
+        },
+        {
           "fillAlpha": 0.14,
           "fontSize": 0,
           "id": "Streefwaarde",
-          "toValue": 6.6,
-          "value": 5
+          "toValue": #{@client_glucose_target.high},
+          "value": #{@client_glucose_target.low}
         },
         {
           "angle": 0,
@@ -106,39 +102,7 @@
       ],
       "allLabels": [],
       "balloon": {},
-      "dataProvider": [
-        {
-          "column-2": "5",
-          "date": "2014-03-01 07:57"
-        },
-        {
-          "column-2": "7.8",
-          "date": "2014-03-02 07:58"
-        },
-        {
-          "column-2": "5.5",
-          "date": "2014-03-03 12:00"
-        },
-        {
-          "column-2": "4.3",
-          "date": "2014-03-03 17:50"
-        },
-        {
-          "column-2": "3.1",
-          "date": "2014-03-04 08:02"
-        },
-        {
-          "column-2": "7.5",
-          "date": "2014-03-05 08:03"
-        },
-        {
-          "column-2": "8.9",
-          "date": "2014-03-06 08:04"
-        },
-        {
-          "column-2": "12.2",
-          "date": "2014-03-06 09:05"
-        }
-      ]
+      "dataProvider":
+        #{@measures}
     }
   );

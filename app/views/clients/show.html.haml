@@ -66,7 +66,7 @@
       .panel-body
         - @measures = []
         - @glucoses.each do |g| 
-          - @measures << "{/date/: /#{g.activity_date.strftime('%Y-%m-%d %H:%M')}/, /value/: #{g.mmol} }"
+          - @measures << "{/column-2/: /#{g.mmol}/, /date/: /#{g.activity_date.strftime('%Y-%m-%d %H:%M')}/, }"
           -if !@log.last
             - @measures << ","
         // Creating right format for Chart
