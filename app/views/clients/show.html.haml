@@ -6,33 +6,7 @@
 .row
   .col-md-12
     %hr
-    %button.btn.btn-primary.btn-sm{"data-target" => "#glucose", "data-toggle" => "modal", :type => "button"}
-      Glucose
-    %button.btn.btn-primary.btn-sm{"data-target" => "#hba1c_target", "data-toggle" => "modal", :type => "button"}
-      Hba1c streefwaarde
-    %button.btn.btn-primary.btn-sm{"data-target" => "#blood_pressure_target", "data-toggle" => "modal", :type => "button"}
-      Bloeddruk streefwaarde
-    %button.btn.btn-primary.btn-sm{"data-target" => "#heartrate_target", "data-toggle" => "modal", :type => "button"}
-      Hartslag streefwaarde
-    %button.btn.btn-primary.btn-sm{"data-target" => "#cholesterol_target", "data-toggle" => "modal", :type => "button"}
-      Cholesterol streefwaarde
-
-    %hr
-
-#glucose.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-  = render 'forms/glucose.html.haml', glucose: @glucose
-
-#hba1c_target.modal.fade{"aria-labelledby" => "hba1c_target", :role => "dialog", :tabindex => "-1"}
-  = render 'forms/hba1c_target.html.haml', hba1c_target: @hba1c_target
-
-#blood_pressure_target.modal.fade{"aria-labelledby" => "blood_pressure_target", :role => "dialog", :tabindex => "-1"}
-  = render 'forms/blood_pressure_target.html.haml', blood_pressure_target: @blood_pressure_target
-
-#heartrate_target.modal.fade{"aria-labelledby" => "heartrate_target", :role => "dialog", :tabindex => "-1"}
-  = render 'forms/heartrate_target.html.haml', heartrate_target: @heartrate_target
-
-#cholesterol_target.modal.fade{"aria-labelledby" => "cholesterol_target", :role => "dialog", :tabindex => "-1"}
-  = render 'forms/cholesterol_target.html.haml', cholesterol_target: @cholesterol_target
+    = render 'diabetes/client_forms.html.haml'
 
 .row
   .col-md-6
