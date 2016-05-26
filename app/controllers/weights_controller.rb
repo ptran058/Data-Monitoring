@@ -10,7 +10,7 @@ class WeightsController < ApplicationController
   def create
     @weight = Weight.new(weight_params)
     @weight.save 
-    redirect_to weights_path
+    redirect_to client_path(1)
   end
 
   def edit
@@ -20,13 +20,13 @@ class WeightsController < ApplicationController
   def update
     weight = Weight.find(params[:id])
     weight.update(weight_params)
-    redirect_to weights_path
+    redirect_to client_path(1)
   end
 
   def destroy
     weight = Weight.find(params[:id])
     weight.destroy
-    redirect_to weights_path
+    redirect_to client_path(1)
   end
 
   private 

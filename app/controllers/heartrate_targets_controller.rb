@@ -2,7 +2,7 @@ class HeartrateTargetsController < ApplicationController
   def create
     @heartrate_target = HeartrateTarget.new (heartrate_target_params)
     @heartrate_target.save 
-    redirect_to clients_path
+    redirect_to client_path(1)
   end
   private
     def heartrate_target_params
