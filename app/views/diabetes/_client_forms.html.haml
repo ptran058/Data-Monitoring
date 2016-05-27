@@ -1,33 +1,32 @@
 .row
-  .col-md-12
-    %hr
+  .col-md-6
     %button.btn.btn-primary.btn-sm{"data-target" => "#glucose", "data-toggle" => "modal", :type => "button"}
       Glucose
-    %button.btn.btn-primary.btn-sm{"data-target" => "#glucose_target", "data-toggle" => "modal", :type => "button"}
-      Glucose steefwaarde
     %button.btn.btn-primary.btn-sm{"data-target" => "#hba1c", "data-toggle" => "modal", :type => "button"}
       Hba1c
-    %button.btn.btn-primary.btn-sm{"data-target" => "#hba1c_target", "data-toggle" => "modal", :type => "button"}
-      Hba1c streefwaarde
     %button.btn.btn-primary.btn-sm{"data-target" => "#blood_pressure", "data-toggle" => "modal", :type => "button"}
       Bloeddruk
-    %button.btn.btn-primary.btn-sm{"data-target" => "#blood_pressure_target", "data-toggle" => "modal", :type => "button"}
-      Bloeddruk streefwaarde
     %button.btn.btn-primary.btn-sm{"data-target" => "#heartrate", "data-toggle" => "modal", :type => "button"}
       Hartslag
-    %button.btn.btn-primary.btn-sm{"data-target" => "#heartrate_target", "data-toggle" => "modal", :type => "button"}
-      Hartslag streefwaarde
     %button.btn.btn-primary.btn-sm{"data-target" => "#cholesterol", "data-toggle" => "modal", :type => "button"}
       Cholesterol
-    %button.btn.btn-primary.btn-sm{"data-target" => "#cholesterol_target", "data-toggle" => "modal", :type => "button"}
-      Cholesterol streefwaarde
     %button.btn.btn-primary.btn-sm{"data-target" => "#weight", "data-toggle" => "modal", :type => "button"}
       Weight
-    %button.btn.btn-primary.btn-sm{"data-target" => "#weight_target", "data-toggle" => "modal", :type => "button"}
-      Weight streefwaarde
     %button.btn.btn-primary.btn-sm{"data-target" => "#medication", "data-toggle" => "modal", :type => "button"}
       Medication
-    %hr
+  .col-md-6
+    %button.btn.btn-primary.btn-sm{"data-target" => "#glucose_target", "data-toggle" => "modal", :type => "button"}
+      Glucose steefwaarde
+    %button.btn.btn-primary.btn-sm{"data-target" => "#hba1c_target", "data-toggle" => "modal", :type => "button"}
+      Hba1c streefwaarde
+    %button.btn.btn-primary.btn-sm{"data-target" => "#blood_pressure_target", "data-toggle" => "modal", :type => "button"}
+      Bloeddruk streefwaarde
+    %button.btn.btn-primary.btn-sm{"data-target" => "#heartrate_target", "data-toggle" => "modal", :type => "button"}
+      Hartslag streefwaarde
+    %button.btn.btn-primary.btn-sm{"data-target" => "#cholesterol_target", "data-toggle" => "modal", :type => "button"}
+      Cholesterol streefwaarde
+    %button.btn.btn-primary.btn-sm{"data-target" => "#weight_target", "data-toggle" => "modal", :type => "button"}
+      Weight streefwaarde
 
 #glucose.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
   = render 'forms/glucose.html.haml', glucose: @glucose
