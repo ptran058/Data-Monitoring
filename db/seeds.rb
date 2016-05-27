@@ -121,3 +121,25 @@
   Log.create(client_id: '1', description: 'Insuline ingespoten', activity_type_id: '1', start_time: '2016-01-16 12:10:00', end_time: '2016-01-16 12:20:00')
   Log.create(client_id: '1', description: 'Appeltaart', activity_type_id: '3', start_time: '2016-01-17 10:10:00', end_time: '2016-01-17 10:30:00')
   Log.create(client_id: '1', description: 'Insuline ingespoten', activity_type_id: '1', start_time: '2016-01-18 12:10:00', end_time: '2016-01-18 12:20:00')
+
+  #log activity id:5
+  #week 1
+  Log.create(client_id: '5', description: 'Insuline ingespoten', activity_type_id: '1', start_time: '2016-05-16 19:10:00', end_time: '2016-05-16 19:30:00')
+  Log.create(client_id: '5', description: 'Zwemmen', activity_type_id: '2', start_time: '2016-05-16 20:00:00', end_time: '2016-05-16 21:00:00')
+  Log.create(client_id: '5', description: 'Oliebollen gegeten', activity_type_id: '3', start_time: '2016-05-17 17:00:00', end_time: '2016-05-17 17:30:00')
+  Log.create(client_id: '5', description: 'Insuline ingespoten', activity_type_id: '1', start_time: '2016-05-17 19:10:00', end_time: '2016-05-17 19:30:00')
+  Log.create(client_id: '5', description: 'Insuline ingespoten', activity_type_id: '1', start_time: '2016-05-17 19:10:00', end_time: '2016-05-17 19:20:00')
+  Log.create(client_id: '5', description: 'Appeltaart van kees', activity_type_id: '3', start_time: '2016-05-18 10:10:00', end_time: '2016-05-18 10:20:00')
+  Log.create(client_id: '5', description: 'Insuline ingespoten', activity_type_id: '1', start_time: '2016-05-18 12:10:00', end_time: '2016-05-18 12:20:00')
+  Log.create(client_id: '5', description: 'Appeltaart', activity_type_id: '3', start_time: '2016-05-18 09:10:00', end_time: '2016-05-18 10:00:00')
+  Log.create(client_id: '5', description: 'Insuline ingespoten', activity_type_id: '1', start_time: '2016-05-18 12:10:00', end_time: '2016-05-18 12:20:00')
+  Log.create(client_id: '5', description: 'Appeltaart', activity_type_id: '3', start_time: '2016-05-19 10:10:00', end_time: '2016-05-19 10:30:00')
+  Log.create(client_id: '5', description: 'Insuline ingespoten', activity_type_id: '1', start_time: '2016-05-19 12:10:00', end_time: '2016-05-19 12:20:00')
+
+  #week2 
+  Log.create(client_id: '5', description: 'Insuline ingespoten', activity_type_id: '1', start_time: '2016-05-19 19:10:00', end_time: '2016-05-19 19:30:00')
+  Log.create(client_id: '5', description: 'Zwemmen', activity_type_id: '2', start_time: '2016-05-20 20:00:00', end_time: '2016-05-20 21:00:00')
+  Log.create(client_id: '5', description: 'Oliebollen gegeten', activity_type_id: '3', start_time: '2016-05-20 17:00:00', end_time: '2016-05-20 17:30:00')
+  Log.create(client_id: '5', description: 'Insuline ingespoten', activity_type_id: '1', start_time: '2016-05-20 19:10:00', end_time: '2016-05-20 19:30:00')
+  Log.create(client_id: '5', description: 'Insuline ingespoten', activity_type_id: '1', start_time: '2016-05-21 19:10:00', end_time: '2016-05-21 19:20:00')
+  Log.create(client_id: '5', description: 'Appeltaart gegeten', activity_type_id: '3', start_time: '2016-05-21 10:10:00', end_time: '2016-05-21 10:20:00')
