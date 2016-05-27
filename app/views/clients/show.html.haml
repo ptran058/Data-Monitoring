@@ -36,9 +36,14 @@
         medicatie
         = render 'diabetes/medications.html.haml'
 .row
-  .col-md-9
+  .col-md-8
     .panel.panel-default
       .panel-body
+        .row
+          .col-md-12
+            .title
+              Glucose
+            %hr
         - @measures = []
         - @glucoses.each do |g|
           - @measures << "{/column-2/: /#{g.mmol}/, /date/: /#{g.activity_date.strftime('%Y-%m-%d %H:%M')}/ }"
@@ -50,25 +55,23 @@
         = render 'diabetes/glucose_chart.html.haml'
         #chartdiv{ :style => "height: 400px"}
 
-  .col-md-3
+  .col-md-4
     = render 'diabetes/hba1c.html.haml'
 .row
-  .col-md-9
+  .col-md-8
     .panel.panel-default
       .panel-body
-        - @calender = []
-        - @log.each do |l| 
-
-          - @calender << "{title: '#{l.description}', start: '#{l.start_time.strftime('%Y-%m-%dT%H:%M')}', end: '#{l.end_time.strftime('%Y-%m-%dT%H:%M')}'   }"
-          -if !@log.last
-            - @calender << ","
+        .row
+          .col-md-12
+            .title
+              Logboek
+            %hr
         = render 'diabetes/log_calendar.html.haml'
         #calendar
 
-  .col-md-3
+  .col-md-4
     .panel.panel-default
       .panel-body
-        KlachtenBoek
         = render 'diabetes/complaints.html.haml'
 .row
   .col-md-3
@@ -76,18 +79,31 @@
   .col-md-9
     .panel.panel-default
       .panel-body
+        .row
+          .col-md-12
+            .title
+              Bloeddruk
+            %hr
         = render 'diabetes/bloodpressure_chart.html.haml'
         #bloodpressure{ :style => "height: 220px"}
 .row
   .col-md-6
     .panel.panel-default
       .panel-body
-        Cholesterol
+        .row
+          .col-md-12
+            .title
+              Cholesterol
+            %hr
         = render 'diabetes/cholesterol_chart.html.haml'
         #cholesterol_chart{ :style => "height: 300px"}
   .col-md-6
     .panel.panel-default
       .panel-body
-        Gewicht
+        .row
+          .col-md-12
+            .title
+              Gewicht
+            %hr
         = render 'diabetes/weight_chart.html.haml'
         #weight_chart{ :style => "height: 300px"}
