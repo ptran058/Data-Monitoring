@@ -6,7 +6,6 @@
       "columnWidth": 0,
       "dataDateFormat": "YYYY-MM-DD HH:NN",
       "plotAreaFillAlphas": 1,
-      "handDrawThickness": 2,
       "categoryAxis": {
         "autoRotateAngle": 90,
         "autoRotateCount": 0,
@@ -33,12 +32,12 @@
         {
           "balloonText": "Streefwaarde",
           "finalDate": "2014-03-01",
-          "finalValue": 10,
-          "finalXValue": 10,
+          "finalValue": 8,
+          "finalXValue": 8,
           "id": "HYPER",
           "initialDate": "2014-03-06 24:00",
-          "initialValue": 10,
-          "initialXValue": 10,
+          "initialValue": 8,
+          "initialXValue": 8,
           "lineAlpha": 0.56,
           "lineColor": "#51BDE9"
         }
@@ -57,15 +56,23 @@
       ],
       "guides": [
         {
+          "category": "hypo",
+          "color": "#000000",
           "dashLength": 0,
+          "date": "2016-04-30 24:00",
           "fillAlpha": 1,
-          "fillColor": "#FFFFFF",
-          "id": "hyper",
+          "fillColor": "#E8E8E8",
+          "fontSize": 12,
+          "id": "hypo",
+          "inside": true,
+          "label": "hypo",
+          "labelRotation": 0,
           "lineAlpha": 1,
           "lineColor": "#51BDE9",
           "lineThickness": 1,
-          "toValue": 4,
-          "value": 4
+          "toCategory": "hypo",
+          "toValue": 3.7,
+          "value": 0
         },
         {
           "fillAlpha": 0.14,
@@ -76,8 +83,25 @@
           "value": 5
         },
         {
+          "color": "#000000",
+          "dashLength": 0,
           "date": "1899-11-29 24:00",
-          "id": "Voeding"
+          "fillAlpha": 1,
+          "fillColor": "#E8E8E8",
+          "fontSize": 12,
+          "id": "Hyper",
+          "inside": true,
+          "label": "Hyper",
+          "toValue": 14,
+          "value": 8
+        },
+        {
+          "fillAlpha": 1,
+          "fillColor": "#E8E8E8",
+          "fontSize": 3,
+          "id": "hyper-bg",
+          "toValue": 99,
+          "value": 8
         }
       ],
       "valueAxes": [
@@ -89,12 +113,52 @@
           "firstDayOfWeek": 0,
           "gridAlpha": 0,
           "minorGridAlpha": 0,
-          "title": "mmol/L"
+          "title": "Axis title"
         }
       ],
       "allLabels": [],
       "balloon": {},
-      "dataProvider":
-        #{@measures}
+      "titles": [
+        {
+          "color": "#000",
+          "id": "Title-bloedsuiker",
+          "size": 20,
+          "text": "Chart Title"
+        }
+      ],
+      "dataProvider": [
+        {
+          "column-2": "5",
+          "date": "2014-03-01 07:57"
+        },
+        {
+          "column-2": "7.8",
+          "date": "2014-03-02 07:58"
+        },
+        {
+          "column-2": "5.5",
+          "date": "2014-03-03 12:00"
+        },
+        {
+          "column-2": "14",
+          "date": "2014-03-03 17:50"
+        },
+        {
+          "column-2": "1",
+          "date": "2014-03-04 08:02"
+        },
+        {
+          "column-2": "7.5",
+          "date": "2014-03-05 08:03"
+        },
+        {
+          "column-2": "8.9",
+          "date": "2014-03-06 08:04"
+        },
+        {
+          "column-2": "14",
+          "date": "2014-03-06 09:05"
+        }
+      ]
     }
   );
