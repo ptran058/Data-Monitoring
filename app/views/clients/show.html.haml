@@ -52,7 +52,7 @@
   .col-md-3
     = render 'diabetes/hba1c.html.haml'
 .row
-  .col-md-9
+  .col-md-8
     .panel.panel-default
       .panel-body
         - @calender = []
@@ -64,10 +64,9 @@
         = render 'diabetes/log_calendar.html.haml'
         #calendar{ :style => "height: 500px"}
 
-  .col-md-3
+  .col-md-4
     .panel.panel-default
       .panel-body
-        KlachtenBoek
         = render 'diabetes/complaints.html.haml'
 .row
   .col-md-3
