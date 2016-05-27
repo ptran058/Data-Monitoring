@@ -40,15 +40,15 @@
     .panel.panel-default
       .panel-body
         - @measures = []
-        - @glucoses.each do |g| 
-          - @measures << "{/column-2/: /#{g.mmol}/, /date/: /#{g.activity_date.strftime('%Y-%m-%d %H:%M')}/, }"
-          -if !@log.last
+        - @glucoses.each do |g|
+          - @measures << "{/column-2/: /#{g.mmol}/, /date/: /#{g.activity_date.strftime('%Y-%m-%d %H:%M')}/ }"
+          -if !@glucoses.last
             - @measures << ","
         // Creating right format for Chart
         - @measures = @measures.to_s.gsub('"', '')
         - @measures = @measures.to_s.gsub('/', '"')
         = render 'diabetes/glucose_chart.html.haml'
-        #chartdiv{ :style => "height: 300px"}
+        #chartdiv{ :style => "height: 400px"}
 
   .col-md-3
     = render 'diabetes/hba1c.html.haml'
@@ -82,6 +82,7 @@
   .col-md-6
     .panel.panel-default
       .panel-body
+        Cholesterol
         = render 'diabetes/cholesterol_chart.html.haml'
         #cholesterol_chart{ :style => "height: 300px"}
   .col-md-6
@@ -89,4 +90,4 @@
       .panel-body
         Gewicht
         = render 'diabetes/weight_chart.html.haml'
-        #weight_chart{ :style => "height: 220px"}
+        #weight_chart{ :style => "height: 300px"}
