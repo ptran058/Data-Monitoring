@@ -13,6 +13,11 @@
     .panel.panel-default
       .panel-body
         .row
+          .col-md-12
+            .title
+              Cliënt
+            %hr
+        .row
           .col-md-4
             %a.thumbnail{:href => "#"}
               %img{:alt => "#{@client.name} #{@client.surname}", :src => "#{@client.photo_url}"}
@@ -22,7 +27,7 @@
               = @client.surname
             = @client.date_of_birth
             %br
-            bloedgroep
+            Bloedgroep
             = @client.blood_type 
             %br
             Kamer 
@@ -33,7 +38,11 @@
   .col-md-6
     .panel.panel-default
       .panel-body
-        medicatie
+        .row
+          .col-md-12
+            .title
+              Medicatie
+            %hr
         = render 'diabetes/medications.html.haml'
 .row
   .col-md-8
