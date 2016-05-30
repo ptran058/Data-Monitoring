@@ -14,13 +14,16 @@ class ClientsController < ApplicationController
     @client = Client.new
   end
 
+  def edit
+    @client = Client.find(params[:id])
+  end
+
   def create 
     @client = Client.new (client_params)
     @client.save 
     redirect_to clients_path
   end
   def show
-
     @weight = Weight.new
     @weight_target = WeightTarget.new
     @medication = Medication.new
