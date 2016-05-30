@@ -11,6 +11,7 @@ class LogsController < ApplicationController
     @glucose = Glucose.all
     @glucose_target = GlucoseTarget.all
     @sight = Sight.all
+    @nutrition = Nutrition.all
   end
 
   def new
@@ -40,6 +41,7 @@ class LogsController < ApplicationController
     @heartrate_target = HeartrateTarget.new
     @cholesterol = Cholesterol.new
     @cholesterol_target = CholesterolTarget.new
+    @nutrition = Nutrition.new
   end
 
 

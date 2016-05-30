@@ -1,0 +1,27 @@
+.modal-dialog{:role => "document"}
+  .modal-content
+    .modal-header
+      %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+        %span{"aria-hidden" => "true"} &times;
+      %h4#myModalLabel.modal-title Voeding
+    .modal-body
+      = form_for @nutrition do |n|
+        = n.hidden_field :client_id, value: params[:id]
+        .form-group
+        .row
+          .col-md-8
+          = n.hidden_field :activity_date, class: "form_control", id: "nutrition_time"
+      :javascript
+        $(function () {
+            $('#nutrition_time').datetimepicker({
+                inline: true,
+                sideBySide: true,
+                format:'YYYY-MM-DD HH:mm'
+            });
+        }); 
+        .form-group
+          = n.label :quantity, "Hoeveelheid"
+          = n.text_field :quantity, placeholder: 'Hoeveelheid in ml of aantal',class: "form-control"
+        .row
+          .col-md-12
+            = n.submit "Bevestig", class: "btn btn-primary pull-right"
