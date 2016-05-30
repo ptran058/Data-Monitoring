@@ -1,38 +1,40 @@
 = form_for @client do |f|
   .row
+    %h1 Nieuwe cliënt toevoegen
+
     .col-md-12
       .form-group
         = f.label :photo_url, "Foto URL"
-        = f.text_field :photo_url, class: "form-control" 
+        = f.text_field :photo_url, placeholder: 'http://www.google.nl/..', class: "form-control" 
   .row
     .col-md-6
       .form-group
         = f.label :name, "Voornaam"
-        = f.text_field :name, class: "form-control"
+        = f.text_field :name, placeholder: 'Volledig voornaam', class: "form-control"
     .col-md-6
       .form-group
         = f.label :surname, "Achternaam"
-        = f.text_field :surname, class: "form-control"
+        = f.text_field :surname, placeholder: 'Achternaam inclusief tussenvoegsels', class: "form-control"
   .row 
     .col-md-12
       .form-group
         = f.label :date_of_birth, "Geboortedatum"
-        = f.text_field :date_of_birth, class: "form-control"
+        = f.text_field :date_of_birth, placeholder: 'DD-MM-JJJJ', class: "form-control"
   .row 
     .col-md-12
       .form-group
         = f.label :room, "Kamer"
-        = f.text_field :room, class: "form-control"
+        = f.text_field :room, placeholder: 'Kamer nummer + letter (12B, 18A, etc.)', class: "form-control"
   .row 
     .col-md-12
       .form-group
         = f.label :institution, "Instelling"
-        = f.text_field :institution, class: "form-control"
+        = f.text_field :institution, placeholder: 'Instellingnaam', class: "form-control"
   .row 
     .col-md-12
       .form-group
         = f.label :blood_type, "Bloedgroep"
-        = f.text_field :blood_type, class: "form-control"
+        = f.text_field :blood_type, placeholder: 'Soort bloedgroep type', class: "form-control"
 
 
   = f.submit "Bevestig", class: "btn btn-primary"
