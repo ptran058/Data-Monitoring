@@ -1,9 +1,10 @@
 class AddTableRowsToNutrition < ActiveRecord::Migration
   def change
-    add_column :nutritions, :client_id, :integer 
-    add_column :nutritions, :activity_date, :datetime
-    add_column :nutritions, :quantity, :integer
-  end
+    create_table :nutritions do |t|
+      t.integer :client_id
+      t.datetime :activity_date
+      t.integer :quantity
+    end
 end
 
 
