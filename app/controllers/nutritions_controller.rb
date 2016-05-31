@@ -1,9 +1,16 @@
 class NutritionsController < ApplicationController
+  def index
+    @nutrition = Nutrition.all
+  end
+
+  def new
+    @nutrition = Nutrition.new
+  end
 
   def create
     @nutrition = Nutrition.new(nutrition_params)
     @nutrition.save
-    redirect_to client_path(nutrition_params[:client_id])
+    redirect_to nutritions_path
   end
 
   def edit
@@ -13,7 +20,13 @@ class NutritionsController < ApplicationController
   def update
     @nutrition = Nutrition.find(params[:id])
     @nutrition.update(nutrition_params)
-    redirect_to client_path(nutrition_params[:client_id])
+    redirect_to nutritions_path
+  end
+
+  def destroy
+    @nutrition = Nutrition.find(params[:id])
+    nutrition.destroy
+    redirect_to nutritions_path
   end
 
   private 
