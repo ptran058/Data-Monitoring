@@ -18,23 +18,40 @@
               Cliënt
             %hr
         .row
-          .col-md-4
-            %a.thumbnail{:href => "#"}
-              %img{:alt => "#{@client.name} #{@client.surname}", :src => "#{@client.photo_url}"}
-          .col-md-5
-            %h4
+          .col-md-3
+            %a{:href => "#"}
+              %img.test{:alt => "#{@client.name} #{@client.surname}", :src => "#{@client.photo_url}"}
+          .col-md-9
+            .client-name-title
               = @client.name
               = @client.surname
-            = @client.date_of_birth
+            .client-age-title
+              = @client.date_of_birth
             %br
-            Bloedgroep
-            = @client.blood_type 
-            %br
-            Kamer 
-            = @client.room
-            %br
-            Instelling 
-            = @client.institution
+            .row
+              %table
+                %tr.tr-style
+                  %td.col-md-3.col-styling Instelling:
+                  %td.col-md-3
+                    = @client.institution
+                  %td.col-md-3.col-styling Gewicht:
+                  %td.col-md-3 75 kg
+                %tr.tr-style
+                  %td.col-md-3.col-styling Kamer:
+                  %td.col-md-3
+                    = @client.room
+                  %td.col-md-3.col-styling Spiermassa:
+                  %td.col-md-3 03 kg
+                %tr.tr-style
+                  %td.col-md-3.col-styling Bloedgroep:
+                  %td.col-md-3 A
+                  %td.col-md-3.col-styling Botmassa:
+                  %td.col-md-3 02 kg
+                %tr.tr-style
+                  %td.col-md-3.col-styling Lengte:
+                  %td.col-md-3 165 cm
+                  %td.col-md-3.col-styling Vetmassa:
+                  %td.col-md-3 10 kg
   .col-md-6
     .panel.panel-default
       .panel-body
