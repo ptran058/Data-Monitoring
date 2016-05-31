@@ -21,6 +21,9 @@
           Weight
         %button.btn.btn-primary.btn-sm{"data-target" => "#medication", "data-toggle" => "modal", :type => "button"}
           Medication
+        %button.btn.btn-primary.btn-sm{"data-target" => "#nutrition", "data-toggle" => "modal", :type => "button"}
+          Nutrition
+
   .col-md-6
     .panel.panel-default
       .panel-body
@@ -68,3 +71,5 @@
   = render 'forms/cholesterol.html.haml', cholesterol: @cholesterol
 #cholesterol_target.modal.fade{"aria-labelledby" => "cholesterol_target", :role => "dialog", :tabindex => "-1"}
   = render 'forms/cholesterol_target.html.haml', cholesterol_target: @cholesterol_target
+#nutrition.modal.fade{"aria-labelledby" => "nutrition", :role => "dialog", :tabindex => "-1"}
+  = render 'forms/nutrition.html.haml', nutrition: @nutrition
