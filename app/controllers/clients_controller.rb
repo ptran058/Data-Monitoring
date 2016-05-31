@@ -37,7 +37,6 @@ class ClientsController < ApplicationController
     @heartrate_target = HeartrateTarget.new
     @cholesterol = Cholesterol.new
     @cholesterol_target = CholesterolTarget.new
-    @nutrition = Nutrition.new
 
     @client = Client.find(params[:id])
     @glucoses = Glucose.where(client_id: params[:id]).order('activity_date ASC')
