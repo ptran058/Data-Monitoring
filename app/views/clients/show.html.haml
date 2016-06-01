@@ -3,6 +3,8 @@
 %script{:src => "https://www.amcharts.com/lib/3/themes/light.js"}
 %script{:src => "https://www.amcharts.com/lib/3/amstock.js"}
 
+- @warning = "#ffffff" 
+- @target_success = "#76DD72" 
 %nav.navbar.navbar-default.navbar-fixed-top
   .container
     %ul
@@ -55,7 +57,7 @@
             %hr
         = render 'diabetes/medications.html.haml'
 .row
-  .col-md-8
+  .col-md-12
     .panel.panel-default
       .panel-body
         .row
@@ -63,16 +65,10 @@
             .title
               Glucose
             %hr
-        - @measures = []
-        - @glucoses.each do |g|
-          - @measures << "{/column-2/: /#{g.mmol}/, /date/: /#{g.activity_date.strftime('%Y-%m-%d %H:%M')}/ }"
-          -if !@glucoses.last
-            - @measures << ","
-        // Creating right format for Chart
-        - @measures = @measures.to_s.gsub('"', '')
-        - @measures = @measures.to_s.gsub('/', '"')
-        = render 'diabetes/glucose_chart.html.haml'
-        #chartdiv{ :style => "height: 400px"}
+        .row
+          .col-md-12
+            = render 'diabetes/glucose_chart.html.haml'
+            #chartdiv{ :style => "height: 500px"}
 
   .col-md-4
     = render 'diabetes/hba1c.html.haml'
