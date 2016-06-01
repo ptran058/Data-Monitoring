@@ -43,7 +43,19 @@
             .title
               Medicatie
             %hr
-        = render 'diabetes/medications.html.haml'
+              .row
+                .col-md-12
+                  .row
+                    %table
+                      %tr.tr-line-height
+                        %th.col-md-6.table-head Medicatie 
+                        %th.col-md-6.table-head Dosering
+                      %tr.tr-line-height
+                        %td.col-md-6 NovoRapid Flexpen
+                        %td.col-md-6 6 Eenheden
+                      %tr.tr-line-height
+                        %td.col-md-6 Metformine HCI
+                        %td.col-md-6 6 tabletten 100mg
 .row
   .col-md-8
     .panel.panel-default
