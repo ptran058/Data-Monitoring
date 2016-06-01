@@ -1,4 +1,4 @@
-- $warning = "#fff" 
+
 - @glucose_guides = []
 - @measures = []
 - @glucoses.each do |g|
@@ -9,7 +9,6 @@
 // Creating right format for Chart
 - @measures = @measures.to_s.gsub('"', '')
 - @measures = @measures.to_s.gsub('/', '"')
-
 - @inaccurate_measurement_period = []
 - @client_nutrition.each do |n|
   - if @client_nutrition.present?
@@ -20,7 +19,7 @@
     - @glucose_guides << @inaccurate_measurement_period
     %br
 - if @client_glucose_target.present?
-  - @glucose_targets = "{/fillAlpha/: 0.14, /fillColor/: /#51BDE9/, /fontSize/: 0, /id/: /Streefwaarde/, /toValue/: #{@client_glucose_target.high}, /value/: #{@client_glucose_target.low} }"
+  - @glucose_targets = "{/fillAlpha/: 0.2, /fillColor/: /#{@target_success}/, /fontSize/: 0, /id/: /Streefwaarde/, /toValue/: #{@client_glucose_target.high}, /value/: #{@client_glucose_target.low} }"
   - @glucose_guides << @glucose_targets
 - @glucose_guides = @glucose_guides.to_s.gsub('"', '') 
 - @glucose_guides = @glucose_guides.to_s.gsub('/', '"') 
@@ -93,7 +92,7 @@
           "firstDayOfWeek": 0,
           "gridAlpha": 0,
           "minorGridAlpha": 0,
-          "title": "Axis title"
+          "title": "MMOL/l"
         }
       ],
       "allLabels": [],
