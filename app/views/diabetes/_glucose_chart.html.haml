@@ -1,3 +1,32 @@
+- $warning = "#fff" 
+- @glucose_guides = []
+- @measures = []
+- @glucoses.each do |g|
+  - @measures << "{/column-2/: /#{g.mmol}/, /date/: /#{g.activity_date.strftime('%Y-%m-%d %H:%M')}/ }"
+  -if !@glucoses.last
+    - @measures << ","
+
+// Creating right format for Chart
+- @measures = @measures.to_s.gsub('"', '')
+- @measures = @measures.to_s.gsub('/', '"')
+
+- @inaccurate_measurement_period = []
+- @client_nutrition.each do |n|
+  - if @client_nutrition.present?
+    - @nutrition_end = n.activity_date + 90.minutes
+    - @inaccurate_measurement_period << "{  date: /#{n.activity_date.strftime('%Y-%m-%d %H:%M')}/, toDate: /#{@nutrition_end.strftime('%Y-%m-%d %H:%M')}/, lineColor: /#CC0000/, lineAlpha: 1, fillAlpha: 0.1, fillColor: /#CC0000/, dashLength: 2, inside: true, labelRotation: 90, label: /Niet nuchter/}"
+    - if !@client_nutrition.last
+      - @glucose_guides << ","
+    - @glucose_guides << @inaccurate_measurement_period
+    %br
+- if @client_glucose_target.present?
+  - @glucose_targets = "{/fillAlpha/: 0.14, /fillColor/: /#51BDE9/, /fontSize/: 0, /id/: /Streefwaarde/, /toValue/: #{@client_glucose_target.high}, /value/: #{@client_glucose_target.low} }"
+  - @glucose_guides << @glucose_targets
+- @glucose_guides = @glucose_guides.to_s.gsub('"', '') 
+- @glucose_guides = @glucose_guides.to_s.gsub('/', '"') 
+- @glucose_guides = @glucose_guides.to_s.gsub('[', '') 
+- @glucose_guides = @glucose_guides.to_s.gsub(']', '') 
+
 :javascript
   AmCharts.makeChart("chartdiv",
     {
@@ -54,56 +83,7 @@
           "valueField": "column-2"
         }
       ],
-      "guides": [
-        {
-          "category": "hypo",
-          "color": "#000000",
-          "dashLength": 0,
-          "date": "2016-04-30 24:00",
-          "fillAlpha": 1,
-          "fillColor": "#E8E8E8",
-          "fontSize": 12,
-          "id": "hypo",
-          "inside": true,
-          "label": "hypo",
-          "labelRotation": 0,
-          "lineAlpha": 1,
-          "lineColor": "#51BDE9",
-          "lineThickness": 1,
-          "toCategory": "hypo",
-          "toValue": 3.7,
-          "value": 0
-        },
-        {
-          "fillAlpha": 0.14,
-          "fillColor": "#51BDE9",
-          "fontSize": 0,
-          "id": "Streefwaarde",
-          "toValue": 6.6,
-          "value": 5
-        },
-        {
-          "color": "#000000",
-          "dashLength": 0,
-          "date": "1899-11-29 24:00",
-          "fillAlpha": 1,
-          "fillColor": "#E8E8E8",
-          "fontSize": 12,
-          "id": "Hyper",
-          "inside": true,
-          "label": "Hyper",
-          "toValue": 14,
-          "value": 8
-        },
-        {
-          "fillAlpha": 1,
-          "fillColor": "#E8E8E8",
-          "fontSize": 3,
-          "id": "hyper-bg",
-          "toValue": 99,
-          "value": 8
-        }
-      ],
+      "guides": [ #{@glucose_guides}],
       "valueAxes": [
         {
           "axisTitleOffset": 13,
