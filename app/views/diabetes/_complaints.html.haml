@@ -10,65 +10,30 @@
 .row
   .col-md-12
     .content-container2
-      .row
-        .col-md-12
-          .content
-            .row
-              .col-md-12
-                .complain-title
-                  Last van de knie
-            .row
-              .col-md-12
-                .date-title
-                  Datum: 21-04-2015, Tijd:16:25
-   
-            .row
-              .col-md-12
-                .author-title
-                  Geschreven door: Marieke van Aalst (verzorger)
-                %br
-            .row
-              .col-md-12
-                .plain-text
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tum Quintus: Est plane, Piso, ut dicis, inquit. Summus dolor plures dies manere non potest? Quamquam te quidem video minime esse deterritum. Cupiditates non Epicuri divisione finiebat, sed sua satietate. Res enim se praeclare habebat, et quidem in utraque parte. Praeclare hoc quidem.
-      %hr
-      .row
-        .col-md-12
-          .content
-            .row
-              .col-md-12
-                .complain-title
-                  Last van hoofdpijn
-            .row
-              .col-md-12
-                .date-title
-                  Datum: 21-04-2015, Tijd:16:25
-            .row
-              .col-md-12
-                .author-title
-                  Geschreven door: Nick Jagersmal (verzorger)
-                %br
-            .row
-              .col-md-12
-                .plain-text
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tum Quintus: Est plane, Piso, ut dicis, inquit. Summus dolor plures dies manere non potest? Quamquam te quidem video minime esse deterritum. Cupiditates non Epicuri divisione finiebat, sed sua satietate. Res enim se praeclare habebat, et quidem in utraque parte. Praeclare hoc quidem.
-      %hr
-      .row
-        .col-md-12
-          .content
-            .row
-              .col-md-12
-                .complain-title
-                  Last van been
-            .row
-              .col-md-12
-                .date-title
-                  Datum: 21-04-2015, Tijd:16:25
-            .row
-              .col-md-12
-                .author-title
-                  Geschreven door: Rob bolten (verzorger)
-          .row
-            .col-md-12
-              .plain-text
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tum Quintus: Est plane, Piso, ut dicis, inquit. Summus dolor plures dies manere non potest? Quamquam te quidem video minime esse deterritum. Cupiditates non Epicuri divisione finiebat, sed sua satietate. Res enim se praeclare habebat, et quidem in utraque parte. Praeclare hoc quidem.
+      - @client_complaint.each do |c|
+        .row
+          .col-md-12
+            .content
+              .row
+                .col-md-12
+                  .complain-title
+                    = c.title
+              .row
+                .col-md-12
+                  .date-title
+                    = c.complain_date.strftime('%d-%m-%Y %H:%M') if c.complain_date.present?
+     
+              .row
+                .col-md-12
+                  .author-title
+                    Geschreven door: 
+                    = c.author
+                    (
+                    = c.function
+                    )
+                  %br
+              .row
+                .col-md-12
+                  .plain-text
+                    = c.description if c.description.present?
+        %hr
