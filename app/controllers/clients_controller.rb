@@ -47,7 +47,7 @@ class ClientsController < ApplicationController
     @heartrate_targets = HeartrateTarget.where(client_id: params[:id])
     @cholesterol_targets = CholesterolTarget.where(client_id: params[:id])
 
-    @hba1cs = Hba1c.where(client_id: params[:id]).order('activity_date DESC').limit(2)
+    @client_hba1c = Hba1c.where(client_id: params[:id]).order('activity_date DESC').limit(2)
     @heartrates = Heartrate.where(client_id: params[:id]).order('activity_date DESC').limit(2)
     @client_log = Log.where(client_id: params[:id])
     @client_hba1c_target = Hba1cTarget.where(client_id: params[:id]).last

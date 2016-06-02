@@ -1,45 +1,38 @@
-.recap-box
-  .panel.panel-default
-    .panel-body
-      .row
-        .col-md-9
-          .title
-            Hba1c
-        .col-md-3
-          .check
-      .row
-        .col-md-12
-          %hr
-      .row
-        .col-md-12
-          .row
-            .col-md-4
-              .pastvalue 
-                - if @hba1cs.first.present? 
-                  = @hba1cs.first.mmol 
-                - else 
-                  N/A
-            .col-md-5
-              .newvalue 
-                - if @hba1cs.last.present? 
-                  = @hba1cs.last.mmol 
-                - else 
-                  N/A
-            .col-md-3     
-              .unit
-                MMO/L
-        - if @client_hba1c_target.present?
-          .col-md-12
-            %hr
-            .col-md-6
-              Streefwaarde
-            .col-md-4
-              .target 
-                = @client_hba1c_target.mmol
-      .row
-        .col-md-12
-          .lastdate
-            -  if @hba1cs.last.present?
-              = @hba1cs.last.activity_date.strftime("Laatst gemeten op: %d-%m-%Y")
-            - else
-              Laatste meetmoment is onbekend
+.row
+  .col-md-4
+    Hba1c
+  .col-md-5
+    - if @client_hba1c.last.present? 
+      = @client_hba1c.last.mmol 
+    - else 
+      N/A
+    MMOL/l
+    -  if @client_hba1c.last.present?
+      = @client_hba1c.last.activity_date.strftime("%d-%m-%Y")
+    - else
+      Laatste meetmoment is onbekend
+  .col-md-3
+
+.row
+.col-md-12
+.row
+  .col-md-4
+    Streefwaarde
+    = @client_hba1c_target.mmol
+  .col-md-5
+    - if @client_hba1c.first.present? 
+      = @client_hba1c.first.mmol 
+    - else 
+      N/A
+    MMOL/l
+    -  if @client_hba1c.first.present?
+      = @client_hba1c.first.activity_date.strftime("%d-%m-%Y")
+    - else
+      Laatste meetmoment is onbekend
+  .col-md-3
+    - if @client_hba1c.first.mmol <= 53 
+      Goed
+    - elsif @client_hba1c.first.mmol > 53 && @client_hba1c.first.mmol < 69
+      Aanvaardbaar
+    - elsif @client_hba1c.first.mmol > 59
+      slecht
