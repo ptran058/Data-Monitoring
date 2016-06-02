@@ -17,9 +17,10 @@ class LogsController < ApplicationController
     @log = Log.new
   end
   def create
-    @log = Log.new (log_params)
+    @log = Log.new(log_params)
     @log.save 
-    redirect_to logs_path
+    redirect_to client_path(log_params[:client_id])
+
   end
 
   def show
@@ -40,6 +41,7 @@ class LogsController < ApplicationController
     @heartrate_target = HeartrateTarget.new
     @cholesterol = Cholesterol.new
     @cholesterol_target = CholesterolTarget.new
+    @log = Log.new
   end
 
 

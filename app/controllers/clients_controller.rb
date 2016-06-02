@@ -38,10 +38,9 @@ class ClientsController < ApplicationController
     @cholesterol = Cholesterol.new
     @cholesterol_target = CholesterolTarget.new
     @nutrition = Nutrition.new
-
+    @log = Log.new
     @client = Client.find(params[:id])
     @glucoses = Glucose.where(client_id: params[:id]).order('activity_date ASC')
-    @log = Log.where(client_id: params[:id])
     @hba1c_targets = Hba1cTarget.where(client_id: params[:id])
     @blood_pressure_targets = BloodPressureTarget.where(client_id: params[:id])
     @heartrate_targets = HeartrateTarget.where(client_id: params[:id])
@@ -49,6 +48,7 @@ class ClientsController < ApplicationController
 
     @hba1cs = Hba1c.where(client_id: params[:id]).order('activity_date DESC').limit(2)
     @heartrates = Heartrate.where(client_id: params[:id]).order('activity_date DESC').limit(2)
+    @client_log = Log.where(client_id: params[:id])
     @client_hba1c_target = Hba1cTarget.where(client_id: params[:id]).last
     @client_heartrate_target = HeartrateTarget.where(client_id: params[:id]).last
     @client_glucose_target = GlucoseTarget.where(client_id: params[:id]).last

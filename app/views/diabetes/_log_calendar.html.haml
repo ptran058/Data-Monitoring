@@ -1,6 +1,6 @@
 
 - @calender = []
-- @log.each do |l| 
+- @client_log.each do |l| 
   - if l.activity_type_id == 1
     - @calender << "{title: '#{l.description}', start: '#{l.start_time.strftime('%Y-%m-%dT%H:%M')}', end: '#{l.end_time.strftime('%Y-%m-%dT%H:%M')}', backgroundColor: '#0E71AC'}"
   - elsif l.activity_type_id == 2
@@ -9,7 +9,7 @@
     - @calender << "{title: '#{l.description}', start: '#{l.start_time.strftime('%Y-%m-%dT%H:%M')}', end: '#{l.end_time.strftime('%Y-%m-%dT%H:%M')}', backgroundColor: '#FF6851'}"
 
     
-  -if !@log.last
+  -if !@client_log.last
     - @calender << ","
 :javascript
 
