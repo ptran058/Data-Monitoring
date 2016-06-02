@@ -1,32 +1,43 @@
-= form_for @log do |f|
+.modal-dialog{:role => "document"}
+  .modal-content
+    .modal-header
+      %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+        %span{"aria-hidden" => "true"} &times;
+      %h4#myModalLabel.modal-title Activiteiten
+    .modal-body
+      = form_for @log do |lo|
+        = lo.hidden_field :client_id, value: params[:id]
+        .form-group
+          = lo.label :description, "Beschrijving"
+          = lo.text_field :description, placeholder: 'Beschrijving actitiveit' , class: "form-control"
+        .form-group
+          = lo.hidden_field :activity_type_id, value: 2
+        .form-group
+          = lo.label :start_time, "Start Tijd"
+          = lo.text_field :start_time, placeholder: 'Tijd in UU:MM' , class: "form-control", id: "start_time" 
+        .form-group
+          = lo.label :end_time, "Eind Tijd"
+          = lo.text_field :end_time, placeholder: 'Tijd in UU:MM' , class: "form-control", id: "end_time" 
 
-  .modal-body
-    .row
-      .col-md-12
-        .form-group
-          = f.label :client_id, "Naam Client"
-          = f.text_field :client_id, placeholder: 'Voor en Achternaam Client' ,class: "form-control"
-    .row
-      .col-md-12
-        .form-group
-          = f.label :activity_type_id, "Activiteit"
-          = f.text_field :activity_type_id, placeholder: 'Soort activiteit' ,class: "form-control"
-    .row
-      .col-md-6
-        .form-group
-          = f.label :start_time, "Begin tijd"
-          = f.text_field :start_time, placeholder: 'Begin tijd in uren en minuten', class: "form-control"
-      .col-md-6
-        .form-group
-          = f.label :end_time, "Eind tijd"
-          = f.text_field :end_time, placeholder: 'Eind tijd in uren en minuten', class: "form-control"
+          .row
+            .col-md-12
+              = lo.submit "Bevestig", class: "btn btn-primary pull-right"
 
-    .row
-      .col-md-12
-        = f.label :description, "Activiteit"
-        = f.text_area :description, placeholder: 'Korte beschrijving van de activiteit',class: "form-control"
-    %br
-    .row
-      .col-md-12
-        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
-        = f.submit "Bevestig", class: "btn btn-primary pull-right"
+
+          :javascript
+            $(function () {
+                $('#start_time').datetimepicker({
+                    inline: true,
+                    sideBySide: true,
+                    format:'YYYY-MM-DD HH:mm'
+                });
+            }); 
+            $(function () {
+                $('#end_time').datetimepicker({
+                    inline: true,
+                    sideBySide: true,
+                    format:'YYYY-MM-DD HH:mm'
+                });
+            });             
+        
+

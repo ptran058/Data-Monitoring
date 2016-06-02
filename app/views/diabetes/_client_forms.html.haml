@@ -23,7 +23,8 @@
           Medication
         %button.btn.btn-primary.btn-sm{"data-target" => "#nutrition", "data-toggle" => "modal", :type => "button"}
           Voeding
-
+        %button.btn.btn-primary.btn-sm{"data-target" => "#log", "data-toggle" => "modal", :type => "button"}
+          Activiteit
   .col-md-6
     .panel.panel-default
       .panel-body
@@ -73,3 +74,5 @@
   = render 'forms/cholesterol_target.html.haml', cholesterol_target: @cholesterol_target
 #nutrition.modal.fade{"aria-labelledby" => "nutrition", :role => "dialog", :tabindex => "-1"}
   = render 'forms/nutrition.html.haml', nutrition: @nutrition
+#log.modal.fade{"aria-labelledby" => "log", :role => "dialog", :tabindex => "-1"}
+  = render 'forms/log.html.haml', log: @log
