@@ -1,0 +1,42 @@
+.modal-dialog{:role => "document"}
+  .modal-content
+    .modal-header
+      %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+        %span{"aria-hidden" => "true"} &times;
+      %h4#myModalLabel.modal-title Bloeddruk
+    .modal-body
+      = form_for @complaint do |c|
+        = c.hidden_field :client_id, value: params[:id]
+        .form-group
+          = c.label :title, "Klacht" 
+          = c.text_field :title, placeholder: 'Bijv, hoofdpijn' , class: "form-control"
+        .form-group
+          = c.label :description, "Omschrijving"
+          = c.text_area :description, placeholder: 'Omschrijving' , class: "form-control"
+        .form-group
+          = c.label :complain_date, "Tijd"
+          %div{:style => "overflow:hidden;"}
+            .form-group
+              .row
+                .col-md-8
+                = c.hidden_field :complain_date, class: "form_control", id: "complaint_date"
+            :javascript
+              $(function () {
+                  $('#complaint_date').datetimepicker({
+                      inline: true,
+                      sideBySide: true,
+                      format:'YYYY-MM-DD HH:mm'
+                  });
+              });
+              
+        .form-group
+          .row
+            .col-md-6
+              = c.label :author, "Auteur" 
+              = c.text_field :author, placeholder: 'Auteur' , class: "form-control"
+            .col-md-6
+              = c.label :function, "Functie" 
+              = c.text_field :function, placeholder: 'Functie' , class: "form-control"
+        .row 
+          .col-md-12
+            = c.submit "Bevestig", class: "btn btn-primary pull-right"

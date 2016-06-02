@@ -24,6 +24,7 @@ class ClientsController < ApplicationController
     redirect_to clients_path
   end
   def show
+    @complaint = Complaint.new
     @weight = Weight.new
     @weight_target = WeightTarget.new
     @medication = Medication.new

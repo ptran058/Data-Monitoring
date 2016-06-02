@@ -25,6 +25,8 @@
           Voeding
         %button.btn.btn-primary.btn-sm{"data-target" => "#log", "data-toggle" => "modal", :type => "button"}
           Activiteit
+        %button.btn.btn-primary.btn-sm{"data-target" => "#complaint", "data-toggle" => "modal", :type => "button"}
+          Klachten
   .col-md-6
     .panel.panel-default
       .panel-body
@@ -76,3 +78,5 @@
   = render 'forms/nutrition.html.haml', nutrition: @nutrition
 #log.modal.fade{"aria-labelledby" => "log", :role => "dialog", :tabindex => "-1"}
   = render 'forms/log.html.haml', log: @log
+#complaint.modal.fade{"aria-labelledby" => "log", :role => "dialog", :tabindex => "-1"}
+  = render 'forms/complaint.html.haml', complaint: @complaint

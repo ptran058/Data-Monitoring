@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :cholesterol_targets
   resources :glucose_targets
   resources :nutritions
+  resources :complaints
   
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
