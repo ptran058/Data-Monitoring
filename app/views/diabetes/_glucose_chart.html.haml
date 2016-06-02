@@ -1,4 +1,3 @@
-
 - @glucose_guides = []
 - @measures = []
 - @glucoses.each do |g|
@@ -17,10 +16,10 @@
     - if !@client_nutrition.last
       - @glucose_guides << ","
     - @glucose_guides << @inaccurate_measurement_period
-    %br
 - if @client_glucose_target.present?
   - @glucose_targets = "{/fillAlpha/: 0.2, /fillColor/: /#{@target_success}/, /fontSize/: 0, /id/: /Streefwaarde/, /toValue/: #{@client_glucose_target.high}, /value/: #{@client_glucose_target.low} }"
   - @glucose_guides << @glucose_targets
+
 - @glucose_guides = @glucose_guides.to_s.gsub('"', '') 
 - @glucose_guides = @glucose_guides.to_s.gsub('/', '"') 
 - @glucose_guides = @glucose_guides.to_s.gsub('[', '') 
