@@ -60,17 +60,18 @@
     .panel.panel-default
       .panel-body
         .row
-          .col-md-12
+          .col-md-7
             .title
               Glucose
-            %hr
+          .col-md-5
+            .row
+              .col-md-12
+                = render 'diabetes/hba1c.html.haml'
+        %hr
         .row
           .col-md-12
             = render 'diabetes/glucose_chart.html.haml'
             #chartdiv{ :style => "height: 500px"}
-
-  .col-md-4
-    = render 'diabetes/hba1c.html.haml'
 .row
   .col-md-8
     .panel.panel-default
