@@ -34,6 +34,6 @@
       - if @client_hba1c.first.mmol <= 53 
         .checkmark_success
       - elsif @client_hba1c.first.mmol > 53 && @client_hba1c.first.mmol < 69
-        .checkmark_warning
+        .exclamation_mark_warning
       - elsif @client_hba1c.first.mmol > 59
-        .checkmark_danger
+        .cross_danger
