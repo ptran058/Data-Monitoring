@@ -27,6 +27,8 @@
           Activiteit
         %button.btn.btn-primary.btn-sm{"data-target" => "#complaint", "data-toggle" => "modal", :type => "button"}
           Klachten
+        %button.btn.btn-primary.btn-sm{"data-target" => "#medication_usage", "data-toggle" => "modal", :type => "button"}
+          Insuline
   .col-md-6
     .panel.panel-default
       .panel-body
@@ -80,3 +82,5 @@
   = render 'forms/log.html.haml', log: @log
 #complaint.modal.fade{"aria-labelledby" => "log", :role => "dialog", :tabindex => "-1"}
   = render 'forms/complaint.html.haml', complaint: @complaint
+#medication_usage.modal.fade{"aria-labelledby" => "log", :role => "dialog", :tabindex => "-1"}
+  = render 'forms/medication_usage.html.haml', medication_usage: @medication_usage
