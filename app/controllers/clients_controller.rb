@@ -59,6 +59,7 @@ class ClientsController < ApplicationController
     @client_weight = Weight.where(client_id: params[:id]).order('activity_date ASC').limit(10)
     @client_nutrition = Nutrition.where(client_id: params[:id]).order('activity_date ASC')
     @client_complaint = Complaint.where(client_id: params[:id]).order('complain_date ASC')
+    @client_medication_usage = MedicationUsage.where(client_id: params[:id]).order('activity_date ASC')
 
   end
   private
