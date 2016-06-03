@@ -9,6 +9,9 @@
 - @measures = @measures.to_s.gsub('"', '')
 - @measures = @measures.to_s.gsub('/', '"')
 - @inaccurate_measurement_period = []
+
+- @client_medication_usage.each do |m|
+  - @glucose_guides << "{  date: /#{m.activity_date.strftime('%Y-%m-%d %H:%M')}/, lineColor: /#000000/, lineAlpha: 1, inside: true, labelRotation: 90, label: /#{m.units} Eenheden/}"
 - @client_nutrition.each do |n|
   - if @client_nutrition.present?
     - @nutrition_end = n.activity_date + 90.minutes
