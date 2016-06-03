@@ -32,8 +32,8 @@
   .col-md-2
     - if @client_hba1c.present?
       - if @client_hba1c.first.mmol <= 53 
-        Goed
+        .checkmark_success
       - elsif @client_hba1c.first.mmol > 53 && @client_hba1c.first.mmol < 69
-        Aanvaardbaar
+        .checkmark_warning
       - elsif @client_hba1c.first.mmol > 59
-        slecht
+        .checkmark_danger
