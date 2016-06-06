@@ -1,0 +1,104 @@
+- @cholesterol_values = []
+- @client_cholesterol.each do |c| 
+  - @cholesterol_values << "{/category/: '#{c.activity_date.strftime("%b %Y")}', /HDL/: '#{c.hdl}', /LDL/: '#{c.hdl}', /Triglyceriden/: '#{c.triglycerides}',  }"
+  -if !@client_cholesterol.last
+    - @cholesterol_values << ","
+
+- @cholesterol_values = @cholesterol_values.to_s.gsub('"', '')
+- @cholesterol_values = @cholesterol_values.to_s.gsub('/', '"')
+
+:javascript
+  AmCharts.makeChart("cholesterol_chart",
+    {
+      "type": "serial",
+      "categoryField": "category",
+      "columnSpacing": 1,
+      "plotAreaFillAlphas": 1,
+      "plotAreaFillColors": "#EEEEEE",
+      "startDuration": 1,
+      "fontSize": 10,
+      "handDrawScatter": 0,
+      "theme": "default",
+      "categoryAxis": {
+        "autoRotateAngle": 0,
+        "gridPosition": "start",
+        "axisAlpha": 0,
+        "axisThickness": 0,
+        "fontSize": 10,
+        "gridThickness": 0,
+        "labelRotation": 90,
+        "minHorizontalGap": 77,
+        "titleColor": "#FF0000",
+        "titleFontSize": 16,
+        "titleRotation": 0
+      },
+      "trendLines": [],
+      "graphs": [
+        {
+          "balloonText": "[[value]] mmol/L",
+          "fillAlphas": 1,
+          "fillColors": "#FF6851",
+          "gapPeriod": 3,
+          "id": "AmGraph-HDL",
+          "labelText": "[[value]]",
+          "lineThickness": 0,
+          "title": "HDL",
+          "type": "column",
+          "valueField": "HDL"
+        },
+        {
+          "balloonColor": "#FF8B78",
+          "balloonText": "[[value]] mmol/L",
+          "fillAlphas": 1,
+          "fillColors": "#FF8B78",
+          "id": "AmGraph-LDL",
+          "labelText": "[[value]]",
+          "lineAlpha": 0,
+          "lineColor": "#C43D3D",
+          "title": "LDL",
+          "type": "column",
+          "valueField": "LDL"
+        },
+        {
+          "balloonColor": "#FFAE2A",
+          "balloonText": "[[value]] mmol/L",
+          "bulletOffset": 3,
+          "fillAlphas": 1,
+          "fillColors": "#FFAE2A",
+          "id": "AmGraph-Triglyceriden",
+          "labelText": "[[value]]",
+          "lineColor": "#008000",
+          "lineThickness": 0,
+          "negativeFillColors": "#008000",
+          "negativeLineAlpha": 0,
+          "title": "Triglyceriden",
+          "type": "column",
+          "valueField": "Triglyceriden"
+        }
+      ],
+      "guides": [],
+      "valueAxes": [
+        {
+          "axisTitleOffset": 0,
+          "id": "ValueAxis-1",
+          "stackType": "regular",
+          "zeroGridAlpha": 0,
+          "axisAlpha": 0,
+          "gridCount": 0,
+          "gridThickness": 0,
+          "title": "mmol/L",
+          "titleBold": false,
+          "titleFontSize": 13,
+          "titleRotation": -90
+        }
+      ],
+      "allLabels": [],
+      "balloon": {
+        "fillAlpha": 0,
+        "horizontalPadding": 9,
+        "pointerWidth": 7
+      },
+      "dataProvider":
+        #{@cholesterol_values}
+    }
+  );

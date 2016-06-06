@@ -1,0 +1,2 @@
+module BloodPressureTargetsHelper
+end

@@ -1,0 +1,43 @@
+.modal-dialog{:role => "document"}
+  .modal-content
+    .modal-header
+      %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+        %span{"aria-hidden" => "true"} &times;
+      %h4#myModalLabel.modal-title Activiteiten
+    .modal-body
+      = form_for @log do |lo|
+        = lo.hidden_field :client_id, value: params[:id]
+        .form-group
+          = lo.label :description, "Beschrijving"
+          = lo.text_field :description, placeholder: 'Beschrijving actitiveit' , class: "form-control"
+        .form-group
+          = lo.hidden_field :activity_type_id, value: 2
+        .form-group
+          = lo.label :start_time, "Start Tijd"
+          = lo.text_field :start_time, placeholder: 'Tijd in UU:MM' , class: "form-control", id: "start_time" 
+        .form-group
+          = lo.label :end_time, "Eind Tijd"
+          = lo.text_field :end_time, placeholder: 'Tijd in UU:MM' , class: "form-control", id: "end_time" 
+
+          .row
+            .col-md-12
+              = lo.submit "Bevestig", class: "btn btn-primary pull-right"
+
+
+          :javascript
+            $(function () {
+                $('#start_time').datetimepicker({
+                    inline: true,
+                    sideBySide: true,
+                    format:'YYYY-MM-DD HH:mm'
+                });
+            }); 
+            $(function () {
+                $('#end_time').datetimepicker({
+                    inline: true,
+                    sideBySide: true,
+                    format:'YYYY-MM-DD HH:mm'
+                });
+            });             
+        
+

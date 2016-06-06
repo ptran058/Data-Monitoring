@@ -1,0 +1,30 @@
+.modal-dialog{:role => "document"}
+  .modal-content
+    .modal-header
+      %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+        %span{"aria-hidden" => "true"} &times;
+      %h4#myModalLabel.modal-title Hba1c
+    .modal-body
+      = form_for @hba1c do |f|
+        = f.hidden_field :client_id, value: params[:id]
+        .form-group
+          = f.label :mmol, "mmol/l"
+          = f.text_field :mmol, placeholder: 'MMOL/L niveau', class: "form-control"
+        .form-group
+          = f.label :activity_date, "Tijd"
+          %div{:style => "overflow:hidden;"}
+            .form-group
+              .row
+                .col-md-8
+                = f.hidden_field :activity_date, class: "form_control", id: "hba1c_time"
+            :javascript
+              $(function () {
+                  $('#hba1c_time').datetimepicker({
+                      inline: true,
+                      sideBySide: true,
+                      format:'YYYY-MM-DD HH:mm'
+                  });
+              });
+        .row
+          .col-md-12
+            = f.submit "Bevestig", class: "btn btn-primary pull-right"

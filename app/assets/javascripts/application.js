@@ -11,6 +11,12 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap-sprockets
+//= require moment
+//= require bootstrap-datetimepicker
+//= require amcharts/amcharts
+//= require amcharts/serial
+//= require amcharts/fullcalendar
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .

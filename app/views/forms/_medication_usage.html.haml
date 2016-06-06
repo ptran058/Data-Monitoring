@@ -1,0 +1,29 @@
+.modal-dialog{:role => "document"}
+  .modal-content
+    .modal-header
+      %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+        %span{"aria-hidden" => "true"} &times;
+      %h4#myModalLabel.modal-title Voeding
+    .modal-body
+      = form_for @medication_usage do |m|
+        = m.hidden_field :client_id, value: params[:id] 
+        .form-group
+          = m.label :medication_id, "Naam medicatie"
+          = m.text_field :medication_id, placeholder: 'Naam medicatie',class: "form-control"
+        .form-group
+          = m.label :units, "Aantal eenheden"
+          = m.text_field :units, placeholder: 'Aantal enheden',class: "form-control"
+        .row
+          .col-md-12
+            = m.hidden_field :activity_date, class: "form_control", id: "activity_date"
+            :javascript
+              $(function () {
+                  $('#activity_date').datetimepicker({
+                      inline: true,
+                      sideBySide: true,
+                      format:'YYYY-MM-DD HH:mm'
+                  });
+              });
+        .row
+          .col-md-12
+            = m.submit "Bevestig", class: "btn btn-primary pull-right"

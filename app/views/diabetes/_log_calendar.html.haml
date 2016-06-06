@@ -1,0 +1,41 @@
+
+- @calender = []
+- @client_log.each do |l| 
+  - if l.activity_type_id == 1
+    - @calender << "{title: '#{l.description}', start: '#{l.start_time.strftime('%Y-%m-%dT%H:%M')}', end: '#{l.end_time.strftime('%Y-%m-%dT%H:%M')}', backgroundColor: '#0E71AC'}"
+  - elsif l.activity_type_id == 2
+    - @calender << "{title: '#{l.description}', start: '#{l.start_time.strftime('%Y-%m-%dT%H:%M')}', end: '#{l.end_time.strftime('%Y-%m-%dT%H:%M')}', backgroundColor: '#76DD72'}"
+  - elsif l.activity_type_id == 3
+    - @calender << "{title: '#{l.description}', start: '#{l.start_time.strftime('%Y-%m-%dT%H:%M')}', end: '#{l.end_time.strftime('%Y-%m-%dT%H:%M')}', backgroundColor: '#FF6851'}"
+
+- @client_nutrition.each do |n|
+  - if @client_nutrition.present?
+    - @end_time = n.activity_date + 45.minutes
+    - @calender << "{title: '#{n.quantity}', start: '#{n.activity_date.strftime('%Y-%m-%dT%H:%M')}', end: '#{@end_time.strftime('%Y-%m-%dT%H:%M')}', backgroundColor: '#{@warning}'}"
+
+- @client_medication_usage.each do |m|
+  - if @client_medication_usage.present?
+    - @end_time = m.activity_date + 15.minutes
+    - @calender << "{title: '#{m.units} eenheden', start: '#{m.activity_date.strftime('%Y-%m-%dT%H:%M')}', end: '#{@end_time.strftime('%Y-%m-%dT%H:%M')}', backgroundColor: '#{@medication_usage}'}"
+
+    
+  -if !@client_log.last
+    - @calender << ","
+:javascript
+
+  $(document).ready(function() {
+  
+    $('#calendar').fullCalendar({
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,agendaWeek,agendaDay'
+      },
+      defaultView: 'agendaWeek',
+      editable: true,
+      eventLimit: true, // allow "more" link when too many events
+      events: 
+      #{@calender.to_s.gsub('"', '')}
+      
+    });
+  });

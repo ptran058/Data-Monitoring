@@ -1,0 +1,92 @@
+- @weight_values = []
+- @client_weight.each do |c| 
+  - @weight_values << "{/date/: '#{c.activity_date.strftime("%Y-%m-%d")}', /column-2/: '#{c.weight}',  }"
+  -if !@client_weight.last
+    - @weight_values << ","
+
+- @weight_values = @weight_values.to_s.gsub('"', '')
+- @weight_values = @weight_values.to_s.gsub('/', '"')
+:javascript
+  AmCharts.makeChart("weight_chart",
+    {
+      "type": "serial",
+      "categoryField": "date",
+      "columnWidth": 0,
+      "dataDateFormat": "YYYY-MM-DD HH:NN",
+      "plotAreaFillAlphas": 1,
+      "categoryAxis": {
+        "autoRotateAngle": 90,
+        "autoRotateCount": 0,
+        "minPeriod": "mm",
+        "parseDates": true,
+        "axisAlpha": 0,
+        "axisColor": "#FFFFFF",
+        "axisThickness": 0,
+        "fontSize": 10,
+        "gridAlpha": 0,
+        "gridColor": "#FFFFFF",
+        "labelOffset": 5,
+        "minorGridAlpha": 0,
+        "tickLength": 0
+      },
+      "chartCursor": {
+        "enabled": true,
+        "categoryBalloonDateFormat": "JJ:NN"
+      },
+      "chartScrollbar": {
+        "enabled": true
+      },
+      "trendLines": [],
+      "graphs": [
+        {
+          "bullet": "round",
+          "columnWidth": 0,
+          "fillColors": "#FFF",
+          "id": "AmGraph-3",
+          "lineColor": "#0E71AC",
+          "negativeFillAlphas": 0,
+          "title": "graph 3",
+          "type": "smoothedLine",
+          "valueField": "column-2"
+        }
+      ],
+      "guides": [
+        {
+          "balloonText": "Streefwaarde",
+          "color": "#FFF",
+          "dashLength": 0,
+          "fillAlpha": 1,
+          "fillColor": "#E8E8E8",
+          "fontSize": 0,
+          "id": "Streefwaarde",
+          "inside": true,
+          "label": "Streefwaarde",
+          "lineAlpha": 0.49,
+          "lineColor": "#51BDE9",
+          "lineThickness": 4,
+          "toAngle": 0,
+          "toValue": 73.5,
+          "value": 80.3
+        }
+      ],
+      "valueAxes": [
+        {
+          "axisTitleOffset": 13,
+          "id": "ValueAxis-1",
+          "axisAlpha": 0,
+          "axisThickness": 0,
+          "firstDayOfWeek": 0,
+          "gridAlpha": 0,
+          "minorGridAlpha": 0,
+          "titleFontSize": 13,
+          "title": "Kg "
+        }
+      ],
+      "allLabels": [],
+      "balloon": {
+        "borderColor": "#0E71AC"
+      },
+      "dataProvider": 
+        #{@weight_values}
+    }
+  );

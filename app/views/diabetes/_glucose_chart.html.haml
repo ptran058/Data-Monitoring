@@ -1,0 +1,115 @@
+- @glucose_guides = []
+- @measures = []
+- @glucoses.each do |g|
+  - @measures << "{/column-2/: /#{g.mmol}/, /date/: /#{g.activity_date.strftime('%Y-%m-%d %H:%M')}/ }"
+  -if !@glucoses.last
+    - @measures << ","
+
+// Creating right format for Chart
+- @measures = @measures.to_s.gsub('"', '')
+- @measures = @measures.to_s.gsub('/', '"')
+- @inaccurate_measurement_period = []
+
+- @client_medication_usage.each do |m|
+  - @glucose_guides << "{  date: /#{m.activity_date.strftime('%Y-%m-%d %H:%M')}/, lineColor: /#000000/, lineAlpha: 1, inside: true, labelRotation: 90, label: /#{m.units} Eenheden/}"
+- @client_nutrition.each do |n|
+  - if @client_nutrition.present?
+    - @nutrition_end = n.activity_date + 90.minutes
+    - @inaccurate_measurement_period << "{  date: /#{n.activity_date.strftime('%Y-%m-%d %H:%M')}/, toDate: /#{@nutrition_end.strftime('%Y-%m-%d %H:%M')}/, lineColor: /#CC0000/, lineAlpha: 1, fillAlpha: 0.01, fillColor: /#CC0000/, dashLength: 2, inside: true, labelRotation: 90, label: /Niet nuchter/}"
+    - if !@client_nutrition.last
+      - @glucose_guides << ","
+    - @glucose_guides << @inaccurate_measurement_period
+- if @client_glucose_target.present?
+  - @glucose_targets = "{/fillAlpha/: 0.2, /fillColor/: /#{@target_success}/, /fontSize/: 0, /id/: /Streefwaarde/, /toValue/: #{@client_glucose_target.high}, /value/: #{@client_glucose_target.low}}"
+  - @glucose_guides << @glucose_targets
+
+- @glucose_guides = @glucose_guides.to_s.gsub('"', '') 
+- @glucose_guides = @glucose_guides.to_s.gsub('/', '"') 
+- @glucose_guides = @glucose_guides.to_s.gsub('[', '') 
+- @glucose_guides = @glucose_guides.to_s.gsub(']', '') 
+
+:javascript
+  AmCharts.makeChart("chartdiv",
+    {
+      "type": "serial",
+      "categoryField": "date",
+      "columnWidth": 0,
+      "dataDateFormat": "YYYY-MM-DD HH:NN",
+      "plotAreaFillAlphas": 1,
+      "categoryAxis": {
+        "autoRotateAngle": 90,
+        "autoRotateCount": 0,
+        "minPeriod": "mm",
+        "parseDates": true,
+        "axisAlpha": 0,
+        "axisColor": "#FFFFFF",
+        "axisThickness": 0,
+        "fontSize": 10,
+        "gridAlpha": 0,
+        "gridColor": "#FFFFFF",
+        "labelOffset": 5,
+        "minorGridAlpha": 0,
+        "tickLength": 0
+      },
+      "chartCursor": {
+        "enabled": true,
+        "categoryBalloonDateFormat": "JJ:NN"
+      },
+      "chartScrollbar": {
+        "enabled": true
+      },
+      "graphs": [
+        {
+          "bullet": "round",
+          "columnWidth": 0,
+          "fillColors": "#FFF",
+          "id": "AmGraph-3",
+          "lineColor": "#0E71AC",
+          "negativeFillAlphas": 0,
+          "title": "graph 3",
+          "valueField": "column-2"
+        }
+      ],
+      "guides": [ 
+        #{@glucose_guides},
+        {
+          "dashLength": 6,
+          "inside": true,
+          "label": "2 uur postprandiaal (>10)",
+          "lineAlpha": 1,
+          "value": 10
+        },
+        {
+          "dashLength": 6,
+          "inside": true,
+          "label": "Hyper (>8)",
+          "lineAlpha": 1,
+          "value": 8
+        },
+        {
+          "dashLength": 6,
+          "inside": true,
+          "label": "Hypo (< 4)",
+          "lineAlpha": 1,
+          "value": 4
+        }
+
+      ],
+      "valueAxes": [
+        {
+          "axisTitleOffset": 13,
+          "id": "ValueAxis-1",
+          "axisAlpha": 0,
+          "axisThickness": 0,
+          "firstDayOfWeek": 0,
+          "gridAlpha": 0,
+          "minorGridAlpha": 0,
+          "title": "MMOL/l"
+        },
+      ],
+      "allLabels": [],
+      "balloon": {},
+      "dataProvider":
+        #{@measures}
+    }
+  );

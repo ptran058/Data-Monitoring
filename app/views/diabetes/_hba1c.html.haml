@@ -1,0 +1,39 @@
+.row
+  .col-md-4
+    Hba1c
+  .col-md-6
+    - if @client_hba1c.last.present? 
+      = @client_hba1c.last.mmol 
+    - else 
+      N/A
+    MMOL/l
+    -  if @client_hba1c.last.present?
+      = @client_hba1c.last.activity_date.strftime("%d-%m-%Y")
+    - else
+      Meetmoment onbekend
+  .col-md-2
+
+.row
+.col-md-12
+.row
+  .col-md-4
+    Streefwaarde
+    = @client_hba1c_target.mmol if @client_hba1c_target.present?
+  .col-md-6
+    - if @client_hba1c.first.present? 
+      = @client_hba1c.first.mmol 
+    - else 
+      N/A
+    MMOL/l
+    -  if @client_hba1c.first.present?
+      = @client_hba1c.first.activity_date.strftime("%d-%m-%Y")
+    - else
+      Meetmoment onbekend
+  .col-md-2
+    - if @client_hba1c.present?
+      - if @client_hba1c.first.mmol <= 53 
+        .checkmark_success
+      - elsif @client_hba1c.first.mmol > 53 && @client_hba1c.first.mmol < 69
+        .exclamation_mark_warning
+      - elsif @client_hba1c.first.mmol > 59
+        .cross_danger

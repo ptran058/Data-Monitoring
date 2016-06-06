@@ -1,0 +1,125 @@
+%script{:src => "https://www.amcharts.com/lib/3/amcharts.js"}
+%script{:src => "https://www.amcharts.com/lib/3/serial.js"}
+%script{:src => "https://www.amcharts.com/lib/3/themes/light.js"}
+%script{:src => "https://www.amcharts.com/lib/3/amstock.js"}
+
+- @warning = "#FF6851" 
+- @target_success = "#76DD72" 
+- @medication_usage = "#51BDE9" 
+%nav.navbar.navbar-default.navbar-fixed-top
+  .container
+    %ul.list-unstyled
+      %a{:href => "#"}
+        %img.header-logo{:alt => "BrandName", :src => "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAA0lBMVEX///9BstBFvNY1mr4ycaQxkbdArss/q8k6o8U1ibMyRIgyZZ0yYpw1e6t3x9kyVJMyTY5QvtZtw9g2hbEzWpc1NXzx+fsqd6js8/dgwNb0+/w3nsExlLk2gK48psdRocLS3eltu9S63+qIzd/L5e4zjbVomL3d8faSwten1OSg3OqfwNfg7PNajLUjPYQ0LXQ0JGwuFmBBP3yIm79rf6kwIWaYlLhNWo19yNzAw9lHZJ2xttDj9Pl8nsEyUJF80N91gK5KTInJ4OtzqMZXd6VPa5wJl6oeAAABvUlEQVQ4jZ2T22KiMBCGBQNRQBBs0AilclArUoLbPbBbK3to3/+VOknqAepNd64y+f6ZZP5Ar/eZ8LNNHd9vivlVOk+ojqMgXN4i9Lz4yDNXVRUdD/racIQs4/esw3O3JXBK0m6SU9oWGIwUl9zzWgLTMUj1sD+fX9tXBC/pcRq/vipYNcm7IEmbxqMqCDCGMSdTZB1KRmLb9qUB6b+X18J/j9kxtp5tyxbr16qqnj4Y01DPs8XqsWKkNPyuMapLKRWD/GHEGB8e29yHK7mum/E1KcfOjWUWLUGqisj52jgARmh1yddYUU4C5wbwdHT790IQY12BkALT5Hi47J95EkRY13UFizkfEMdaGG6OfB70g0EEGrzm6XY6GS5D2BocR72HlOdRJF6jmCw1yKEilXzGG2pQEsRy446XQ0NFduyt4MwJP1TLpCALOebXpjxdWAgJyfDuNFQkMMzNS345FgyGRqPpyTufc+EctHgqxwfuLDK357n3koP5yYwQYhhgvvN8ae1eYEq95uuOMS4pO683b+B54QOw4y+7irGK/Ox1Y51Sz67rNP7xbce+d/8bedcsTyHyzeL6z/mf8QYb0y8xneC1gwAAAABJRU5ErkJggg=="}/
+      %a.nav-txt{:href => "#"} Home
+      %a.nav-txt{:href => "#"} Link1
+      %a.nav-txt{:href => "#"} Link2
+      %a.nav-txt{:href => "#"} Link3
+
+.row.nav-margin-top
+  .col-md-12
+    = render 'diabetes/client_forms.html.haml'
+
+.row
+  .col-md-6
+    .panel.panel-default
+      .panel-body
+        .row
+          .col-md-12
+            .title
+              Cliënt
+            %hr
+        .row
+          .col-md-4
+            %a.thumbnail{:href => "#"}
+              %img{:alt => "#{@client.name} #{@client.surname}", :src => "#{@client.photo_url}"}
+          .col-md-5
+            %h4
+              = @client.name
+              = @client.surname
+            = @client.date_of_birth
+            %br
+            Bloedgroep
+            = @client.blood_type 
+            %br
+            Kamer 
+            = @client.room
+            %br
+            Instelling 
+            = @client.institution
+  .col-md-6
+    .panel.panel-default
+      .panel-body
+        .row
+          .col-md-12
+            .title
+              Medicatie
+            %hr
+        = render 'diabetes/medications.html.haml'
+.row
+  .col-md-12
+    .panel.panel-default
+      .panel-body
+        .row
+          .col-md-6
+            .title
+              Glucose
+          .col-md-6
+            .row
+              .col-md-12
+                = render 'diabetes/hba1c.html.haml'
+        %hr
+        .row
+          .col-md-12
+            = render 'diabetes/glucose_chart.html.haml'
+            #chartdiv{ :style => "height: 500px"}
+.row
+  .col-md-8
+    .panel.panel-default
+      .panel-body
+        .row
+          .col-md-12
+            .title
+              Logboek
+            %hr
+        = render 'diabetes/log_calendar.html.haml'
+        #calendar
+
+  .col-md-4
+    .panel.panel-default
+      .panel-body
+        = render 'diabetes/complaints.html.haml'
+.row
+  .col-md-4
+    = render 'diabetes/heartrate.html.haml'
+  .col-md-8
+    .panel.panel-default
+      .panel-body
+        .row
+          .col-md-12
+            .title
+              Bloeddruk
+            %hr
+        = render 'diabetes/bloodpressure_chart.html.haml'
+        #bloodpressure{ :style => "height: 220px"}
+.row
+  .col-md-6
+    .panel.panel-default
+      .panel-body
+        .row
+          .col-md-12
+            .title
+              Cholesterol
+            %hr
+        = render 'diabetes/cholesterol_chart.html.haml'
+        #cholesterol_chart{ :style => "height: 300px"}
+  .col-md-6
+    .panel.panel-default
+      .panel-body
+        .row
+          .col-md-12
+            .title
+              Gewicht
+            %hr
+        = render 'diabetes/weight_chart.html.haml'
+        #weight_chart{ :style => "height: 300px"}

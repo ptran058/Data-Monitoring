@@ -1,0 +1,10 @@
+= link_to "Streefwaarden gewicht toevoegen", new_weight_target_path
+
+- @weight_target.each do |wt|
+  %br 
+  = wt.min_weight
+  = wt.max_weight
+
+  = link_to "Edit", edit_weight_target_path(wt)
+  = link_to "Delete", weight_target_path(wt), method: :delete, data:{confirm: "Weet u het zeker?"}
+  %hr

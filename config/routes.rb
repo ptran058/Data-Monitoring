@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -10,6 +11,25 @@ Rails.application.routes.draw do
 
   root 'clients#index'
   resources :clients
+  resources :sights
+  resources :heartrates
+  resources :blood_pressures
+  resources :logs
+  resources :cholesterols
+  resources :hba1cs
+  resources :glucoses
+  resources :medications
+  resources :weights
+  resources :weight_targets
+  resources :hba1c_targets
+  resources :blood_pressure_targets
+  resources :heartrate_targets
+  resources :cholesterol_targets
+  resources :glucose_targets
+  resources :nutritions
+  resources :complaints
+  resources :medication_usages
+  
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

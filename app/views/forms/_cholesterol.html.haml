@@ -1,0 +1,36 @@
+.modal-dialog{:role => "document"}
+  .modal-content
+    .modal-header
+      %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+        %span{"aria-hidden" => "true"} &times;
+      %h4#myModalLabel.modal-title Cholesterol
+    .modal-body
+      = form_for @cholesterol do |c|
+        = c.hidden_field :client_id, value: params[:id]
+        .form-group
+          = c.label :ldl, "LDL"
+          = c.text_field :ldl, placeholder: 'LDL niveau', class: "form-control"
+        .form-group
+          = c.label :hdl, "HDL"
+          = c.text_field :hdl, placeholder: 'HDL niveau', class: "form-control"
+        .form-group
+          = c.label :triglycerides, "Triglycerides"
+          = c.text_field :triglycerides, placeholder: 'Triglycerides niveau', class: "form-control"
+        .form-group
+          = c.label :activity_date, "Tijd"
+          %div{:style => "overflow:hidden;"}
+            .form-group
+              .row
+                .col-md-8
+                = c.hidden_field :activity_date, class: "form_control", id: "cholesterol_time"
+            :javascript
+              $(function () {
+                  $('#cholesterol_time').datetimepicker({
+                      inline: true,
+                      sideBySide: true,
+                      format:'YYYY-MM-DD HH:mm'
+                  });
+              }); 
+        .row
+          .col-md-12
+            = c.submit "Bevestig", class: "btn btn-primary pull-right"

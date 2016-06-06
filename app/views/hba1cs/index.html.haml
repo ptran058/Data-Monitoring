@@ -1,0 +1,10 @@
+= link_to "Hba1cs aanmaken", new_hba1c_path
+
+- @hba1c.each do |hb|
+  %br 
+  = hb.mmol
+  = hb.activity_date
+
+  = link_to "Edit", edit_hba1c_path(hb)
+  = link_to "Delete", hba1c_path(hb), method: :delete, data:{confirm: "Weet u het zeker?"}
+  %hr

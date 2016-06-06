@@ -1,0 +1,2 @@
+module WeightTargetsHelper
+end
