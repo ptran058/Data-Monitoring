@@ -8,8 +8,8 @@ class ClientsController < ApplicationController
     @log = Log.all
     @glucose_target = GlucoseTarget.all
     @sight = Sight.all
-
   end
+
   def new
     @client = Client.new
   end
@@ -18,11 +18,12 @@ class ClientsController < ApplicationController
     @client = Client.find(params[:id])
   end
 
-  def create 
-    @client = Client.new (client_params)
-    @client.save 
+  def create
+    @client = Client.new client_params
+    @client.save
     redirect_to clients_path
   end
+
   def show
     @complaint = Complaint.new
     @weight = Weight.new
@@ -60,10 +61,11 @@ class ClientsController < ApplicationController
     @client_nutrition = Nutrition.where(client_id: params[:id]).order('activity_date ASC')
     @client_complaint = Complaint.where(client_id: params[:id]).order('complain_date DESC')
     @client_medication_usage = MedicationUsage.where(client_id: params[:id]).order('activity_date ASC')
-
   end
+
   private
-    def client_params
-      params.require(:client).permit(:photo_url, :name, :surname, :date_of_birth, :room, :institution, :blood_type)
-    end
+
+  def client_params
+    params.require(:client).permit(:photo_url, :name, :surname, :date_of_birth, :room, :institution, :blood_type)
+  end
 end

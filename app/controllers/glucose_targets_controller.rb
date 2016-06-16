@@ -8,7 +8,7 @@ class GlucoseTargetsController < ApplicationController
   end
 
   def create
-    @glucose_target = GlucoseTarget.new (glucose_target_params)
+    @glucose_target = GlucoseTarget.new glucose_target_params
     @glucose_target.save
     redirect_to client_path(glucose_target_params[:client_id])
   end
@@ -20,7 +20,7 @@ class GlucoseTargetsController < ApplicationController
   def update
     @glucose_target = GlucoseTarget.find(params[:id])
     @glucose_target.update(glucose_target_params)
-    redirect_to client_path(glucose_target_params[:client_id]) 
+    redirect_to client_path(glucose_target_params[:client_id])
   end
 
   def destroy
@@ -28,9 +28,10 @@ class GlucoseTargetsController < ApplicationController
     @glucose_target.destroy
     redirect_to client_path(glucose_target_params[:client_id])
   end
-  
-  private   
-    def glucose_target_params
-      params.require(:glucose_target).permit(:low, :high, :client_id)
-    end
+
+  private
+
+  def glucose_target_params
+    params.require(:glucose_target).permit(:low, :high, :client_id)
+  end
 end

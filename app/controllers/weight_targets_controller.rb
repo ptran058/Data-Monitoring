@@ -8,7 +8,7 @@ class WeightTargetsController < ApplicationController
   end
 
   def create
-    @weight_target = WeightTarget.new (weight_target_params)
+    @weight_target = WeightTarget.new weight_target_params
     @weight_target.save
     redirect_to client_path(weight_target_params[:client_id])
   end
@@ -28,9 +28,10 @@ class WeightTargetsController < ApplicationController
     @weight_target.destroy
     redirect_to client_path(weight_target_params[:client_id])
   end
-  
-  private   
-    def weight_target_params
-      params.require(:weight_target).permit(:min_weight, :max_weight, :client_id)
-    end
+
+  private
+
+  def weight_target_params
+    params.require(:weight_target).permit(:min_weight, :max_weight, :client_id)
+  end
 end

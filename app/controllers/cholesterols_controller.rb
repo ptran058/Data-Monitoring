@@ -1,5 +1,5 @@
 class CholesterolsController < ApplicationController
-	def index
+  def index
     @cholesterol = Cholesterol.all
   end
 
@@ -9,7 +9,7 @@ class CholesterolsController < ApplicationController
 
   def create
     @cholesterol = Cholesterol.new(cholesterol_params)
-    @cholesterol.save 
+    @cholesterol.save
     redirect_to client_path(cholesterol_params[:client_id])
   end
 
@@ -29,8 +29,9 @@ class CholesterolsController < ApplicationController
     redirect_to client_path(cholesterol_params[:client_id])
   end
 
-  private 
-    def cholesterol_params
-      params.require(:cholesterol).permit(:client_id, :activity_date, :ldl, :hdl, :triglycerides)
-    end
+  private
+
+  def cholesterol_params
+    params.require(:cholesterol).permit(:client_id, :activity_date, :ldl, :hdl, :triglycerides)
+  end
 end

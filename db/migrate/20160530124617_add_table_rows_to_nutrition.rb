@@ -9,11 +9,3 @@ class AddTableRowsToNutrition < ActiveRecord::Migration
     end
   end
 end
-
-
-
-
-
-
-
-

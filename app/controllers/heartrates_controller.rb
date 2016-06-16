@@ -1,15 +1,15 @@
 class HeartratesController < ApplicationController
-	  def index
+  def index
     @heartrate = Heartrate.all
-  end
+end
 
   def new
     @heartrate = Heartrate.new
   end
 
   def create
-    @heartrate = Heartrate.new (heartrate_params)
-    @heartrate.save 
+    @heartrate = Heartrate.new heartrate_params
+    @heartrate.save
     redirect_to client_path(heartrate_params[:client_id])
   end
 
@@ -29,8 +29,9 @@ class HeartratesController < ApplicationController
     redirect_to client_path(heartrate_params[:client_id])
   end
 
-  private 
-    def heartrate_params
-      params.require(:heartrate).permit(:client_id,:activity_date, :pulse)
-    end
+  private
+
+  def heartrate_params
+    params.require(:heartrate).permit(:client_id, :activity_date, :pulse)
+  end
 end

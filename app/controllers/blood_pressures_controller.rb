@@ -1,7 +1,7 @@
 class BloodPressuresController < ApplicationController
-	  def index
+  def index
     @blood_pressure = BloodPressure.all
-  end
+end
 
   def new
     @blood_pressure = BloodPressure.new
@@ -9,7 +9,7 @@ class BloodPressuresController < ApplicationController
 
   def create
     @blood_pressure = BloodPressure.new(blood_pressure_params)
-    @blood_pressure.save 
+    @blood_pressure.save
     redirect_to client_path(blood_pressure_params[:client_id])
   end
 
@@ -27,11 +27,11 @@ class BloodPressuresController < ApplicationController
     blood_pressure = BloodPressure.find(params[:id])
     blood_pressure.destroy
     redirect_to client_path(blood_pressure_params[:client_id])
-
   end
 
-  private 
-    def blood_pressure_params
-      params.require(:blood_pressure).permit(:client_id, :activity_date, :sys, :dia)
-    end
+  private
+
+  def blood_pressure_params
+    params.require(:blood_pressure).permit(:client_id, :activity_date, :sys, :dia)
+  end
 end
