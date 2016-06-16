@@ -1,7 +1,6 @@
 class CreateCholesterolTargets < ActiveRecord::Migration
   def change
     create_table :cholesterol_targets do |t|
-
       t.timestamps null: false
     end
   end

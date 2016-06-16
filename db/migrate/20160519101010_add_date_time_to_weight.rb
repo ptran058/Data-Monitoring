@@ -4,7 +4,7 @@ class AddDateTimeToWeight < ActiveRecord::Migration
       t.change :activity_date, :datetime
     end
   end
- 
+
   def down
     change_table :weights do |t|
       t.change :acitivity_date, :date

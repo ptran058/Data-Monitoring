@@ -1,5 +1,5 @@
 class Hba1csController < ApplicationController
-	def index
+  def index
     @hba1c = Hba1c.all
   end
 
@@ -9,7 +9,7 @@ class Hba1csController < ApplicationController
 
   def create
     @hba1c = Hba1c.new(hba1c_params)
-    @hba1c.save 
+    @hba1c.save
     redirect_to client_path(hba1cs_params[:client_id])
   end
 
@@ -29,8 +29,9 @@ class Hba1csController < ApplicationController
     redirect_to client_path(hba1cs_params[:client_id])
   end
 
-  private 
-    def hba1c_params
-      params.require(:hba1c).permit(:client_id, :activity_date, :mmol)
-    end
+  private
+
+  def hba1c_params
+    params.require(:hba1c).permit(:client_id, :activity_date, :mmol)
+  end
 end

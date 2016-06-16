@@ -5,8 +5,9 @@ class NutritionsController < ApplicationController
     redirect_to client_path(nutrition_params[:client_id])
   end
 
-  private 
-    def nutrition_params
-      params.require(:nutrition).permit(:client_id, :activity_date, :quantity)
-    end
+  private
+
+  def nutrition_params
+    params.require(:nutrition).permit(:client_id, :activity_date, :quantity)
+  end
 end

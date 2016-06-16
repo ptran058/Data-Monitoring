@@ -1,5 +1,5 @@
 class WeightsController < ApplicationController
-	def index
+  def index
     @weight = Weight.all
   end
 
@@ -9,7 +9,7 @@ class WeightsController < ApplicationController
 
   def create
     @weight = Weight.new(weight_params)
-    @weight.save 
+    @weight.save
     redirect_to client_path(weight_params[:client_id])
   end
 
@@ -29,8 +29,9 @@ class WeightsController < ApplicationController
     redirect_to client_path(weight_params[:client_id])
   end
 
-  private 
-    def weight_params
-      params.require(:weight).permit(:weight, :activity_date, :client_id)
-    end
+  private
+
+  def weight_params
+    params.require(:weight).permit(:weight, :activity_date, :client_id)
+  end
 end
