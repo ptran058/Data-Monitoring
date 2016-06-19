@@ -1,0 +1,45 @@
+.recap-box
+  .panel.panel-default
+    .panel-body
+      .row
+        .col-md-9
+          .title
+            Hba1c
+        .col-md-3
+          .check
+      .row
+        .col-md-12
+          %hr
+      .row
+        .col-md-12
+          .row
+            .col-md-4
+              .pastvalue 
+                - if @client_hba1c.first.present? 
+                  = @client_hba1c.first.mmol 
+                - else 
+                  N/A
+            .col-md-5
+              .newvalue 
+                - if @client_hba1c.last.present? 
+                  = @client_hba1c.last.mmol 
+                - else 
+                  N/A
+            .col-md-3     
+              .unit
+                MMO/L
+        - if @client_hba1c_target.present?
+          .col-md-12
+            %hr
+            .col-md-6
+              Streefwaarde
+            .col-md-4
+              .target 
+                = @client_hba1c_target.mmol
+      .row
+        .col-md-12
+          .lastdate
+            -  if @client_hba1c.last.present?
+              = @client_hba1c.last.activity_date.strftime("Laatst gemeten op: %d-%m-%Y")
+            - else
+              Laatste meetmoment is onbekend
