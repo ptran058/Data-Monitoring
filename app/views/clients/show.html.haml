@@ -81,15 +81,19 @@
       .panel-body
         = render 'diabetes/complaints.html.haml'
 .row
-  .col-md-4
-    = render 'diabetes/heartrate.html.haml'
-  .col-md-8
+  .col-md-12
     .panel.panel-default
       .panel-body
         .row
-          .col-md-12
+          .col-md-4
             .title
               Bloeddruk
+          .col-md-8
+            .row
+              .col-md-12
+                = render 'diabetes/heartrate.html.haml'
+        .row
+          .col-md-12
             %hr
         = render 'diabetes/bloodpressure_chart.html.haml'
         #bloodpressure{ :style => "height: 220px"}
