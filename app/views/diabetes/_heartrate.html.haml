@@ -1,41 +1,47 @@
 .row
-  .col-md-4
-    Hartslag
-    .heart
-  .col-md-6
-    - if @heartrates.last.present?
-      = @heartrates.last.pulse 
-    - else
-      N/A
-    - if @heartrates.last.present?
-      BPM
-      = @heartrates.last.activity_date.strftime("%d-%m-%Y")
-    - else
-      Laatste meetmoment is onbekend
-  .col-md-2
-    .legenda-overpressure
-      Bovendruk   
-.row
-  .col-md-12
-.row
-  .col-md-4
-    Streefwaarde:
-    = @client_heartrate_target.pulse
-    BPM
-  .col-md-6
-    .past-value-heartbeat
-      - if @heartrates.first.present?
-        = @heartrates.first.pulse 
-        BPM
+  .header-text
+    .col-md-4
+    .col-md-2
+      .legenda-overpressure
+        .legenda-text
+          Bovendruk
+    .col-md-3
+      Hartslag
+      .heart
+    .col-md-3
+      - if @heartrates.last.present?
+        = @heartrates.last.pulse 
       - else
         N/A
-      /dit moet in de backand aangepast worden, dit is de laatst gemeten van de hartslag. Niet de datum van de vorige meting./
-      -  if @heartrates.last.present?
+      - if @heartrates.last.present?
+        BPM
         = @heartrates.last.activity_date.strftime("%d-%m-%Y")
       - else
         Laatste meetmoment is onbekend
-  
-  /moet nog even naar gekeken worden/
-  .col-md-2 
-    .legenda-underpressure
-      Onderdruk 
+       
+.row
+  .col-md-12
+
+.row
+  .header-text
+    .col-md-4
+    .col-md-2 
+      .legenda-underpressure
+        .legenda-text
+          Onderdruk 
+    .col-md-3
+      Streefwaarde:
+      = @client_heartrate_target.pulse
+      BPM
+    .col-md-3
+      .past-value-heartbeat
+        - if @heartrates.first.present?
+          = @heartrates.first.pulse 
+          BPM
+        - else
+          N/A
+        /dit moet in de backand aangepast worden, dit is de laatst gemeten van de hartslag. Niet de datum van de vorige meting./
+        -  if @heartrates.last.present?
+          = @heartrates.last.activity_date.strftime("%d-%m-%Y")
+        - else
+          Laatste meetmoment is onbekend
