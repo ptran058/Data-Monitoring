@@ -102,9 +102,22 @@
     .panel.panel-default
       .panel-body
         .row
-          .col-md-12
+          .col-md-7
             .title
               Cholesterol
+          .col-md-5 
+            .legenda-cholesterol    
+              .lengenda-HDL 
+                .legenda-text
+                  HDL   
+              .legenda-LDL
+                .legenda-text
+                  LDL
+              .lengenda-remnand
+                .legenda-text
+                  Remnand    
+        .row
+          .col-md-12
             %hr
         = render 'diabetes/cholesterol_chart.html.haml'
         #cholesterol_chart{ :style => "height: 300px"}
