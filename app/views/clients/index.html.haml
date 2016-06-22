@@ -5,8 +5,8 @@
   .col-md-8
     .search
       %form
-        %input.SearchField{:placeholder => "Search...", :required => "", :type => "text"}
-          %input.SearchIcon{:type => "image", :value => "Search"}
+        %input.searchfield{:placeholder => "Search...", :required => "", :type => "text"}
+          %input.searchicon{:type => "image", :value => "Search"}
   .col-md-1
     // search nog niet werked helaas
 .row
@@ -20,10 +20,10 @@
           .client-photo
           // {:style => "background-image:url(client-replacement.jpg)"} add the photo with inline haml!
         .col-md-9
-          %p.txt-clinetenoverzicht-h1
+          %p.txt-clienten-overzicht-h1
             = c.name
             = c.surname
-          %p.txt-clinetenoverzicht-h2= c.date_of_birth
+          %p.txt-clienten-overzicht-h2= c.date_of_birth
         .col-md-1
           = link_to client_path(c) do
             %div.arrow-next
