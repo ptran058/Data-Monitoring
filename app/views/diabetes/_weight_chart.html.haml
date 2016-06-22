@@ -1,3 +1,10 @@
+- if @client_weight_target.present? 
+  - @min_weight = @client_weight_target.min_weight
+  - @max_weight = @client_weight_target.max_weight
+- else 
+  - @min_weight = 70
+  - @max_weight = 80
+
 - @weight_values = []
 - @client_weight.each do |c| 
   - @weight_values << "{/date/: '#{c.activity_date.strftime("%Y-%m-%d")}', /column-2/: '#{c.weight}',  }"
@@ -62,8 +69,8 @@
           "inside": true,
           "label": "Streefwaarde",
           "toAngle": 0,
-          "toValue": #{@client_weight_target.max_weight},
-          "value": #{@client_weight_target.min_weight}
+          "toValue": #{@max_weight},
+          "value": #{@min_weight}
         }
       ],
       "valueAxes": [
