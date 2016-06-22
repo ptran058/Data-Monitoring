@@ -17,8 +17,11 @@
     .col-md-6
       .client-container
         .col-md-2
-          .client-photo
-          // {:style => "background-image:url(client-replacement.jpg)"} add the photo with inline haml!
+          - if c.photo_url.present?
+            %img{:src => "#{c.photo_url}", :width => "50px"}
+          - else
+            %img{:src => "http://www.sheffield.com/wp-content/uploads/2013/06/placeholder.png", :width => "50px"}
+
         .col-md-9
           %p.txt-clinetenoverzicht-h1
             = c.name
