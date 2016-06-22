@@ -9,15 +9,8 @@
       Hartslag
       .heart
     .col-md-3
-      - if @heartrates.last.present?
-        = @heartrates.last.pulse 
-      - else
-        N/A
-      - if @heartrates.last.present?
-        BPM
-        = @heartrates.last.activity_date.strftime("%d-%m-%Y")
-      - else
-        Laatste meetmoment is onbekend
+      = @heartrates.last.present? ? @heartrates.last.pulse : 'N/A'
+      = @heartrates.last.present? ? @heartrates.last.activity_date.strftime("%d-%m-%Y") : 'Laatste meetmoment is onbekend'
 .row
   .col-md-12
 
@@ -34,13 +27,5 @@
       BPM
     .col-md-3
       .past-value-heartbeat
-        - if @heartrates.first.present?
-          = @heartrates.first.pulse 
-          BPM
-        - else
-          N/A
-        /dit moet in de backand aangepast worden, dit is de laatst gemeten van de hartslag. Niet de datum van de vorige meting./
-        -  if @heartrates.last.present?
-          = @heartrates.last.activity_date.strftime("%d-%m-%Y")
-        - else
-          Laatste meetmoment is onbekend
+        = @heartrates.first ? @heartrates.first.pulse.to_s : 'N/A'
+        = @heartrates.first.present? ? @heartrates.first.activity_date.strftime("%d-%m-%Y") : 'Laatste meetmoment is onbekend'
