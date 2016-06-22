@@ -48,7 +48,6 @@ class ClientsController < ApplicationController
     @blood_pressure_targets = BloodPressureTarget.where(client_id: params[:id])
     @heartrate_targets = HeartrateTarget.where(client_id: params[:id])
     @cholesterol_targets = CholesterolTarget.where(client_id: params[:id])
-
     @client_hba1c = Hba1c.where(client_id: params[:id]).order('activity_date DESC').limit(2)
     @heartrates = Heartrate.where(client_id: params[:id]).order('activity_date DESC').limit(2)
     @client_log = Log.where(client_id: params[:id])
@@ -59,7 +58,6 @@ class ClientsController < ApplicationController
     @client_blood_pressure = BloodPressure.where(client_id: params[:id]).order('activity_date ASC').limit(10)
     @client_weight = Weight.where(client_id: params[:id]).order('activity_date ASC').limit(10)
     @client_weight_target = WeightTarget.where(client_id: params[:id]).last
-
     @client_nutrition = Nutrition.where(client_id: params[:id]).order('activity_date ASC')
     @client_complaint = Complaint.where(client_id: params[:id]).order('complain_date DESC')
     @client_medication_usage = MedicationUsage.where(client_id: params[:id]).order('activity_date ASC')
