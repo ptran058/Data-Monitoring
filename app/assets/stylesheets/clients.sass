@@ -21,18 +21,40 @@ body
   width: 25px
   text-align: right
   margin-top: 15px
+
 .heart
   background-image: url(heart.png)
   background-size: cover
   background-repeat: no-repeat
-  height: 21px
-  width: 23px
-  text-align: right
-  margin-top: 15px
+  height: 16px
+  width: 18px
+  float: right
+  margin-right: 80px
 
-.hba1c-title 
-  margin-top: 15px
-  margin-left: 15px
+/*bloodpressure & heartrate*/
+
+.header-text
+  font-family: Khula
+
+.legenda-overpressure
+  width: 13px
+  height: 13px
+  background: #0E71AC
+  border-radius: 50px
+  -moz-border-radius: 50px 
+  -webkit-border-radius: 50px
+
+.legenda-underpressure
+  width: 13px
+  height: 13px
+  background: #51BDE9
+  border-radius: 50px
+  -moz-border-radius: 50px 
+  -webkit-border-radius: 50px
+
+.legenda-text
+  padding-left: 20px
+  font-family: Khula
 
 .pastvalue
   color: #C0C0C0 
@@ -220,6 +242,11 @@ body
 .btn.collapsed:after 
   content: "\e080"
 
+/* heartrate */
+
+.past-value-heartbeat
+  color: grey
+
 /* legenda cholesterol*/
 
 .legenda-cholesterol 
@@ -230,8 +257,8 @@ body
 
 .lengenda-HDL
   float: left
-  width: 10px
-  height: 10px
+  width: 13px
+  height: 13px
   background: #FF6851
   border-radius: 50px
   -moz-border-radius: 50px 
@@ -240,8 +267,8 @@ body
 .legenda-LDL
   float: left
   margin-left: 40px
-  width: 10px
-  height: 10px
+  width: 13px
+  height: 13px
   background: #FF8B78
   border-radius: 50px
   -moz-border-radius: 50px 
@@ -250,15 +277,13 @@ body
 .lengenda-remnand
   float: left
   margin-left: 40px
-  width: 10px
-  height: 10px
+  width: 13px
+  height: 13px
   background: #FFAE2A
   border-radius: 50px
   -moz-border-radius: 50px 
   -webkit-border-radius: 50px
 
 .legenda-text
-  padding-left: 15px
+  padding-left: 20px
   font-family: Khula
-  font-size: 12px
-  line-height: 12px
