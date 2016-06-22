@@ -26,21 +26,41 @@
       </div>
     </div>
     <div class="nav2">
-        <ul class="test">
+        <ul class="nav navbar-nav">
           <div class="header-logo"></div>
-          <!--<img alt="LocatiePhoto" class="header-logo" src="swettehiem.jpg"/>-->
-          <a class="nav-txt" href="#">Swettehiem</a>
-          <a class="nav-txt" href="#">Uitgebreide persoonsgegevens </a>
-          <a class="nav-txt" href="#">Gegevens invullen</a>
-          <a class="nav-txt" href="#">Streefwaarden invoeren</a>
+          <li><a class="nav-txt" href="#">Swettehiem</a></li>
+          <li><a class="nav-txt" href="#">Uitgebreide persoonsgegevens </a></li>
+            <li>
+              <a class="nav-txt dropdown dropdown-toggle" data-toggle="dropdown">Meetwaarden invoeren</a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Glucose</a></li>
+                <li><a href="#">HbA1c</a></li>
+                <li><a href="#">Bloeddruk</a></li>
+                <li><a href="#">Hartslag</a></li>
+                <li><a href="#">Cholesterol</a></li>
+                <li><a href="#">Weight</a></li>
+                <li><a href="#">Medication</a></li>
+                <li><a href="#">Voeding</a></li>
+                <li><a href="#">Activiteit</a></li>
+                <li><a href="#">Klachten</a></li>
+                <li><a href="#">Insuline</a></li>
+              </ul>
+            </li>
+            <li>
+              <a class="nav-txt dropdown" data-toggle="dropdown">Streefwaarden invoeren</a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Glucose</a></li>
+                <li><a href="#">HbA1c</a></li>
+                <li><a href="#">Bloeddruk</a></li>
+                <li><a href="#">Hartslag</a></li>
+                <li><a href="#">Cholesterol</a></li>
+                <li><a href="#">Weight</a></li>
+              </ul>
+            </li>
+          </div>
         </ul>
       </div>
-    </div>
   </nav>
-
-
-
-
   <div class="container">
     <%= yield %>
   </div>
