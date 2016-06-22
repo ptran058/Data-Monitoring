@@ -9,8 +9,9 @@
       Hartslag
       .heart
     .col-md-3
-      = @heartrates.last.present? ? @heartrates.last.pulse : 'N/A'
-      = @heartrates.last.present? ? @heartrates.last.activity_date.strftime("%d-%m-%Y") : 'Laatste meetmoment is onbekend'
+      .past-value-heartbeat
+        = @heartrates.last.present? ? @heartrates.last.pulse.to_s + ' BPM' : 'N/A'
+        = @heartrates.last.present? ? @heartrates.last.activity_date.strftime("%d-%m-%Y") : 'Laatste meetmoment is onbekend'
 .row
   .col-md-12
 
@@ -26,6 +27,5 @@
       = @client_heartrate_target.pulse
       BPM
     .col-md-3
-      .past-value-heartbeat
-        = @heartrates.first ? @heartrates.first.pulse.to_s : 'N/A'
-        = @heartrates.first.present? ? @heartrates.first.activity_date.strftime("%d-%m-%Y") : 'Laatste meetmoment is onbekend'
+      = @heartrates.first ? @heartrates.first.pulse.to_s+ ' BPM' : 'N/A'
+      = @heartrates.first.present? ? @heartrates.first.activity_date.strftime("%d-%m-%Y") : 'Laatste meetmoment is onbekend'
