@@ -1,14 +1,13 @@
 .co-bg
 .row
   .col-md-3
-    .instelling-image
+    .institution-image
   .col-md-8
     .search
       %form
         %input.searchfield{:placeholder => "Search...", :required => "", :type => "text"}
           %input.searchicon{:type => "image", :value => "Search"}
   .col-md-1
-    // search nog niet werked helaas
 .row
   .col-md-12
     = link_to "Client toevoegen", new_client_path, class: "btn btn-primary pull-right"
@@ -18,12 +17,11 @@
       .client-container
         .col-md-2
           .client-photo
-          // {:style => "background-image:url(client-replacement.jpg)"} add the photo with inline haml!
         .col-md-9
-          %p.txt-clienten-overzicht-h1
+          %p.txt-clients-list-h1
             = c.name
             = c.surname
-          %p.txt-clienten-overzicht-h2= c.date_of_birth
+          %p.txt-clients-list-h2= c.date_of_birth
         .col-md-1
           = link_to client_path(c) do
             %div.arrow-next
